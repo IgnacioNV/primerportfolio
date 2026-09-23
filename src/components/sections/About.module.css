@@ -1,0 +1,371 @@
+.intro {
+  display: grid;
+  gap: 40px;
+}
+
+@media (min-width: 900px) {
+  .intro {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: 64px;
+    align-items: start;
+  }
+}
+
+.story p {
+  margin: 0 0 20px;
+  max-width: var(--measure);
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+  color: var(--c-text-2);
+}
+
+.story p:first-child {
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.3;
+  color: var(--c-text);
+  letter-spacing: -0.015em;
+}
+
+/* Photos */
+.photo {
+  margin: 0;
+}
+
+.photoImg {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--c-surface);
+}
+
+.photoImg img {
+  object-fit: cover;
+  transition: transform 1s var(--ease);
+}
+
+.photo:hover .photoImg img {
+  transform: scale(1.03);
+}
+
+.photo figcaption {
+  margin-top: 10px;
+  color: var(--c-muted);
+}
+
+.portrait .photoImg {
+  aspect-ratio: 3 / 4;
+}
+
+.slot {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  border: 1px dashed var(--c-border-strong);
+  border-radius: var(--radius-card);
+  padding: 12px;
+}
+
+.photos {
+  display: grid;
+  gap: 16px;
+  margin-top: var(--space-block);
+}
+
+@media (min-width: 700px) {
+  .photos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Stats */
+.stats {
+  list-style: none;
+  margin: var(--space-block) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+  border-top: 1px solid var(--c-border-strong);
+}
+
+@media (min-width: 700px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.stats li {
+  display: grid;
+  gap: 4px;
+  padding-top: 20px;
+}
+
+.statValue {
+  font-size: clamp(56px, 7vw, 104px);
+  line-height: 0.9;
+  letter-spacing: var(--tracking-display);
+  font-weight: var(--fw-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel {
+  color: var(--c-muted);
+  font-size: var(--fs-small);
+}
+
+/* Columns */
+.columns {
+  display: grid;
+  gap: 56px;
+  margin-top: var(--space-section);
+}
+
+@media (min-width: 900px) {
+  .columns {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: 64px;
+  }
+}
+
+.colTitle {
+  margin: 0 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--c-border-strong);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.when {
+  color: var(--c-muted);
+  padding-top: 3px;
+}
+
+.tTitle {
+  margin: 0 0 2px;
+  font-weight: var(--fw-medium);
+  letter-spacing: -0.01em;
+}
+
+.tBody {
+  margin: 0;
+  color: var(--c-text-2);
+  font-size: var(--fs-small);
+  max-width: 52ch;
+}
+
+.side {
+  display: grid;
+  gap: 48px;
+  align-content: start;
+}
+
+/* Education logos: monochrome until you look at them. */
+.edu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.eduItem {
+  display: grid;
+  grid-template-columns: 132px 1fr;
+  gap: 16px;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.eduLogo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  min-height: 72px;
+  padding: 10px;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.eduLogo img {
+  max-height: 48px;
+  width: auto;
+  filter: grayscale(1) contrast(1.2);
+  opacity: 0.85;
+  transition:
+    filter var(--dur) var(--ease),
+    opacity var(--dur) var(--ease);
+}
+
+.eduItem:hover .eduLogo img {
+  filter: none;
+  opacity: 1;
+}
+
+.eduFallback {
+  font-size: 13px;
+  font-weight: var(--fw-medium);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.eduHover {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 4px 6px;
+  background: var(--c-text);
+  color: var(--c-bg);
+  font-size: 10px;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.eduItem:hover .eduHover {
+  transform: none;
+}
+
+.eduText {
+  margin: 0;
+  font-size: var(--fs-small);
+  color: var(--c-text-2);
+}
+
+.eduText strong {
+  color: var(--c-text);
+  font-weight: var(--fw-medium);
+}
+
+.langs {
+  margin: 0;
+}
+
+.langs div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.langs dt {
+  font-weight: var(--fw-medium);
+}
+
+.langs dd {
+  margin: 0;
+  color: var(--c-text-2);
+  text-align: right;
+}
+
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1f9d55;
+  box-shadow: 0 0 0 0 rgba(31, 157, 85, 0.5);
+  animation: pulse 2.4s infinite;
+}
+
+@keyframes pulse {
+  70% {
+    box-shadow: 0 0 0 8px rgba(31, 157, 85, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(31, 157, 85, 0);
+  }
+}
+
+/* Tools */
+.tools,
+.gallery {
+  margin-top: var(--space-section);
+}
+
+.toolsHead {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 900px) {
+  .toolsHead {
+    grid-template-columns: 5fr 6fr;
+    gap: 56px;
+    align-items: end;
+  }
+}
+
+.toolsTitle {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-display);
+  letter-spacing: var(--tracking-h);
+}
+
+.toolsLede {
+  margin: 0;
+  color: var(--c-text-2);
+  max-width: var(--measure);
+}
+
+.chart {
+  overflow-x: auto;
+}
+
+.stages,
+.toolRows {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(150px, 1fr));
+  min-width: 480px;
+}
+
+.stages span {
+  padding: 12px 0;
+  border-top: 1px solid var(--c-border-strong);
+  color: var(--c-muted);
+}
+
+.toolRows {
+  list-style: none;
+  margin: 0;
+  padding: 6px 0 0;
+  row-gap: 6px;
+}
+
+.tool {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 14px;
+  margin-right: 8px;
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-small);
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.tool:hover {
+  background: var(--c-text);
+  color: var(--c-bg);
+}
