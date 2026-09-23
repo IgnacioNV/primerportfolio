@@ -8,6 +8,7 @@ import { Projects } from "@/components/sections/Projects";
 import { Thinking } from "@/components/sections/Thinking";
 import { Lab } from "@/components/sections/Lab";
 import { About } from "@/components/sections/About";
+import { Closing } from "@/components/sections/Closing";
 
 /*
  * Order follows the visitor, not the designer:
@@ -34,6 +35,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <Thinking locale={locale} c={c} index={2} />
         <Lab c={c} index={3} />
         <About locale={locale} c={c} index={4} />
+        <Closing c={c} index={5} />
       </main>
 
       <FloatingCta label={c.ui.cta} aria={c.ui.ctaAria} />
