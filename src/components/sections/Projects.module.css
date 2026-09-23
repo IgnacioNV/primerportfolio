@@ -1,0 +1,227 @@
+.featured {
+  display: grid;
+  gap: clamp(20px, 2.5vw, 32px);
+}
+
+@media (min-width: 800px) {
+  .featured {
+    grid-template-columns: 1fr 1fr;
+  }
+  .first {
+    grid-column: 1 / -1;
+  }
+}
+
+.moreTitle {
+  margin: var(--space-block) 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--c-border-strong);
+  color: var(--c-muted);
+  font-weight: 400;
+}
+
+.more2 {
+  display: grid;
+  gap: clamp(20px, 2.5vw, 32px);
+}
+
+@media (min-width: 800px) {
+  .more2 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Card ─────────────────────────────── */
+.card {
+  position: relative;
+  display: grid;
+  height: 100%;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition:
+    transform 0.4s var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    box-shadow 0.4s var(--ease);
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--c-border-strong);
+  box-shadow: 0 24px 60px -30px rgba(18, 18, 18, 0.35);
+}
+
+.card:focus-within {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+}
+
+.media {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--mb);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  cursor: none;
+}
+
+.lg .media {
+  aspect-ratio: 5 / 2;
+}
+
+.sm .media {
+  aspect-ratio: 16 / 7;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .media {
+    cursor: auto;
+  }
+}
+
+.logo {
+  width: 56%;
+  max-width: 560px;
+  height: auto;
+  transform: scale(1.06);
+  transition: transform 1.2s var(--ease);
+}
+
+:global(.is-in) .logo {
+  transform: scale(1);
+}
+
+.card:hover .logo {
+  transform: scale(1.03);
+}
+
+.wordmark {
+  color: var(--pi);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: var(--fw-display);
+  letter-spacing: var(--tracking-display);
+}
+
+/* Image reveal: a curtain in the project's color lifts on enter. */
+.media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--pc);
+  transform-origin: top;
+  transition: transform 1s var(--ease) 0.1s;
+}
+
+:global(.is-in) .media::after {
+  transform: scaleY(0);
+}
+
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  margin: -18px 0 0 -44px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--c-accent);
+  color: var(--c-accent-ink);
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.body {
+  display: grid;
+  gap: 10px;
+  padding: 22px 22px 24px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: 0;
+  color: var(--c-muted);
+}
+
+.role {
+  color: var(--c-text);
+}
+
+.name {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-display);
+  letter-spacing: var(--tracking-h);
+  line-height: var(--lh-snug);
+}
+
+.lg .name {
+  font-size: clamp(28px, 3vw, 40px);
+}
+
+.name a {
+  text-decoration: none;
+}
+
+/* The title link covers the whole card; keywords sit above it so they stay interactive. */
+.stretch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.stretch:focus-visible {
+  outline: none;
+}
+
+.problem {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--c-text-2);
+}
+
+.problem :global([data-keyword]) {
+  position: relative;
+  z-index: 2;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  color: var(--c-accent);
+  font-weight: var(--fw-medium);
+}
+
+.more svg {
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.card:hover .more svg {
+  transform: translateX(4px);
+}
+
+.ctaRow {
+  margin-top: var(--space-block);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px 0 0;
+  border-top: 1px solid var(--c-border);
+}
+
+.ctaRow p {
+  margin: 0;
+  font-size: var(--fs-lead);
+  max-width: 40ch;
+}

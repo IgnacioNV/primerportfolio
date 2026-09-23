@@ -156,6 +156,7 @@ export const en: SiteContent = {
     title: "What I've made.",
     lede: "Five [[producto:product]], brand and [[innovacion:innovation]] projects. They all started with the same question: what's going on with the person on the other side.",
     moreTitle: "Also",
+    ctaLine: "Want to see more of any of these? Happy to walk you through it.",
     list: [
       {
         slug: "sima",
@@ -187,7 +188,7 @@ export const en: SiteContent = {
         name: "Trevian",
         aka: "Also known as Onest",
         year: "2025",
-        role: ["Product design", "UX/UI"],
+        role: ["TODO(nacho): your role in Trevian"],
         problem: "A custom orthopedic insole without going anywhere: the insole comes to you.",
         featured: true,
         ...projectAssets.trevian,

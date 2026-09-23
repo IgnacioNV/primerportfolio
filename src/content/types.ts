@@ -55,6 +55,8 @@ export type Project = {
   with?: Text;
   color: string;
   ink: string;
+  /** Background behind the logo on cards (some logos come on white). */
+  mediaBg: string;
   logo?: StaticImageData;
   featured: boolean;
   case: {
@@ -148,6 +150,7 @@ export type SiteContent = {
     title: string;
     lede: Rich;
     moreTitle: string;
+    ctaLine: string;
     list: Project[];
   };
 

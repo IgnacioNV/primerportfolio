@@ -4,6 +4,7 @@ import { Nav } from "./Nav";
 import { Hero } from "@/components/hero/Hero";
 import { LensVisual } from "@/components/hero/LensVisual";
 import { FloatingCta } from "@/components/contact/FloatingCta";
+import { Projects } from "@/components/sections/Projects";
 
 /*
  * Order follows the visitor, not the designer:
@@ -26,6 +27,7 @@ export function HomePage({ locale }: { locale: Locale }) {
           hasPortrait={publicExists(c.hero.portrait.src)}
           visual={<LensVisual {...c.hero.visual} />}
         />
+        <Projects locale={locale} c={c} index={1} />
       </main>
 
       <FloatingCta label={c.ui.cta} aria={c.ui.ctaAria} />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ElementType } from "react";
+import { Fragment, useEffect, useRef, type ElementType } from "react";
 import styles from "./SplitTitle.module.css";
 
 /**
@@ -30,10 +30,12 @@ export function SplitTitle({ text, as: Tag = "h2", className = "" }: { text: str
   return (
     <Tag ref={ref} className={`${styles.title} ${className}`} aria-label={text}>
       {words.map((w, i) => (
-        <span key={i} className={styles.word} aria-hidden style={{ ["--i" as string]: i }}>
-          <span>{w}</span>
-          {i < words.length - 1 ? " " : ""}
-        </span>
+        <Fragment key={i}>
+          <span className={styles.word} aria-hidden style={{ ["--i" as string]: i }}>
+            <span>{w}</span>
+          </span>
+          {i < words.length - 1 ? " " : null}
+        </Fragment>
       ))}
     </Tag>
   );

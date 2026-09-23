@@ -160,6 +160,7 @@ export const es: SiteContent = {
     title: "Lo que hice.",
     lede: "Cinco proyectos de [[producto:producto]], marca e [[innovacion:innovación]]. En todos arranqué por la misma pregunta: qué le pasa a la persona del otro lado.",
     moreTitle: "También",
+    ctaLine: "¿Querés ver más de alguno? Te lo cuento en una charla.",
     list: [
       {
         slug: "sima",
@@ -191,7 +192,7 @@ export const es: SiteContent = {
         name: "Trevian",
         aka: "También conocido como Onest",
         year: "2025",
-        role: ["Diseño de producto", "UX/UI"],
+        role: ["TODO(nacho): tu rol en Trevian"],
         problem: "Una plantilla ortopédica a medida sin ir a ningún lado: la plantilla viene a vos.",
         featured: true,
         ...projectAssets.trevian,
