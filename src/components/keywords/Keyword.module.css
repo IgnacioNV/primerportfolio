@@ -1,0 +1,103 @@
+.wrap {
+  position: relative;
+  display: inline;
+}
+
+.word {
+  display: inline;
+  padding: 0 0.05em;
+  margin: 0;
+  border: 0;
+  font: inherit;
+  font-weight: var(--fw-display);
+  color: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  cursor: help;
+  background: linear-gradient(var(--c-accent), var(--c-accent)) 0 92% / 0% 0.2em no-repeat;
+  transition: background-size 0.9s var(--ease) 0.15s;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.painted {
+  background-size: 100% 0.2em;
+}
+
+.word:hover,
+.word[aria-expanded="true"] {
+  color: var(--c-accent);
+}
+
+:global(.night) .word {
+  background-image: linear-gradient(var(--c-accent-on-night), var(--c-accent-on-night));
+}
+
+:global(.night) .word:hover,
+:global(.night) .word[aria-expanded="true"] {
+  color: var(--c-accent-on-night);
+}
+
+.tip {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  z-index: 30;
+  width: max-content;
+  max-width: min(300px, 80vw);
+  padding: 12px 14px;
+  background: var(--c-text);
+  color: var(--c-bg);
+  font-family: var(--f-sans);
+  font-size: 14px;
+  font-weight: var(--fw-body);
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  border-radius: var(--radius-card);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition:
+    opacity var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.tipRight {
+  left: auto;
+  right: 0;
+}
+
+.tipOpen {
+  opacity: 1;
+  transform: none;
+}
+
+:global(.night) .tip {
+  background: var(--c-night-text);
+  color: var(--c-night);
+}
+
+.tipLabel {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+  color: #9aa1ff;
+}
+
+:global(.night) .tipLabel {
+  color: var(--c-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Already painted, no animation. */
+  .word {
+    background-size: 100% 0.2em;
+    transition: none;
+  }
+}

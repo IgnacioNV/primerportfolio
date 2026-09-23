@@ -1,9 +1,11 @@
 "use client";
 
-import { createContext, useContext } from "react";
+import { createContext, useContext, useSyncExternalStore } from "react";
 import type { Keyword, KeywordId, Locale, SiteContent } from "@/content";
+import { keywordStore } from "./store";
+import { KeywordCounter } from "./KeywordCounter";
 
-type Ctx = { keywords: Record<KeywordId, Keyword> };
+type Ctx = { keywords: Record<KeywordId, Keyword>; found: KeywordId[] };
 const KeywordContext = createContext<Ctx | null>(null);
 
 export function useKeywords() {
@@ -20,6 +22,12 @@ type Props = {
   children: React.ReactNode;
 };
 
-export function KeywordProvider({ keywords, children }: Props) {
-  return <KeywordContext.Provider value={{ keywords }}>{children}</KeywordContext.Provider>;
+export function KeywordProvider({ keywords, ui, cta, children }: Props) {
+  const found = useSyncExternalStore(keywordStore.subscribe, keywordStore.getSnapshot, keywordStore.getServerSnapshot);
+  return (
+    <KeywordContext.Provider value={{ keywords, found }}>
+      {children}
+      <KeywordCounter keywords={keywords} found={found} ui={ui} cta={cta} />
+    </KeywordContext.Provider>
+  );
 }
