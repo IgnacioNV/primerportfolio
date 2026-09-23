@@ -1,36 +1,67 @@
 import type { SiteContent } from "./types";
-
-import sima from "@/assets/img/sima.png";
-import trevian from "@/assets/img/trevian.png";
-import nihol from "@/assets/img/nihol.png";
-import studybuddy from "@/assets/img/studybuddy.png";
-import photography from "@/assets/img/photography.png";
-import volleyball from "@/assets/img/volleyball.png";
-import panama from "@/assets/img/panama.png";
+import { projectAssets } from "./shared";
 
 /*
- * ─────────────────────────────────────────────────────────────
- *  All the copy of the site lives here.
- *  Anything written like [THIS] shows up on the page as a blue
- *  placeholder so it's impossible to forget. Replace, don't delete.
- *  To add Spanish: copy this file to es.ts and translate.
- * ─────────────────────────────────────────────────────────────
+ * English version (route "/en"). Same shape as es.ts.
+ * "TODO(nacho):" = missing data; hidden in production.
  */
 
 export const en: SiteContent = {
   locale: "en",
   meta: {
-    title: "Ignacio Nuñez Valcarce",
+    title: "Ignacio Nuñez Valcarce — Product & brand design",
     description:
-      "Design student at UdeSA, Buenos Aires. Interested in the problem behind the problem — and in building what fixes it.",
+      "Design student at UdeSA, working on brand and digital product at Inspira RRHH. I look for the problem behind the problem — and build what solves it.",
+    ogLocale: "en_US",
+  },
+
+  ui: {
+    cta: "Let's talk",
+    ctaAria: "Let's talk: open contact details",
+    seeProjects: "See projects",
+    seeCase: "See case",
+    backToProjects: "All projects",
+    nextProject: "Next project",
+    skipToContent: "Skip to content",
+    menu: "Menu",
+    close: "Close",
+    langName: "English",
+    langSwitch: "Leer en español",
+    caseLabels: {
+      problem: "The problem",
+      role: "My role",
+      process: "Process",
+      question: "The question that guided me",
+      result: "Outcome",
+      learned: "What I learned",
+      year: "Year",
+      with: "With",
+    },
+    contact: {
+      title: "Let's talk.",
+      body: "Projects, internships, a half-baked idea or a question. I reply fast.",
+      copy: "Copy email",
+      copied: "Copied",
+      write: "Write to me",
+      subject: "Hi Nacho —",
+      noEmail: "For now, LinkedIn is the fastest way.",
+    },
+    keywords: {
+      counter: "words",
+      title: "Words that define me",
+      hint: "They're hidden across the page, always next to the proof.",
+      done: "You found them all. You know a fair bit about me by now — let's talk about the rest.",
+    },
+    lightbox: { open: "Enlarge photo", prev: "Previous photo", next: "Next photo", close: "Close" },
+    filterAll: "All",
   },
 
   person: {
     name: "Ignacio Nuñez Valcarce",
-    age: "18",
     city: "Buenos Aires",
     timezone: "America/Argentina/Buenos_Aires",
-    email: "[EMAIL]",
+    email: "TODO(nacho): contact email",
+    cv: "TODO(nacho): /cv/cv-ignacio-nunez-valcarce.pdf",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/ignacio-nu%C3%B1ez-valcarce-7b870a211/" },
       { label: "GitHub", href: "https://github.com/IgnacioNV" },
@@ -38,234 +69,250 @@ export const en: SiteContent = {
   },
 
   nav: [
-    { id: "look", label: "Look" },
-    { id: "think", label: "Think" },
-    { id: "make", label: "Make" },
-    { id: "try", label: "Try" },
-    { id: "trace", label: "Trace" },
-    { id: "next", label: "Next" },
+    { id: "proyectos", creative: "Make", label: "Projects" },
+    { id: "pienso", creative: "Think", label: "How I think" },
+    { id: "laboratorio", creative: "Try", label: "Lab" },
+    { id: "quien-soy", creative: "Trace", label: "About" },
+    { id: "contacto", creative: "Next", label: "Contact" },
   ],
 
+  keywords: {
+    innovacion: {
+      label: "innovation",
+      evidence: "SIMA uses machine learning to help detect multiple sclerosis; Trevian, iPhone scanning and 3D printing.",
+      section: "proyectos",
+    },
+    producto: {
+      label: "product",
+      evidence: "SIMA, Trevian, Study Buddy and Inspira: digital products, not just screens.",
+      section: "proyectos",
+    },
+    creatividad: {
+      label: "creativity",
+      evidence: "NIHOL's identity came out of interviews: name, logo, palette and tone.",
+      section: "proyectos",
+    },
+    estrategia: {
+      label: "strategy",
+      evidence: "Identity and digital experience for an HR consultancy, designed for the people who decide.",
+      section: "proyectos",
+    },
+    pensamiento: {
+      label: "critical thinking",
+      evidence: "Seven questions before opening Figma, and an award-winning video on interfaces and addiction.",
+      section: "pienso",
+    },
+    proyectos: {
+      label: "projects",
+      evidence: "Seven experiments I started on my own, without anyone asking.",
+      section: "laboratorio",
+    },
+    liderazgo: {
+      label: "leadership",
+      evidence: "Captain on the Metropolitan and Argentine teams. Graduation speech at the Gran Rex for 3,000+ people.",
+      section: "quien-soy",
+    },
+    equipo: {
+      label: "teamwork",
+      evidence: "Around 10 years of federated volleyball and three national championships with my club.",
+      section: "quien-soy",
+    },
+    emprendedora: {
+      label: "entrepreneurial mindset",
+      evidence: "Spot a problem, research it, design it, build the prototype. The founder profile I'm going for.",
+      section: "contacto",
+    },
+  },
+
   hero: {
-    kicker: "Fig. 0 — Look closer",
-    who: "Ignacio Nuñez Valcarce. Design student in Buenos Aires. More interested in what an interface does to people than in how it looks — though I care about both.",
-    hint: "Move the cursor. That's where I look. Click for another.",
-    hintTouch: "Drag sideways to look underneath. Tap for another.",
-    fixed: "This is",
-    pairs: [
-      { surface: "a button.", depth: "a decision." },
-      { surface: "a feed.", depth: "a habit." },
-      { surface: "a logo.", depth: "a memory." },
-      { surface: "a study app.", depth: "a routine." },
-      { surface: "an insole.", depth: "a body." },
-      { surface: "a form.", depth: "a doubt." },
-      { surface: "a portfolio.", depth: "a question." },
-    ],
-  },
-
-  intro: {
-    statement:
-      "I study Design at Universidad de San Andrés, after a technology track at ORT. I'm most interested in the problem behind the problem: why people do what they do — and what we could build about it.",
-    facts: [
-      { k: "Based in", v: "Buenos Aires, AR" },
-      { k: "Studying", v: "Design — UdeSA" },
-      { k: "Before", v: "ORT Argentina, TIC track" },
-      { k: "Now", v: "Brand & digital product, Inspira RRHH" },
-      { k: "Label", v: "Not picked yet. On purpose." },
-    ],
-    photoCaption: "Rome, [YEAR]. Tourist mode.",
-  },
-
-  thinking: {
-    title: "I start with questions, not screens.",
-    lede:
-      "Design isn't only how something looks. For me it's a way of understanding an experience — and then changing it. These are the questions I keep coming back to.",
-    // Edit freely: `triedIn` links each question to where I tried to answer it.
-    questions: [
-      { q: "Why does a person do what they do?", triedIn: ["nihol", "study-buddy"] },
-      { q: "What are they actually feeling?", triedIn: ["nihol", "award"] },
-      { q: "What's the real problem behind the apparent one?", triedIn: ["sima", "trevian"] },
-      { q: "How does an experience change when we change an interface?", triedIn: ["study-buddy", "award"] },
-      { q: "Can technology change a behavior? Should it?", triedIn: ["award", "study-buddy"] },
-      { q: "How do you make something useful and also meaningful?", triedIn: ["sima", "nihol"] },
-      { q: "Which invisible decisions does a designer make?", triedIn: ["inspira", "this site"] },
-    ],
-    award: {
-      kicker: "Case in point — World ORT STEM Communication Award, 2025",
-      title: "¿Consumimos experiencias o consumimos adicciones?",
-      body: [
-        "Do we consume experiences, or addictions? A short video about interface design, addiction, anxiety and social media — and about our responsibility when we design digital experiences.",
-        "It pulls from Jonathan Haidt and from ideas of Lacan. It won the World ORT STEM Communication Award in 2025.",
+    kicker: "Product design · Brand · Buenos Aires",
+    line: "I care more about what an interface does to people than how it looks.",
+    aside: "(I still care how it looks.)",
+    sub: "I study Design at UdeSA and work on brand and digital product at Inspira RRHH. I look for the problem behind the problem — then I build it.",
+    proofs: ["World ORT STEM Communication Award 2025", "Design · UdeSA", "Brand & product · Inspira RRHH"],
+    languages: ["Spanish", "English", "TODO(nacho): confirm Italian"],
+    portrait: {
+      src: "/fotos/hero.jpg",
+      alt: "Portrait of Ignacio Nuñez Valcarce",
+    },
+    visual: {
+      fixed: "This is",
+      pairs: [
+        { surface: "a button.", depth: "a decision." },
+        { surface: "a feed.", depth: "a habit." },
+        { surface: "a logo.", depth: "a memory." },
+        { surface: "an app.", depth: "a routine." },
+        { surface: "an insole.", depth: "a body." },
+        { surface: "a form.", depth: "a doubt." },
+        { surface: "a portfolio.", depth: "a question." },
       ],
-      link: "[VIDEO LINK]",
-    },
-    shelf: {
-      title: "What I read around",
-      items: [
-        "Don Norman",
-        "Cognitive psychology",
-        "Neuroscience",
-        "Behavior",
-        "Philosophy",
-        "Semiotics",
-        "Design theory",
-        "Jonathan Haidt",
-      ],
+      hint: "Move the cursor — that's where I look. Click for another.",
+      hintTouch: "Drag sideways to look underneath. Tap for another.",
+      label: "Interactive example: the surface reads one thing, underneath it reads another.",
     },
   },
 
-  work: {
-    title: "Things I made.",
-    lede:
-      "Five projects. Each one sits somewhere different between design, technology, business, AI and people. Hover one to see where.",
-    axes: {
-      design: "Design",
-      technology: "Technology",
-      business: "Business",
-      ai: "AI",
-      people: "People",
-    },
-    projects: [
+  projects: {
+    title: "What I've made.",
+    lede: "Five [[producto:product]], brand and [[innovacion:innovation]] projects. They all started with the same question: what's going on with the person on the other side.",
+    moreTitle: "Also",
+    list: [
       {
         slug: "sima",
         name: "SIMA",
         aka: "Sclerosis Intelligent Medical Assistant",
-        line: "A platform that uses machine learning to help detect multiple sclerosis from clinical data.",
         year: "2024",
         role: ["UX/UI", "Branding"],
+        problem: "Helping detect multiple sclerosis from clinical data, with machine learning.",
         with: "Fundación Noemí Frida Kraut",
-        axes: ["design", "technology", "ai", "people"],
-        color: "#FF8A00",
-        ink: "#FFFFFF",
-        logo: sima,
-        question: "[THE QUESTION THAT STARTED SIMA]",
-        context: [
-          "SIMA is a platform that uses artificial intelligence and machine learning to help detect multiple sclerosis from clinical information.",
-          "It was developed together with Fundación Noemí Frida Kraut and went through an MVP experience.",
-        ],
-        whatIDid: ["I worked on the UX/UI and the branding.", "[DETAIL: screens, flows, identity decisions]"],
-        whyItMatters:
-          "It's the project where more of what I care about overlaps: design, technology, artificial intelligence, health and social impact.",
-        chapters: [
-          { title: "Who it's for", body: "[WHO USES SIMA AND IN WHAT MOMENT]" },
-          { title: "Process", body: "[ADD CASE STUDY]" },
-          { title: "The MVP", body: "[WHAT THE MVP EXPERIENCE WAS AND WHAT CAME OUT OF IT]" },
-          { title: "What I learned", body: "[ADD]" },
-        ],
+        featured: true,
+        ...projectAssets.sima,
+        case: {
+          problem: [
+            "SIMA is a platform that uses artificial intelligence and machine learning to help detect multiple sclerosis from clinical information.",
+            "It was developed together with Fundación Noemí Frida Kraut and went through an MVP experience.",
+          ],
+          role: ["I worked on the UX/UI and the branding.", "TODO(nacho): screens, flows and identity decisions"],
+          question: 2,
+          process: ["TODO(nacho): SIMA process (research, flows, iterations)"],
+          result: ["TODO(nacho): what came out of the MVP experience"],
+          learned: [
+            "It's the project where most of what I care about overlaps: design, technology, AI, health and social impact.",
+            "TODO(nacho): concrete learnings",
+          ],
+        },
       },
       {
         slug: "trevian",
         name: "Trevian",
-        aka: "also known as Onest",
-        line: "A custom orthopedic insole: scanned with an iPhone, processed with algorithms, 3D-printed. The insole comes to you.",
+        aka: "Also known as Onest",
         year: "2025",
-        role: ["Product design", "UX/UI", "[ROLE]"],
-        axes: ["design", "technology", "ai", "business"],
-        color: "#03021F",
-        ink: "#8FF5DA",
-        logo: trevian,
-        question: "What if the insole came to you, instead of you going to it?",
-        context: [
-          "A personalized orthopedic insole. The foot is scanned using iPhone LiDAR, the data is processed with algorithms / AI, and the insole is 3D-fabricated to fit that one person.",
-          "The experience covers the scan, the processing and the fabrication, with professionals like kinesiologists taking part.",
-        ],
-        whatIDid: ["[DETAIL: what I designed — the app, the scan flow, the brand, the service]"],
-        whyItMatters:
-          "It mixes product design, technology, user experience, digital fabrication and health. It's less about a screen and more about a whole service.",
-        chapters: [
-          { title: "The experience, step by step", body: "Scan the foot → process the data → fabricate the insole → a professional in the loop. [ADD DETAIL PER STEP]" },
-          { title: "Process", body: "[ADD CASE STUDY]" },
-          { title: "Open questions", body: "[ADD]" },
-        ],
+        role: ["Product design", "UX/UI"],
+        problem: "A custom orthopedic insole without going anywhere: the insole comes to you.",
+        featured: true,
+        ...projectAssets.trevian,
+        case: {
+          problem: [
+            "A personalized orthopedic insole. The foot is scanned with the iPhone's LiDAR, the data is processed with algorithms and AI, and the insole is 3D-fabricated for that one person.",
+            "The experience covers scanning, processing and fabrication, with professionals like kinesiologists in the loop.",
+          ],
+          role: ["TODO(nacho): what you designed in Trevian (app, scan flow, brand, service)"],
+          question: 2,
+          process: [
+            "Scan the foot → process the data → fabricate the insole → a professional in the loop.",
+            "TODO(nacho): Trevian process",
+          ],
+          result: ["TODO(nacho): Trevian outcome"],
+          learned: [
+            "It mixes product design, technology, user experience, digital fabrication and health. Less a screen, more a whole service.",
+            "TODO(nacho): concrete learnings",
+          ],
+        },
       },
       {
         slug: "nihol",
         name: "NIHOL",
         aka: "Fundación Nietos del Holocausto",
-        line: "A brand identity for the Holocaust Grandchildren Foundation, built from interviews with the people behind it.",
-        year: "[YEAR]",
+        year: "TODO(nacho): NIHOL year",
         role: ["Naming", "Visual identity", "Tone of voice"],
+        problem: "An identity built with [[creatividad:creativity]] and care, out of the stories of the people behind the foundation.",
         with: "Fundación Nietos del Holocausto",
-        axes: ["design", "people"],
-        color: "#2E1A00",
-        ink: "#F5B640",
-        logo: nihol,
-        question: "[THE QUESTION BEHIND NIHOL]",
-        context: [
-          "The project started from interviews and conversations with people connected to the foundation.",
-        ],
-        whatIDid: ["Name, visual identity, logo, color palette, typography and tone of communication."],
-        whyItMatters:
-          "It shows my work isn't only digital interfaces. I care about researching, listening, and building an identity out of people and their stories.",
-        chapters: [
-          { title: "Listening first", body: "[WHAT CAME UP IN THE INTERVIEWS]" },
-          { title: "From stories to a name", body: "[HOW NIHOL WAS NAMED]" },
-          { title: "The system", body: "[LOGO, PALETTE, TYPE — AND WHY]" },
-        ],
+        featured: true,
+        ...projectAssets.nihol,
+        case: {
+          problem: ["The project started from interviews and conversations with people connected to the foundation."],
+          role: ["Name, visual identity, logo, palette, typography and tone of communication."],
+          question: 0,
+          process: ["TODO(nacho): what came up in the interviews", "TODO(nacho): how you got to the name NIHOL"],
+          result: ["TODO(nacho): the final system (logo, palette, type) and why"],
+          learned: [
+            "My work isn't only interfaces: I care about researching, listening and building an identity out of people and their stories.",
+          ],
+        },
       },
       {
         slug: "inspira",
         name: "Inspira RRHH",
-        line: "Identity and digital experience for an HR company — selection, psychometric evaluations, training and coaching.",
         year: "2026 — now",
         role: ["Brand", "Web", "Visual system"],
+        problem: "Identity, [[estrategia:strategy]] and website for an HR consultancy, designed for the people who decide.",
         with: "Inspira Recursos Humanos",
-        axes: ["design", "business", "people", "technology"],
-        color: "#1B1B1B",
-        ink: "#FFFFFF",
-        question: "How do you make a company feel solid and warm at the same time?",
-        context: [
-          "Inspira works in recruitment, psychometric evaluations, training and coaching.",
-          "I'm designing their website and visual system, thinking mostly about HR people who make decisions.",
-        ],
-        whatIDid: [
-          "Brand values I'm working toward: people, solvency, seriousness, warmth, trust, human treatment.",
-          "[DETAIL: site, system, what's shipped]",
-        ],
-        whyItMatters:
-          "A real client. It's where I'm learning how design relates to an organization and to commercial goals.",
-        chapters: [
-          { title: "Who decides", body: "[HR DECISION-MAKERS: WHAT THEY NEED TO SEE]" },
-          { title: "Process", body: "[ADD CASE STUDY]" },
-          { title: "Status", body: "Work in progress. [LINK WHEN LIVE]" },
-        ],
+        featured: false,
+        ...projectAssets.inspira,
+        case: {
+          problem: [
+            "Inspira works in recruitment, psychometric evaluations, training and coaching.",
+            "I'm designing their website and visual system, thinking mostly about the HR people who make decisions.",
+          ],
+          role: [
+            "Brand and digital product. The values I'm working toward: people, solvency, seriousness, warmth, trust and human treatment.",
+          ],
+          question: 6,
+          process: ["TODO(nacho): Inspira process"],
+          result: ["TODO(nacho): link to the site once it's live"],
+          learned: ["A real client: this is where I'm learning how design relates to an organization and to commercial goals."],
+        },
       },
       {
         slug: "study-buddy",
         name: "Study Buddy",
-        line: "An app that helps students from roughly 10 to 18 study and get organized, using the Feynman technique and Pomodoro.",
         year: "2023",
         role: ["UX/UI", "Design"],
+        problem: "Helping students aged 10 to 18 study and get organized, with Feynman and Pomodoro.",
         with: "ORT Argentina",
-        axes: ["design", "people"],
-        color: "#021A4A",
-        ink: "#FFFFFF",
-        logo: studybuddy,
-        question: "[THE QUESTION BEHIND STUDY BUDDY]",
-        context: [
-          "A school project at ORT: an app for students roughly between 10 and 18 years old to help them study and organize.",
-          "It used ideas like the Feynman technique and Pomodoro.",
-        ],
-        whatIDid: ["My role was mainly UX/UI and design.", "[DETAIL]"],
-        whyItMatters: "One of my first approaches to designing a digital product. The starting point.",
-        chapters: [
-          { title: "Process", body: "[ADD CASE STUDY]" },
-          { title: "Looking back", body: "[WHAT I'D DO DIFFERENTLY NOW]" },
-        ],
+        featured: false,
+        ...projectAssets["study-buddy"],
+        case: {
+          problem: [
+            "A school project at ORT: an app for students roughly 10 to 18 years old to study and get organized.",
+            "It used ideas like the Feynman technique and Pomodoro.",
+          ],
+          role: ["My role was mainly UX/UI and design."],
+          question: 3,
+          process: ["TODO(nacho): Study Buddy process"],
+          result: ["TODO(nacho): Study Buddy outcome"],
+          learned: ["One of my first approaches to designing a digital product. The starting point."],
+        },
       },
     ],
   },
 
+  thinking: {
+    title: "I start with questions, not screens.",
+    lede: "Design isn't only how something looks. It's a way to understand an experience and then change it. This is [[pensamiento:critical thinking]] in practice: the questions I keep coming back to.",
+    hint: "Pick a question and see where I used it.",
+    appliedIn: "Used in",
+    reset: "Show all",
+    questions: [
+      { q: "Why does a person do what they do?", projects: ["nihol", "study-buddy"] },
+      { q: "What are they actually feeling?", projects: ["nihol", "sima"] },
+      { q: "What's the real problem behind the apparent one?", projects: ["sima", "trevian"] },
+      { q: "How does an experience change when you change the interface?", projects: ["study-buddy", "inspira"] },
+      { q: "Can technology change a behavior? Should it?", projects: ["study-buddy", "trevian"] },
+      { q: "How do you make something useful and also meaningful?", projects: ["sima", "nihol"] },
+      { q: "Which invisible decisions does a designer make?", projects: ["inspira", "nihol"] },
+    ],
+    award: {
+      kicker: "World ORT STEM Communication Award · 2025",
+      title: "¿Consumimos experiencias o consumimos adicciones?",
+      body: [
+        "Do we consume experiences, or addictions? A video about interface design, addiction, anxiety and social media — and about our responsibility when we design digital experiences.",
+        "It draws on Jonathan Haidt and ideas from Lacan. It won the World ORT STEM Communication Award 2025.",
+      ],
+      link: "TODO(nacho): video link",
+      linkLabel: "Watch the video",
+    },
+  },
+
   lab: {
     title: "Things I build to find out.",
-    lede:
-      "Smaller projects, prototypes and ideas. This is how I learn: pick something I want to exist, and try to make it.",
+    lede: "Small [[proyectos:projects]], prototypes and ideas I start on my own. That's how I learn: pick something I want to exist and try to make it.",
     tags: {
       pwa: "PWA",
-      physical: "Physical",
-      "sport-data": "Sport & data",
-      photo: "Photo",
       social: "Social",
+      "sport-data": "Sport & data",
+      physical: "Physical",
+      photo: "Photo",
       meta: "Meta",
     },
     entries: [
@@ -274,41 +321,40 @@ export const en: SiteContent = {
         title: "Offline trip companion",
         line: "An experience for a trip through Puglia and Greece that works without signal.",
         tags: ["pwa"],
-        status: "[STATUS]",
-        note: "[WHAT I WANTED TO FIND OUT]",
+        status: "TODO(nacho): status",
+        note: "TODO(nacho): what you wanted to find out",
       },
       {
         id: "L-02",
-        title: "World Cup sticker swap",
+        title: "Sticker swap",
         line: "An app to trade World Cup stickers.",
         tags: ["pwa", "social"],
-        status: "[STATUS]",
-        note: "[WHAT I WANTED TO FIND OUT]",
+        status: "TODO(nacho): status",
+        note: "TODO(nacho): what you wanted to find out",
       },
       {
         id: "L-03",
         title: "Hitster-style music game",
         line: "A PWA inspired by Hitster, for playing with music.",
         tags: ["pwa", "social"],
-        status: "[STATUS]",
-        note: "[WHAT I WANTED TO FIND OUT]",
+        status: "TODO(nacho): status",
+        note: "TODO(nacho): what you wanted to find out",
       },
       {
         id: "L-04",
         title: "Volleyball stats, less manual",
-        line: "Automating part of the statistical analysis that today is done by hand with tools like Data Volley.",
+        line: "Automating part of the stats work that's done by hand today with tools like Data Volley.",
         tags: ["sport-data"],
         status: "Idea",
-        note: "Years of federated volleyball showed me how teams, performance and data actually work from the inside.",
-        image: volleyball,
+        note: "Years of federated volleyball showed me from the inside how teams, performance and data work.",
       },
       {
         id: "L-05",
         title: "Objects for a room",
         line: "Concepts for physical objects that mix rooms and technology.",
         tags: ["physical"],
-        status: "[STATUS]",
-        note: "[ADD]",
+        status: "TODO(nacho): status",
+        note: "TODO(nacho): details",
       },
       {
         id: "L-06",
@@ -316,132 +362,112 @@ export const en: SiteContent = {
         line: "Street, people, landscapes. It started when my grandfather gave me a professional camera.",
         tags: ["photo"],
         status: "Ongoing",
-        note: "[ADD A SELECTION OF PHOTOS]",
-        image: photography,
+        note: "There's a selection further down, in About.",
       },
       {
         id: "L-07",
-        title: "This website",
-        line: "Designed in the browser, built with Next.js, with Claude as a collaborator. It's a project too.",
+        title: "This portfolio",
+        line: "Designed in the browser, built with Next.js, with Claude as a collaborator.",
         tags: ["meta"],
-        status: "v1",
-        note: "The portfolio shouldn't only show projects. It should be one.",
+        status: "v2",
+        note: "A portfolio shouldn't only show projects. It should be one.",
       },
     ],
   },
 
-  path: {
-    title: "Where I come from.",
-    lede: "Two tracks, running at the same time. Neither makes sense without the other.",
-    tracks: { main: "School & work", off: "Off-screen" },
-    entries: [
-      {
-        when: "2013 — 2019",
-        title: "Scuola Italiana Cristoforo Colombo",
-        body: "Primary school.",
-        track: "main",
-      },
+  about: {
+    title: "About me.",
+    lede: "Design, code, volleyball, guitar and a camera. Not necessarily in that order.",
+    portrait: {
+      src: "/fotos/roma.jpg",
+      alt: "Ignacio wearing sunglasses in front of the Colosseum in Rome",
+      caption: "Rome. Tourist mode.",
+    },
+    story: [
+      "I'm from Buenos Aires. I went to high school at ORT on the TIC track (programming, design, technology) and now I study Design at UdeSA.",
+      "Along the way I learned something no curriculum covers: almost 10 years of federated volleyball, first at GEBA and then at Club Ciudad de Buenos Aires, with three national championships. That's where I really understood [[equipo:teamwork]], pressure and data.",
+      "I was captain in call-ups to the Metropolitan team and the Argentine national team, and I gave ORT's graduation speech at the Gran Rex, together with another student, to more than 3,000 people. Some [[liderazgo:leadership]] had to be involved.",
+      "I've played guitar since I was 12. I've been taking photos since my grandfather gave me a professional camera.",
+    ],
+    stats: [
+      { value: 3000, prefix: "+", label: "people at the Gran Rex" },
+      { value: 3, label: "national championships" },
+      { value: 10, prefix: "~", label: "years of federated volleyball" },
+    ],
+    photos: [
+      { src: "/fotos/voley-01.jpg", alt: "The volleyball team lifting the trophy after winning a championship" },
+      { src: "/fotos/trabajando-01.jpg", alt: "TODO(nacho): photo working" },
+      { src: "/fotos/guitarra.jpg", alt: "TODO(nacho): photo with the guitar" },
+    ],
+    timelineTitle: "Path",
+    timeline: [
+      { when: "2013 — 2019", title: "Scuola Italiana Cristoforo Colombo", body: "Primary school." },
       {
         when: "2020 — 2025",
-        title: "ORT Argentina — TIC track",
-        body: "Programming, design, technology and communication. Average around 9.5/10, best marks in English, TIC and Programming.",
-        track: "main",
+        title: "ORT Argentina, TIC track",
+        body: "Programming, design, technology and communication. Average around 9.5/10; best marks in English, TIC and Programming.",
       },
-      {
-        when: "[YEAR]",
-        title: "ORT London",
-        body: "[ADD WHAT IT WAS]",
-        track: "main",
-      },
-      {
-        when: "2024",
-        title: "World ORT — Panamá",
-        body: "Selected to join a summer school on ecology.",
-        track: "main",
-        image: panama,
-      },
+      { when: "TODO(nacho): year", title: "ORT London", body: "TODO(nacho): what ORT London was" },
       {
         when: "2025",
-        title: "World ORT STEM Communication Award",
-        body: "For a video about interface design, addiction and anxiety.",
-        track: "main",
+        title: "World ORT Ecology Summer School, Panama",
+        body: "A course in tropical ecology at Soberanía National Park.",
       },
-      {
-        when: "2025",
-        title: "Graduation speech, Gran Rex",
-        body: "Gave the ORT graduation speech with another student, on behalf of the graduates, to an audience of over 3,000 people.",
-        track: "main",
-      },
-      {
-        when: "2026 —",
-        title: "Universidad de San Andrés — Design",
-        body: "Building project thinking, and adding business, technology, analysis and code around it.",
-        track: "main",
-      },
-      {
-        when: "Sep 2026 —",
-        title: "Inspira Recursos Humanos",
-        body: "Brand & digital product designer.",
-        track: "main",
-      },
-      {
-        when: "2018 —",
-        title: "Volleyball",
-        body: "Around 10 years playing, federated since 2018: GEBA, then Club Ciudad de Buenos Aires. Three national championships with my club; called up many times to the Argentine and Metropolitan teams, as captain.",
-        track: "off",
-      },
-      {
-        when: "Since 12",
-        title: "Guitar",
-        body: "Music and design share more than it seems.",
-        track: "off",
-      },
-      {
-        when: "Since a kid",
-        title: "Photography",
-        body: "My grandfather gave me a professional camera. I haven't stopped since.",
-        track: "off",
-      },
+      { when: "2025", title: "World ORT STEM Communication Award", body: "For a video on interface design, addiction and anxiety." },
+      { when: "2025", title: "Graduation speech at the Gran Rex", body: "On behalf of ORT's graduates, to more than 3,000 people." },
+      { when: "2026 —", title: "Design at UdeSA", body: "Project thinking — plus business, technology, analysis and code around it." },
+      { when: "Sep 2026 —", title: "Inspira Recursos Humanos", body: "Brand & digital product designer." },
     ],
-  },
-
-  method: {
-    title: "Idea → prototype → product.",
-    lede:
-      "I'm not a software engineer and I don't want to present myself as one. Code is how I stop depending on someone else to find out if an idea works.",
-    stages: [
-      { name: "Understand", body: "Talk to people. Find the problem behind the problem." },
-      { name: "Prototype", body: "Make it concrete fast enough to be wrong early." },
-      { name: "Build", body: "Turn it into something that actually works." },
+    educationTitle: "Education",
+    education: [
+      { name: "Universidad de San Andrés", detail: "Design", years: "2026 —", logo: "/logos/udesa.svg", hover: "Design · 2026–" },
+      { name: "ORT Argentina", detail: "Technical high school, TIC track", years: "2020 — 2025", logo: "/logos/ort.svg", hover: "TIC · 2020–2025" },
     ],
+    languagesTitle: "Languages",
+    languages: [
+      { name: "Spanish", level: "Native" },
+      { name: "English", level: "TODO(nacho): English level" },
+      { name: "Italian", level: "TODO(nacho): confirm Italian and level" },
+    ],
+    toolsTitle: "What I work with",
+    toolsLede:
+      "I'm not a software engineer and I don't want to pretend to be one. Code is how I stop depending on someone else to find out if an idea works. I use AI to make things, not to design for me.",
+    stages: ["Understand", "Prototype", "Build"],
     tools: [
-      { name: "Conversations", stages: [0] },
-      { name: "Figma", stages: [1] },
-      { name: "Figma Make", stages: [1] },
-      { name: "HTML / CSS / JS", stages: [1, 2] },
-      { name: "React", stages: [2] },
-      { name: "Next.js", stages: [2] },
-      { name: "GitHub", stages: [2] },
-      { name: "Cursor", stages: [1, 2] },
-      { name: "Claude", stages: [0, 1, 2] },
+      { name: "Figma", icon: "figma", stages: [1] },
+      { name: "Figma Make", icon: "figma", stages: [1] },
+      { name: "HTML / CSS / JS", icon: "html", stages: [1, 2] },
+      { name: "React", icon: "react", stages: [2] },
+      { name: "Next.js", icon: "next", stages: [2] },
+      { name: "GitHub", icon: "github", stages: [2] },
+      { name: "Cursor", icon: "cursor", stages: [1, 2] },
+      { name: "Claude", icon: "claude", stages: [0, 1, 2] },
     ],
-    aiNote:
-      "AI is changing how I work. I want to use it as a tool for making — not as a machine that designs for me.",
+    nowTitle: "Right now",
+    nowLabels: { reading: "Reading", listening: "Listening to", building: "Building" },
+    galleryTitle: "Photos I took",
+    galleryLede: "Street, people, landscapes.",
+    gallery: [
+      { src: "/fotos/fotografia-01.jpg", alt: "A speedboat crossing the sea in front of a stone breakwater, with houses on a cliff" },
+      { src: "/fotos/fotografia-02.jpg", alt: "TODO(nacho): photo description" },
+      { src: "/fotos/fotografia-03.jpg", alt: "TODO(nacho): photo description" },
+      { src: "/fotos/fotografia-04.jpg", alt: "TODO(nacho): photo description" },
+      { src: "/fotos/fotografia-05.jpg", alt: "TODO(nacho): photo description" },
+      { src: "/fotos/fotografia-06.jpg", alt: "TODO(nacho): photo description" },
+    ],
   },
 
-  next: {
+  closing: {
     title: "Where I'm going.",
-    labelPrefix: "Job title:",
-    labels: ["UX Designer", "Product Designer", "Product Manager", "Founder", "Researcher"],
-    labelResolution: "Not picking one yet. I'd rather pick problems.",
     body: [
-      "I'm exploring how to combine design, technology, business, AI and human behavior. The profile I'm after: someone who can spot a problem, research it, understand the people in it, think a strategy, design a solution and build a working prototype.",
-      "Somewhere between product designer, product manager, innovator and founder. In digital products, startups, tech companies — or my own projects.",
+      "I haven't picked a label yet, on purpose. I'm into the space between design, technology and business: spotting a problem, researching it, understanding the people in it, thinking a strategy, designing the solution and building a prototype that works.",
+      "Call it an [[emprendedora:entrepreneurial mindset]]: somewhere between product designer, product manager and innovator. In digital products, startups, tech companies — or my own projects.",
     ],
+    spacesTitle: "Territories I'm exploring",
     spaces: [
       "Product Design",
       "UX/UI",
-      "Interaction",
+      "Interaction design",
       "Product Management",
       "Strategy",
       "Innovation",
@@ -452,8 +478,10 @@ export const en: SiteContent = {
       "Behavioral psychology",
       "Digital business",
     ],
-    contactTitle: "Say hi.",
+    ctaTitle: "Got an interesting problem?",
+    ctaBody: "I'm looking for internships and first roles in product and UX, plus freelance brand and web projects. If any of this is useful to you, let's talk.",
+    cvLabel: "Download CV",
   },
 
-  footer: "v1 — September 2026. Designed and built in Buenos Aires, with Next.js and Claude.",
+  footer: "v2 · 2026. Designed and built in Buenos Aires, with Next.js and Claude.",
 };

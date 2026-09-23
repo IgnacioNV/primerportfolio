@@ -1,19 +1,27 @@
+import { es } from "./es";
 import { en } from "./en";
-import type { SiteContent } from "./types";
+import type { Locale, SiteContent } from "./types";
 
-export type Locale = "en" | "es";
+export const locales: Locale[] = ["es", "en"];
+export const defaultLocale: Locale = "es";
 
-// Spanish is not written yet. When es.ts exists, add it here —
-// every component already reads copy through getContent().
-const dictionaries: Partial<Record<Locale, SiteContent>> = { en };
+const dictionaries: Record<Locale, SiteContent> = { es, en };
 
-export function getContent(locale: Locale = "en"): SiteContent {
-  return dictionaries[locale] ?? en;
+export function getContent(locale: Locale): SiteContent {
+  return dictionaries[locale];
 }
 
-export function getProject(slug: string, locale: Locale = "en") {
-  return getContent(locale).work.projects.find((p) => p.slug === slug);
+export function getProject(slug: string, locale: Locale) {
+  return getContent(locale).projects.list.find((p) => p.slug === slug);
 }
 
-export type { SiteContent };
+/* ── Routes ──────────────────────────────────────────────────
+ * Spanish lives at the root ("/", "/proyectos/sima"),
+ * English under "/en" ("/en", "/en/projects/sima").
+ */
+export const routes = {
+  home: (l: Locale) => (l === "es" ? "/" : "/en"),
+  project: (l: Locale, slug: string) => (l === "es" ? `/proyectos/${slug}` : `/en/projects/${slug}`),
+};
+
 export * from "./types";

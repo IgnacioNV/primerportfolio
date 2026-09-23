@@ -1,0 +1,26 @@
+.fab {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 45;
+  box-shadow: 0 10px 30px rgba(42, 54, 255, 0.35);
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease),
+    background var(--dur-fast) var(--ease);
+}
+
+.show {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+@media (min-width: 900px) {
+  .fab {
+    display: none;
+  }
+}

@@ -286,38 +286,72 @@ button {
   }
 }
 
-/* ── Legacy aliases (v1 components) — removed once every component uses the tokens above ── */
-:root {
-  --paper: var(--c-bg);
-  --paper-2: var(--c-surface);
-  --ink: var(--c-text);
-  --ink-2: var(--c-text-2);
-  --muted: var(--c-muted);
-  --line: var(--c-border);
-  --blue: var(--c-accent);
-  --blue-soft: var(--c-accent-soft);
-  --night: var(--c-night);
-  --night-2: var(--c-night-surface);
-  --night-line: var(--c-night-border);
-  --night-muted: var(--c-night-muted);
+/* ── Skip link ─────────────────────────────────────────────── */
+.skip-link {
+  position: fixed;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  padding: 10px 14px;
+  background: var(--c-text);
+  color: var(--c-bg);
+  text-decoration: none;
+  transition: top var(--dur-fast) var(--ease);
 }
-.mono {
-  font-family: var(--f-mono);
-  font-size: 12px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+.skip-link:focus {
+  top: 12px;
 }
-.section-num {
-  display: flex;
-  gap: 10px;
+
+/* ── Buttons ───────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
   align-items: center;
-  color: var(--muted);
-  margin-bottom: 18px;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: var(--fw-medium);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
 }
-.night .section-num {
-  color: var(--night-muted);
+.btn svg {
+  transition: transform var(--dur-fast) var(--ease);
 }
-.night [data-ph] {
-  color: #aab0ff;
-  background: rgba(143, 151, 255, 0.14);
+.btn:hover svg {
+  transform: translateX(3px);
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn-primary {
+  background: var(--c-accent);
+  color: var(--c-accent-ink);
+}
+.btn-primary:hover {
+  background: var(--c-accent-hover);
+}
+.btn-ghost {
+  background: transparent;
+  color: inherit;
+  border-color: currentColor;
+}
+.btn-ghost:hover {
+  color: var(--c-accent);
+}
+.night .btn-ghost:hover {
+  color: var(--c-accent-on-night);
+}
+.btn-small {
+  min-height: 38px;
+  padding: 0 16px;
+  font-size: 15px;
 }

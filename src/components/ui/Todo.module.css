@@ -1,0 +1,16 @@
+.todo {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-transform: none;
+  font-style: normal;
+  font-weight: 400;
+  color: #8a5a00;
+  background: repeating-linear-gradient(135deg, #fff3cf 0 6px, #ffe9a8 6px 12px);
+  border: 1px dashed #c98f00;
+  padding: 1px 6px;
+  border-radius: 3px;
+  vertical-align: middle;
+}

@@ -1,0 +1,28 @@
+.title {
+  margin: 0;
+}
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+
+.word > span {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 0.8s var(--ease);
+  transition-delay: calc(var(--i) * 60ms);
+}
+
+.in .word > span {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word > span {
+    transform: none;
+  }
+}

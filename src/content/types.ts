@@ -1,121 +1,206 @@
 import type { StaticImageData } from "next/image";
 
-/**
- * The five territories the portfolio keeps returning to.
- * Every project declares which ones it touches — the Work map lights them up.
- */
-export type Axis = "design" | "technology" | "business" | "ai" | "people";
+export type Locale = "es" | "en";
 
 /**
- * Any string wrapped in [BRACKETS] is rendered as a visible placeholder
- * (see <Text />). Replace it with real content when you have it.
+ * Missing data is written as a string that starts with "TODO(nacho):".
+ * `grep -rn "TODO(nacho)" src` lists everything pending.
+ * In development it shows as a small marker; in production the element is not rendered.
  */
-export type Copy = string;
+export type Text = string;
+
+/**
+ * Rich text: plain text with inline keywords.
+ *   "Fui [[liderazgo:capitán]] en ..."  → "capitán" becomes the highlighted keyword "liderazgo".
+ */
+export type Rich = string;
+
+export type KeywordId =
+  | "creatividad"
+  | "innovacion"
+  | "proyectos"
+  | "emprendedora"
+  | "liderazgo"
+  | "equipo"
+  | "pensamiento"
+  | "estrategia"
+  | "producto";
+
+export type Keyword = {
+  /** The word as it appears in the counter list. */
+  label: string;
+  /** Short evidence shown in the tooltip. */
+  evidence: string;
+  /** Section id where it lives (the counter links there). */
+  section: string;
+};
+
+export type LabTag = "pwa" | "social" | "sport-data" | "physical" | "photo" | "meta";
+
+export type Photo = {
+  /** Path inside /public. Missing files are hidden in production. */
+  src: string;
+  alt: string;
+  caption?: Text;
+};
 
 export type Project = {
   slug: string;
   name: string;
   aka?: string;
-  /** One line, in plain words. What it is. */
-  line: Copy;
-  year: Copy;
-  role: Copy[];
-  with?: Copy;
-  axes: Axis[];
-  /** Brand color of the project, used sparingly (hover strip, case header). */
+  year: Text;
+  role: Text[];
+  /** The problem, in one line. Shown on the card. */
+  problem: Rich;
+  with?: Text;
   color: string;
   ink: string;
   logo?: StaticImageData;
-  /** The question behind the project. The case study starts here. */
-  question: Copy;
-  context: Copy[];
-  whatIDid: Copy[];
-  whyItMatters: Copy;
-  chapters: { title: string; body: Copy }[];
-};
-
-export type LabEntry = {
-  id: string;
-  title: Copy;
-  line: Copy;
-  tags: LabTag[];
-  status: Copy;
-  note: Copy;
-  image?: StaticImageData;
-};
-
-export type LabTag = "pwa" | "physical" | "sport-data" | "photo" | "social" | "meta";
-
-export type PathEntry = {
-  when: Copy;
-  title: Copy;
-  body: Copy;
-  track: "main" | "off";
-  image?: StaticImageData;
-};
-
-export type Question = {
-  q: Copy;
-  /** Where I tried to answer it. Slugs of projects, or free text. */
-  triedIn: string[];
-};
-
-export type Tool = {
-  name: string;
-  /** Which stages of idea → prototype → product the tool lives in. */
-  stages: (0 | 1 | 2)[];
+  featured: boolean;
+  case: {
+    problem: Text[];
+    role: Text[];
+    /** Index into thinking.questions — the question that guided the process. */
+    question?: number;
+    process: Text[];
+    result: Text[];
+    learned: Text[];
+  };
 };
 
 export type SiteContent = {
-  locale: "en" | "es";
-  meta: { title: string; description: string };
+  locale: Locale;
+  meta: { title: string; description: string; ogLocale: string };
+
+  ui: {
+    cta: string;
+    ctaAria: string;
+    seeProjects: string;
+    seeCase: string;
+    backToProjects: string;
+    nextProject: string;
+    skipToContent: string;
+    menu: string;
+    close: string;
+    langName: string;
+    langSwitch: string;
+    caseLabels: {
+      problem: string;
+      role: string;
+      process: string;
+      question: string;
+      result: string;
+      learned: string;
+      year: string;
+      with: string;
+    };
+    contact: {
+      title: string;
+      body: string;
+      copy: string;
+      copied: string;
+      write: string;
+      subject: string;
+      noEmail: string;
+    };
+    keywords: {
+      counter: string;
+      title: string;
+      hint: string;
+      done: string;
+    };
+    lightbox: { open: string; prev: string; next: string; close: string };
+    filterAll: string;
+  };
+
   person: {
     name: string;
-    age: string;
     city: string;
     timezone: string;
-    email: Copy;
+    email: Text;
+    cv: Text;
     links: { label: string; href: string }[];
   };
-  nav: { id: string; label: string }[];
+
+  /** Creative name + clear label. */
+  nav: { id: string; creative: string; label: string }[];
+
+  keywords: Record<KeywordId, Keyword>;
+
   hero: {
     kicker: string;
-    who: Copy;
-    hint: string;
-    hintTouch: string;
-    fixed: string;
-    pairs: { surface: string; depth: string }[];
+    line: string;
+    aside: string;
+    sub: Rich;
+    proofs: string[];
+    languages: Text[];
+    portrait: Photo;
+    visual: {
+      fixed: string;
+      pairs: { surface: string; depth: string }[];
+      hint: string;
+      hintTouch: string;
+      label: string;
+    };
   };
-  intro: {
-    statement: Copy;
-    facts: { k: string; v: Copy }[];
-    photoCaption: Copy;
+
+  projects: {
+    title: string;
+    lede: Rich;
+    moreTitle: string;
+    list: Project[];
   };
+
   thinking: {
     title: string;
-    lede: Copy;
-    questions: Question[];
-    award: { kicker: string; title: string; body: Copy[]; link: Copy };
-    shelf: { title: string; items: string[] };
+    lede: Rich;
+    hint: string;
+    appliedIn: string;
+    reset: string;
+    questions: { q: string; projects: string[] }[];
+    award: { kicker: string; title: string; body: Text[]; link: Text; linkLabel: string };
   };
-  work: { title: string; lede: Copy; axes: Record<Axis, string>; projects: Project[] };
-  lab: { title: string; lede: Copy; tags: Record<LabTag, string>; entries: LabEntry[] };
-  path: { title: string; lede: Copy; tracks: { main: string; off: string }; entries: PathEntry[] };
-  method: {
+
+  lab: {
     title: string;
-    lede: Copy;
-    stages: { name: string; body: Copy }[];
-    tools: Tool[];
-    aiNote: Copy;
+    lede: Rich;
+    tags: Record<LabTag, string>;
+    entries: { id: string; title: string; line: Text; tags: LabTag[]; status: Text; note: Text }[];
   };
-  next: {
+
+  about: {
     title: string;
-    labelPrefix: string;
-    labels: string[];
-    labelResolution: string;
-    body: Copy[];
+    lede: Rich;
+    portrait: Photo;
+    story: Rich[];
+    stats: { value: number; prefix?: string; suffix?: string; label: string }[];
+    photos: Photo[];
+    timelineTitle: string;
+    timeline: { when: Text; title: string; body: Text }[];
+    educationTitle: string;
+    education: { name: string; detail: string; years: Text; logo: string; hover: string }[];
+    languagesTitle: string;
+    languages: { name: string; level: Text }[];
+    toolsTitle: string;
+    toolsLede: string;
+    stages: string[];
+    tools: { name: string; icon: string; stages: (0 | 1 | 2)[] }[];
+    nowTitle: string;
+    nowLabels: { reading: string; listening: string; building: string };
+    galleryTitle: string;
+    galleryLede: string;
+    gallery: Photo[];
+  };
+
+  closing: {
+    title: string;
+    body: Rich[];
+    spacesTitle: string;
     spaces: string[];
-    contactTitle: string;
+    ctaTitle: string;
+    ctaBody: string;
+    cvLabel: string;
   };
-  footer: Copy;
+
+  footer: string;
 };
