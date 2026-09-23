@@ -113,6 +113,7 @@ export type SiteContent = {
     };
     lightbox: { open: string; prev: string; next: string; close: string };
     filterAll: string;
+    filterLabel: string;
   };
 
   person: {

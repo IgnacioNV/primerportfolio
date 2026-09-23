@@ -6,6 +6,7 @@ import { LensVisual } from "@/components/hero/LensVisual";
 import { FloatingCta } from "@/components/contact/FloatingCta";
 import { Projects } from "@/components/sections/Projects";
 import { Thinking } from "@/components/sections/Thinking";
+import { Lab } from "@/components/sections/Lab";
 
 /*
  * Order follows the visitor, not the designer:
@@ -30,6 +31,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         />
         <Projects locale={locale} c={c} index={1} />
         <Thinking locale={locale} c={c} index={2} />
+        <Lab c={c} index={3} />
       </main>
 
       <FloatingCta label={c.ui.cta} aria={c.ui.ctaAria} />

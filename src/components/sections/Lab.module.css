@@ -1,0 +1,124 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.filter {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 40px;
+  background: none;
+  border: 1px solid var(--c-night-border);
+  color: var(--c-night-text);
+  padding: 0 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.filter:hover {
+  border-color: var(--c-accent-on-night);
+  color: var(--c-accent-on-night);
+}
+
+.filter[aria-pressed="true"] {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: var(--c-accent-ink);
+}
+
+.fcount {
+  opacity: 0.6;
+}
+
+.board {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+}
+
+.note {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 20px 18px;
+  background: var(--c-night-surface);
+  border: 1px solid var(--c-night-border);
+  border-radius: var(--radius-card);
+  transform: rotate(var(--tilt));
+  transition:
+    transform var(--dur) var(--ease),
+    opacity var(--dur) var(--ease),
+    border-color var(--dur-fast) var(--ease),
+    filter var(--dur) var(--ease);
+}
+
+.note:hover {
+  transform: rotate(0deg) translateY(-4px);
+  border-color: var(--c-night-muted);
+}
+
+.dim {
+  opacity: 0.18;
+  transform: rotate(var(--tilt)) scale(0.96);
+  filter: grayscale(1);
+}
+
+.noteTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--c-night-muted);
+}
+
+.status {
+  color: var(--c-accent-on-night);
+}
+
+.title {
+  margin: 4px 0 0;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-h);
+  line-height: var(--lh-snug);
+}
+
+.line {
+  margin: 0;
+  color: var(--c-night-text);
+  opacity: 0.85;
+  font-size: var(--fs-small);
+}
+
+.noteText {
+  margin: 0;
+  font-family: var(--f-serif);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--c-night-muted);
+}
+
+.tags {
+  margin: auto 0 0;
+  padding-top: 12px;
+  border-top: 1px dashed var(--c-night-border);
+  color: var(--c-night-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .note,
+  .dim,
+  .note:hover {
+    transform: none;
+  }
+}

@@ -57,6 +57,7 @@ export const es: SiteContent = {
       done: "Las encontraste todas. Ya sabés bastante de mí; charlemos del resto.",
     },
     lightbox: { open: "Ampliar foto", prev: "Foto anterior", next: "Foto siguiente", close: "Cerrar" },
+    filterLabel: "Filtrar experimentos",
     filterAll: "Todo",
   },
 

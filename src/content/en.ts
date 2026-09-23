@@ -53,6 +53,7 @@ export const en: SiteContent = {
       done: "You found them all. You know a fair bit about me by now — let's talk about the rest.",
     },
     lightbox: { open: "Enlarge photo", prev: "Previous photo", next: "Next photo", close: "Close" },
+    filterLabel: "Filter experiments",
     filterAll: "All",
   },
 
