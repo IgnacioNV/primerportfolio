@@ -1,0 +1,173 @@
+/* Desktop rail */
+.rail {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .rail {
+    display: block;
+    position: fixed;
+    left: var(--gutter);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    color: var(--ink);
+    transition: color 0.4s var(--ease);
+  }
+}
+
+:global(html[data-surface="night"]) .rail {
+  color: var(--paper);
+}
+
+.rail ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.rail li {
+  position: relative;
+  width: 84px;
+}
+
+.rail a {
+  display: flex;
+  gap: 10px;
+  text-decoration: none;
+  font-family: var(--f-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.35;
+  transition: opacity 0.3s var(--ease);
+}
+
+.rail a:hover,
+.rail .done a {
+  opacity: 0.6;
+}
+
+.rail .active a {
+  opacity: 1;
+}
+
+.rail .active .num {
+  color: var(--blue);
+}
+
+:global(html[data-surface="night"]) .rail .active .num {
+  color: #8f97ff;
+}
+
+.label {
+  transition: transform 0.3s var(--ease);
+}
+
+.rail .active .label {
+  transform: translateX(3px);
+}
+
+.bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 1px;
+  background: var(--blue);
+  transform-origin: left;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mobile pill */
+.pill {
+  position: fixed;
+  z-index: 40;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--f-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  min-width: 190px;
+  overflow: hidden;
+}
+
+:global(html[data-surface="night"]) .pill {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+@media (min-width: 1024px) {
+  .pill {
+    display: none;
+  }
+}
+
+.pill.open {
+  border-radius: 18px;
+}
+
+.pill button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 18px;
+  background: none;
+  border: 0;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+.pill button .num {
+  color: #8f97ff;
+}
+
+:global(html[data-surface="night"]) .pill button .num {
+  color: var(--blue);
+}
+
+.track {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+  position: relative;
+  margin-left: 6px;
+}
+
+.track span {
+  position: absolute;
+  inset: -1px 0;
+  background: #8f97ff;
+  transform-origin: left;
+}
+
+.pill ol {
+  list-style: none;
+  margin: 0;
+  padding: 14px 18px 4px;
+  display: grid;
+  gap: 12px;
+}
+
+.pill ol a {
+  text-decoration: none;
+  opacity: 0.6;
+}
+
+.pill ol a.active {
+  opacity: 1;
+}
