@@ -58,7 +58,10 @@ export type Project = {
   /** Background behind the logo on cards (some logos come on white). */
   mediaBg: string;
   logo?: StaticImageData;
-  featured: boolean;
+  /** Card size on the home: two large, two medium, the rest small. */
+  tier: "lg" | "md" | "sm";
+  /** Extra facts shown in the case header (e.g. typeface). */
+  facts?: { label: string; value: Text }[];
   case: {
     problem: Text[];
     role: Text[];
@@ -186,7 +189,7 @@ export type SiteContent = {
     education: { name: string; detail: string; years: Text; logo: string; hover: string }[];
     languagesTitle: string;
     /** `unconfirmed` languages are hidden in production until confirmed. */
-    languages: { name: string; level: Text; unconfirmed?: boolean }[];
+    languages: { name: string; level: Text; unconfirmed?: boolean; logo?: string }[];
     toolsTitle: string;
     toolsLede: string;
     stages: string[];
@@ -195,7 +198,6 @@ export type SiteContent = {
     nowLabels: { reading: string; listening: string; building: string };
     galleryTitle: string;
     galleryLede: string;
-    gallery: Photo[];
   };
 
   closing: {

@@ -61,7 +61,7 @@ export const en: SiteContent = {
     name: "Ignacio Nuñez Valcarce",
     city: "Buenos Aires",
     timezone: "America/Argentina/Buenos_Aires",
-    email: "TODO(nacho): contact email",
+    email: "TODO(nacho): mail",
     cv: "TODO(nacho): /cv/cv-ignacio-nunez-valcarce.pdf",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/ignacio-nu%C3%B1ez-valcarce-7b870a211/" },
@@ -131,7 +131,7 @@ export const en: SiteContent = {
     aside: "(I still care how it looks.)",
     sub: "I study Design at UdeSA and work on brand and digital product at Inspira RRHH. I look for the problem behind the problem — then I build it.",
     proofs: ["World ORT STEM Communication Award 2025", "Design · UdeSA", "Brand & product · Inspira RRHH"],
-    languages: ["Spanish", "English", "TODO(nacho): confirm Italian"],
+    languages: ["Spanish", "English", "Italian"],
     portrait: {
       src: "/fotos/hero.jpg",
       alt: "Portrait of Ignacio Nuñez Valcarce",
@@ -168,7 +168,7 @@ export const en: SiteContent = {
         role: ["UX/UI", "Branding"],
         problem: "Helping detect multiple sclerosis from clinical data, with machine learning.",
         with: "Fundación Noemí Frida Kraut",
-        featured: true,
+        tier: "lg",
         ...projectAssets.sima,
         case: {
           problem: [
@@ -186,13 +186,36 @@ export const en: SiteContent = {
         },
       },
       {
+        slug: "inspira",
+        name: "Inspira RRHH",
+        year: "2026 — now",
+        role: ["Brand", "Web", "Visual system"],
+        problem: "Identity, [[estrategia:strategy]] and website for an HR consultancy, designed for the people who decide.",
+        with: "Inspira Recursos Humanos",
+        tier: "lg",
+        ...projectAssets.inspira,
+        case: {
+          problem: [
+            "Inspira works in recruitment, psychometric evaluations, training and coaching.",
+            "I'm designing their website and visual system, thinking mostly about the HR people who make decisions.",
+          ],
+          role: [
+            "Brand and digital product. The values I'm working toward: people, solvency, seriousness, warmth, trust and human treatment.",
+          ],
+          question: 6,
+          process: ["TODO(nacho): Inspira process"],
+          result: ["TODO(nacho): link to the site once it's live"],
+          learned: ["A real client: this is where I'm learning how design relates to an organization and to commercial goals."],
+        },
+      },
+      {
         slug: "trevian",
         name: "Trevian",
-        aka: "Also known as Onest",
+        facts: [{ label: "Typeface", value: "Onest" }],
         year: "2025",
         role: ["TODO(nacho): your role in Trevian"],
         problem: "A custom orthopedic insole without going anywhere: the insole comes to you.",
-        featured: true,
+        tier: "md",
         ...projectAssets.trevian,
         case: {
           problem: [
@@ -220,7 +243,7 @@ export const en: SiteContent = {
         role: ["Naming", "Visual identity", "Tone of voice"],
         problem: "An identity built with [[creatividad:creativity]] and care, out of the stories of the people behind the foundation.",
         with: "Fundación Nietos del Holocausto",
-        featured: true,
+        tier: "md",
         ...projectAssets.nihol,
         case: {
           problem: ["The project started from interviews and conversations with people connected to the foundation."],
@@ -234,36 +257,13 @@ export const en: SiteContent = {
         },
       },
       {
-        slug: "inspira",
-        name: "Inspira RRHH",
-        year: "2026 — now",
-        role: ["Brand", "Web", "Visual system"],
-        problem: "Identity, [[estrategia:strategy]] and website for an HR consultancy, designed for the people who decide.",
-        with: "Inspira Recursos Humanos",
-        featured: false,
-        ...projectAssets.inspira,
-        case: {
-          problem: [
-            "Inspira works in recruitment, psychometric evaluations, training and coaching.",
-            "I'm designing their website and visual system, thinking mostly about the HR people who make decisions.",
-          ],
-          role: [
-            "Brand and digital product. The values I'm working toward: people, solvency, seriousness, warmth, trust and human treatment.",
-          ],
-          question: 6,
-          process: ["TODO(nacho): Inspira process"],
-          result: ["TODO(nacho): link to the site once it's live"],
-          learned: ["A real client: this is where I'm learning how design relates to an organization and to commercial goals."],
-        },
-      },
-      {
         slug: "study-buddy",
         name: "Study Buddy",
         year: "2023",
         role: ["UX/UI", "Design"],
         problem: "Helping students aged 10 to 18 study and get organized, with Feynman and Pomodoro.",
         with: "ORT Argentina",
-        featured: false,
+        tier: "sm",
         ...projectAssets["study-buddy"],
         case: {
           problem: [
@@ -365,7 +365,7 @@ export const en: SiteContent = {
         line: "Street, people, landscapes. It started when my grandfather gave me a professional camera.",
         tags: ["photo"],
         status: "Ongoing",
-        note: "There's a selection further down, in About.",
+        note: "TODO(nacho): photo selection (the About gallery appears with 6+ photos in src/data/fotos.ts)",
       },
       {
         id: "L-07",
@@ -429,35 +429,32 @@ export const en: SiteContent = {
     languagesTitle: "Languages",
     languages: [
       { name: "Spanish", level: "Native" },
-      { name: "English", level: "TODO(nacho): English level" },
-      { name: "Italian", level: "TODO(nacho): confirm Italian and level", unconfirmed: true },
+      { name: "English", level: "Upper-intermediate (B2) · Cambridge B2 First (FCE)", logo: "/logos/cambridge.svg" },
+      { name: "Italian", level: "Advanced · fluent — studied from age 4 to 12 at Scuola Italiana" },
     ],
     toolsTitle: "What I work with",
     toolsLede:
       "I'm not a software engineer and I don't want to pretend to be one. Code is how I stop depending on someone else to find out if an idea works. I use AI to make things, not to design for me.",
     stages: ["Understand", "Prototype", "Build"],
     tools: [
+      { name: "Conversations", icon: "", stages: [0] },
+      { name: "Interviews", icon: "", stages: [0] },
+      { name: "Research", icon: "", stages: [0] },
       { name: "Figma", icon: "figma", stages: [1] },
       { name: "Figma Make", icon: "figma", stages: [1] },
+      { name: "Illustrator", icon: "illustrator", stages: [1] },
       { name: "HTML / CSS / JS", icon: "html", stages: [1, 2] },
       { name: "React", icon: "react", stages: [2] },
       { name: "Next.js", icon: "next", stages: [2] },
       { name: "GitHub", icon: "github", stages: [2] },
+      { name: "Premiere Pro", icon: "premiere", stages: [2] },
       { name: "Cursor", icon: "cursor", stages: [1, 2] },
-      { name: "Claude", icon: "claude", stages: [0, 1, 2] },
+      { name: "Claude", icon: "claude", stages: [1, 2] },
     ],
     nowTitle: "Right now",
     nowLabels: { reading: "Reading", listening: "Listening to", building: "Building" },
     galleryTitle: "Photos I took",
     galleryLede: "Street, people, landscapes.",
-    gallery: [
-      { src: "/fotos/fotografia-01.jpg", alt: "A speedboat crossing the sea in front of a stone breakwater, with houses on a cliff" },
-      { src: "/fotos/fotografia-02.jpg", alt: "TODO(nacho): photo description" },
-      { src: "/fotos/fotografia-03.jpg", alt: "TODO(nacho): photo description" },
-      { src: "/fotos/fotografia-04.jpg", alt: "TODO(nacho): photo description" },
-      { src: "/fotos/fotografia-05.jpg", alt: "TODO(nacho): photo description" },
-      { src: "/fotos/fotografia-06.jpg", alt: "TODO(nacho): photo description" },
-    ],
   },
 
   closing: {

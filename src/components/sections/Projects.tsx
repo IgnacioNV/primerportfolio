@@ -11,8 +11,8 @@ type Props = { locale: Locale; c: SiteContent; index: number };
 /** 5–30 seconds: is the work good? Three big, two smaller. Each card: role + problem + door to the case. */
 export function Projects({ locale, c, index }: Props) {
   const nav = c.nav.find((n) => n.id === "proyectos")!;
-  const featured = c.projects.list.filter((p) => p.featured);
-  const more = c.projects.list.filter((p) => !p.featured);
+  const featured = c.projects.list.filter((p) => p.tier !== "sm");
+  const more = c.projects.list.filter((p) => p.tier === "sm");
 
   return (
     <section id="proyectos" className="section">
@@ -21,8 +21,8 @@ export function Projects({ locale, c, index }: Props) {
 
         <div className={styles.featured}>
           {featured.map((p, i) => (
-            <Reveal key={p.slug} delay={i * 80} className={i === 0 ? styles.first : ""}>
-              <ProjectCard project={p} href={routes.project(locale, p.slug)} seeCase={c.ui.seeCase} size={i === 0 ? "lg" : "md"} index={i + 1} />
+            <Reveal key={p.slug} delay={i * 80} className={p.tier === "lg" ? styles.first : ""}>
+              <ProjectCard project={p} href={routes.project(locale, p.slug)} seeCase={c.ui.seeCase} size={p.tier} index={i + 1} />
             </Reveal>
           ))}
         </div>

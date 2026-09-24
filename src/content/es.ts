@@ -65,7 +65,7 @@ export const es: SiteContent = {
     name: "Ignacio Nuñez Valcarce",
     city: "Buenos Aires",
     timezone: "America/Argentina/Buenos_Aires",
-    email: "TODO(nacho): mail de contacto",
+    email: "TODO(nacho): mail",
     cv: "TODO(nacho): /cv/cv-ignacio-nunez-valcarce.pdf",
     links: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/ignacio-nu%C3%B1ez-valcarce-7b870a211/" },
@@ -135,7 +135,7 @@ export const es: SiteContent = {
     aside: "(Igual me importa cómo se ve.)",
     sub: "Estudio Diseño en la UdeSA y trabajo en marca y producto digital en Inspira RRHH. Busco el problema detrás del problema, y después lo construyo.",
     proofs: ["Premio World ORT STEM Communication 2025", "Diseño · UdeSA", "Brand & producto · Inspira RRHH"],
-    languages: ["Español", "Inglés", "TODO(nacho): confirmar Italiano"],
+    languages: ["Español", "Inglés", "Italiano"],
     portrait: {
       src: "/fotos/hero.jpg",
       alt: "Retrato de Ignacio Nuñez Valcarce",
@@ -172,7 +172,7 @@ export const es: SiteContent = {
         role: ["UX/UI", "Branding"],
         problem: "Ayudar a detectar esclerosis múltiple a partir de información clínica, con machine learning.",
         with: "Fundación Noemí Frida Kraut",
-        featured: true,
+        tier: "lg",
         ...projectAssets.sima,
         case: {
           problem: [
@@ -190,13 +190,36 @@ export const es: SiteContent = {
         },
       },
       {
+        slug: "inspira",
+        name: "Inspira RRHH",
+        year: "2026 — hoy",
+        role: ["Marca", "Web", "Sistema visual"],
+        problem: "Identidad, [[estrategia:estrategia]] y web para una consultora de RRHH, pensadas para quien decide.",
+        with: "Inspira Recursos Humanos",
+        tier: "lg",
+        ...projectAssets.inspira,
+        case: {
+          problem: [
+            "Inspira trabaja en selección, evaluaciones psicotécnicas, capacitaciones y coaching.",
+            "Estoy diseñando su web y su sistema visual, pensando sobre todo en la gente de RRHH que toma decisiones.",
+          ],
+          role: [
+            "Marca y producto digital. Los valores que busco transmitir: personas, solvencia, seriedad, calidez, confianza y trato humano.",
+          ],
+          question: 6,
+          process: ["TODO(nacho): proceso de Inspira"],
+          result: ["TODO(nacho): link a la web cuando esté publicada"],
+          learned: ["Es un cliente real: acá aprendo cómo se relaciona el diseño con una organización y con objetivos comerciales."],
+        },
+      },
+      {
         slug: "trevian",
         name: "Trevian",
-        aka: "También conocido como Onest",
+        facts: [{ label: "Tipografía", value: "Onest" }],
         year: "2025",
         role: ["TODO(nacho): tu rol en Trevian"],
         problem: "Una plantilla ortopédica a medida sin ir a ningún lado: la plantilla viene a vos.",
-        featured: true,
+        tier: "md",
         ...projectAssets.trevian,
         case: {
           problem: [
@@ -224,7 +247,7 @@ export const es: SiteContent = {
         role: ["Naming", "Identidad visual", "Tono de comunicación"],
         problem: "Una identidad con [[creatividad:creatividad]] y cuidado, construida desde las historias de la gente de la fundación.",
         with: "Fundación Nietos del Holocausto",
-        featured: true,
+        tier: "md",
         ...projectAssets.nihol,
         case: {
           problem: ["El proyecto nació de entrevistas y charlas con personas vinculadas a la fundación."],
@@ -241,36 +264,13 @@ export const es: SiteContent = {
         },
       },
       {
-        slug: "inspira",
-        name: "Inspira RRHH",
-        year: "2026 — hoy",
-        role: ["Marca", "Web", "Sistema visual"],
-        problem: "Identidad, [[estrategia:estrategia]] y web para una consultora de RRHH, pensadas para quien decide.",
-        with: "Inspira Recursos Humanos",
-        featured: false,
-        ...projectAssets.inspira,
-        case: {
-          problem: [
-            "Inspira trabaja en selección, evaluaciones psicotécnicas, capacitaciones y coaching.",
-            "Estoy diseñando su web y su sistema visual, pensando sobre todo en la gente de RRHH que toma decisiones.",
-          ],
-          role: [
-            "Marca y producto digital. Los valores que busco transmitir: personas, solvencia, seriedad, calidez, confianza y trato humano.",
-          ],
-          question: 6,
-          process: ["TODO(nacho): proceso de Inspira"],
-          result: ["TODO(nacho): link a la web cuando esté publicada"],
-          learned: ["Es un cliente real: acá aprendo cómo se relaciona el diseño con una organización y con objetivos comerciales."],
-        },
-      },
-      {
         slug: "study-buddy",
         name: "Study Buddy",
         year: "2023",
         role: ["UX/UI", "Diseño"],
         problem: "Que estudiantes de 10 a 18 años estudien y se organicen mejor, con Feynman y Pomodoro.",
         with: "ORT Argentina",
-        featured: false,
+        tier: "sm",
         ...projectAssets["study-buddy"],
         case: {
           problem: [
@@ -372,7 +372,7 @@ export const es: SiteContent = {
         line: "Calle, gente, paisajes. Arrancó cuando mi abuelo me regaló una cámara profesional.",
         tags: ["photo"],
         status: "En curso",
-        note: "Hay una selección más abajo, en Quién soy.",
+        note: "TODO(nacho): selección de fotos (la galería de Quién soy aparece con 6 o más fotos en src/data/fotos.ts)",
       },
       {
         id: "L-07",
@@ -436,35 +436,32 @@ export const es: SiteContent = {
     languagesTitle: "Idiomas",
     languages: [
       { name: "Español", level: "Nativo" },
-      { name: "Inglés", level: "TODO(nacho): nivel de inglés" },
-      { name: "Italiano", level: "TODO(nacho): confirmar italiano y nivel", unconfirmed: true },
+      { name: "Inglés", level: "Intermedio alto (B2) · Cambridge B2 First (FCE)", logo: "/logos/cambridge.svg" },
+      { name: "Italiano", level: "Avanzado · fluido — lo estudié de los 4 a los 12 en la Scuola Italiana" },
     ],
     toolsTitle: "Con qué trabajo",
     toolsLede:
       "No soy ingeniero de software ni quiero presentarme así. Programar es mi forma de no depender de otro para saber si una idea funciona. La IA la uso para crear, no para que diseñe por mí.",
     stages: ["Entender", "Prototipar", "Construir"],
     tools: [
+      { name: "Conversaciones", icon: "", stages: [0] },
+      { name: "Entrevistas", icon: "", stages: [0] },
+      { name: "Investigación", icon: "", stages: [0] },
       { name: "Figma", icon: "figma", stages: [1] },
       { name: "Figma Make", icon: "figma", stages: [1] },
+      { name: "Illustrator", icon: "illustrator", stages: [1] },
       { name: "HTML / CSS / JS", icon: "html", stages: [1, 2] },
       { name: "React", icon: "react", stages: [2] },
       { name: "Next.js", icon: "next", stages: [2] },
       { name: "GitHub", icon: "github", stages: [2] },
+      { name: "Premiere Pro", icon: "premiere", stages: [2] },
       { name: "Cursor", icon: "cursor", stages: [1, 2] },
-      { name: "Claude", icon: "claude", stages: [0, 1, 2] },
+      { name: "Claude", icon: "claude", stages: [1, 2] },
     ],
     nowTitle: "Ahora mismo",
     nowLabels: { reading: "Leyendo", listening: "Escuchando", building: "Construyendo" },
     galleryTitle: "Fotos que saqué",
     galleryLede: "Calle, gente, paisajes.",
-    gallery: [
-      { src: "/fotos/fotografia-01.jpg", alt: "Una lancha cruzando el mar frente a una escollera de piedras, con casas sobre un acantilado" },
-      { src: "/fotos/fotografia-02.jpg", alt: "TODO(nacho): descripción de la foto" },
-      { src: "/fotos/fotografia-03.jpg", alt: "TODO(nacho): descripción de la foto" },
-      { src: "/fotos/fotografia-04.jpg", alt: "TODO(nacho): descripción de la foto" },
-      { src: "/fotos/fotografia-05.jpg", alt: "TODO(nacho): descripción de la foto" },
-      { src: "/fotos/fotografia-06.jpg", alt: "TODO(nacho): descripción de la foto" },
-    ],
   },
 
   closing: {

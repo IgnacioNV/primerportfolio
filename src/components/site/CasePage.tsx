@@ -82,6 +82,14 @@ export function CasePage({ locale, slug }: { locale: Locale; slug: string }) {
                 <dd>{role || <Todo value={p.role.join(" ")} />}</dd>
               </div>
             )}
+            {p.facts?.map((f) => (
+              <div key={f.label}>
+                <dt className="meta">{f.label}</dt>
+                <dd>
+                  <Maybe value={f.value} />
+                </dd>
+              </div>
+            ))}
             {p.with && (
               <div>
                 <dt className="meta">{L.with}</dt>

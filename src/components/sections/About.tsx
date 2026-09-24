@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Locale, Photo, SiteContent } from "@/content";
 import { now } from "@/content/now";
+import { fotos, MIN_FOTOS } from "@/data/fotos";
 import { publicExists } from "@/lib/assets";
 import { isTodo, showTodos } from "@/lib/todo";
 import { SectionHead } from "@/components/ui/SectionHead";
@@ -36,7 +37,8 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
   const a = c.about;
   const n = now[locale];
   const numberLocale = locale === "es" ? "es-AR" : "en-US";
-  const gallery = a.gallery.filter((p) => publicExists(p.src));
+  const gallery: Photo[] = fotos.filter((f) => publicExists(f.src)).map((f) => ({ src: f.src, alt: f.alt[locale] }));
+  const showGallery = gallery.length >= MIN_FOTOS;
   const nowItems = (["reading", "listening", "building"] as const).filter((k) => showTodos || !isTodo(n[k]));
 
   return (
@@ -206,13 +208,13 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
         </div>
 
         {/* My photography */}
-        {(gallery.length > 0 || showTodos) && (
+        {(showGallery || showTodos) && (
           <div className={styles.gallery}>
             <div className={styles.toolsHead}>
               <h3 className={styles.toolsTitle}>{a.galleryTitle}</h3>
               <p className={styles.toolsLede}>
                 {a.galleryLede}{" "}
-                {a.gallery.length > gallery.length && <Todo value={`TODO(nacho): faltan ${a.gallery.length - gallery.length} fotos en /public/fotos/fotografia-*.jpg`} />}
+                {!showGallery && <Todo value={`TODO(nacho): la galería necesita ${MIN_FOTOS} fotos en src/data/fotos.ts (hay ${gallery.length}); en producción está oculta`} />}
               </p>
             </div>
             <Gallery photos={gallery} ui={c.ui.lightbox} />
