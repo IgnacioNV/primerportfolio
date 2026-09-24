@@ -55,7 +55,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <Closing c={c} index={5} />
       </main>
 
-      <FloatingCta label={c.ui.cta} aria={c.ui.ctaAria} />
+      <FloatingCta label={c.ui.cta} aria={c.ui.ctaAria} hasHero />
     </>
   );
 }

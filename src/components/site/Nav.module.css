@@ -95,7 +95,8 @@
     gap: 10px;
   }
   /* No room on phones: the floating CTA (and the hero's) take over. */
-  .right .cta {
+  /* No room on phones: the floating button is the stand-in. */
+  .right .ctaSlot {
     display: none;
   }
 }
@@ -242,4 +243,24 @@
 .tinted .lang a:hover {
   color: inherit;
   text-decoration-thickness: 2px;
+}
+
+/* The slot keeps its width while the button slides away: nothing in the bar jumps. */
+.ctaSlot {
+  display: inline-flex;
+  transition:
+    opacity var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease),
+    visibility 0s linear 0s;
+}
+
+.ctaHidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease),
+    visibility 0s linear var(--dur-fast);
 }

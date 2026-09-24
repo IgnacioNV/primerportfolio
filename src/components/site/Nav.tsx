@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import type { Locale, SiteContent } from "@/content";
 import { CtaButton } from "@/components/contact/CtaButton";
+import { useVisibleCtas } from "@/components/contact/ctaPresence";
 import styles from "./Nav.module.css";
 
 type Props = {
@@ -26,6 +27,8 @@ export function Nav({ locale, homeHref, altHref, name, ui, items, tint }: Props)
   const [active, setActive] = useState<string | null>(null);
   const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
+  // Step aside while another "Charlemos" is on screen (only one at a time).
+  const ctaHidden = useVisibleCtas() > 0;
 
   useEffect(() => {
     if (!items.length) return;
@@ -87,7 +90,9 @@ export function Nav({ locale, homeHref, altHref, name, ui, items, tint }: Props)
             </Link>
           </nav>
 
-          <CtaButton label={ui.cta} aria={ui.ctaAria} small arrow={false} className={styles.cta} />
+          <span className={`${styles.ctaSlot} ${ctaHidden ? styles.ctaHidden : ""}`} aria-hidden={ctaHidden || undefined}>
+            <CtaButton label={ui.cta} aria={ui.ctaAria} small arrow={false} track={false} className={styles.cta} />
+          </span>
 
           {items.length > 0 && (
             <button

@@ -3,24 +3,28 @@
 import { useEffect, useState } from "react";
 import { MessageCircle } from "lucide-react";
 import { useContact } from "./ContactProvider";
+import { useVisibleCtas } from "./ctaPresence";
 import styles from "./FloatingCta.module.css";
 
 /**
- * Mobile only. On phones the bar has no room for the CTA, so this takes over
- * the moment the hero's own "Charlemos" leaves the screen — one is always visible.
+ * Mobile only (the bar has no room for a CTA on phones). Shown only when no
+ * other "Charlemos" is on screen, the hero is out of view and the form is closed.
  */
-/** `afterHero`: wait until the hero CTA scrolls away (home). Otherwise visible from the start (case pages). */
-export function FloatingCta({ label, aria, afterHero = true }: { label: string; aria: string; afterHero?: boolean }) {
-  const { open } = useContact();
-  const [show, setShow] = useState(!afterHero);
+export function FloatingCta({ label, aria, hasHero }: { label: string; aria: string; hasHero: boolean }) {
+  const { open, isOpen } = useContact();
+  const others = useVisibleCtas();
+  // Pages with a hero start with it on screen: hidden until we know otherwise.
+  const [heroVisible, setHeroVisible] = useState(hasHero);
 
   useEffect(() => {
-    const hero = afterHero ? document.getElementById("hero-cta") : null;
+    const hero = document.getElementById("hero");
     if (!hero) return;
-    const io = new IntersectionObserver(([e]) => setShow(!e.isIntersecting), { threshold: 0 });
+    const io = new IntersectionObserver(([e]) => setHeroVisible(e.isIntersecting));
     io.observe(hero);
     return () => io.disconnect();
-  }, [afterHero]);
+  }, []);
+
+  const show = !heroVisible && others === 0 && !isOpen;
 
   return (
     <button
@@ -29,6 +33,7 @@ export function FloatingCta({ label, aria, afterHero = true }: { label: string; 
       onClick={open}
       aria-label={aria}
       aria-haspopup="dialog"
+      aria-hidden={!show || undefined}
       tabIndex={show ? 0 : -1}
     >
       <MessageCircle size={18} aria-hidden />

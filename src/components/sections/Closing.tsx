@@ -4,6 +4,7 @@ import { publicExists } from "@/lib/assets";
 import { isTodo } from "@/lib/todo";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { EmailCopy } from "@/components/contact/EmailCopy";
+import { CtaZone } from "@/components/contact/CtaZone";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
 import { RichText } from "@/components/ui/RichText";
@@ -81,10 +82,10 @@ export function Closing({ c, index }: { c: SiteContent; index: number }) {
               )}
             </dl>
           </Reveal>
-          <div className={styles.inlineForm} data-cta>
+          <CtaZone className={styles.inlineForm}>
             <h3 className="sr-only">{c.ui.contact.title}</h3>
             <ContactForm ui={c.ui.contact} email={email} />
-          </div>
+          </CtaZone>
         </div>
 
         <footer className={styles.footer}>

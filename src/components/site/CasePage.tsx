@@ -140,7 +140,7 @@ export function CasePage({ locale, slug }: { locale: Locale; slug: string }) {
         </Link>
       </main>
 
-      <FloatingCta label={c.ui.cta} aria={c.ui.ctaAria} afterHero={false} />
+      <FloatingCta label={c.ui.cta} aria={c.ui.ctaAria} hasHero={false} />
     </>
   );
 }

@@ -33,9 +33,7 @@ export function Hero({ hero, ui, visual }: Props) {
           </ul>
 
           <div className={styles.actions}>
-            <span data-cta>
-              <CtaButton label={ui.cta} aria={ui.ctaAria} />
-            </span>
+            <CtaButton label={ui.cta} aria={ui.ctaAria} />
             <a href="#proyectos" className={styles.secondary}>
               {ui.seeProjects} <ArrowRight size={16} aria-hidden />
             </a>
