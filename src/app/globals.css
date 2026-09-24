@@ -175,9 +175,10 @@ button {
 
 /* ── Sections ──────────────────────────────────────────────── */
 
+/* One --space-section between consecutive sections (top padding only), so gaps never double up. */
 .section {
   position: relative;
-  padding: var(--space-section) var(--gutter);
+  padding: var(--space-section) var(--gutter) 0;
   padding-left: calc(var(--gutter) + var(--rail));
 }
 
@@ -240,6 +241,8 @@ button {
 .night {
   background: var(--c-night);
   color: var(--c-night-text);
+  /* A colored band needs its own bottom breathing room. */
+  padding-bottom: var(--space-section);
 }
 
 .night .section-lede {
