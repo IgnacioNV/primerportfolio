@@ -11,6 +11,7 @@ import { Maybe, Todo } from "@/components/ui/Todo";
 import { CountUp } from "@/components/ui/CountUp";
 import { BrandIcon } from "@/components/ui/BrandIcon";
 import { Gallery } from "./Gallery";
+import { Timeline } from "./Timeline";
 import styles from "./About.module.css";
 
 /** Photos that exist are shown; missing ones become a TODO slot in dev and vanish in prod. */
@@ -83,23 +84,19 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
         <div className={styles.columns}>
           <div>
             <h3 className={`meta ${styles.colTitle}`}>{a.timelineTitle}</h3>
-            <ol className={styles.timeline}>
-              {a.timeline
+            <Timeline
+              nowLabel={a.nowLabel}
+              items={a.timeline
                 .filter((t) => showTodos || !isTodo(t.body) || !isTodo(t.when))
-                .map((t) => (
-                  <Reveal as="li" key={t.title}>
-                    <span className={`meta ${styles.when}`}>
-                      <Maybe value={t.when} />
-                    </span>
-                    <div>
-                      <p className={styles.tTitle}>{t.title}</p>
-                      <p className={styles.tBody}>
-                        <Maybe value={t.body} />
-                      </p>
-                    </div>
-                  </Reveal>
-                ))}
-            </ol>
+                .map((t) => ({
+                  when: t.when,
+                  title: t.title,
+                  body: t.body,
+                  current: t.current,
+                  logos: (t.logos ?? []).filter(publicExists),
+                  missing: showTodos ? (t.logos ?? []).filter((l) => !publicExists(l)) : [],
+                }))}
+            />
           </div>
 
           <div className={styles.side}>
@@ -144,7 +141,12 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
                     <div key={l.name}>
                       <dt>{l.name}</dt>
                       <dd>
+                        {l.logo && publicExists(l.logo) && (
+                          // eslint-disable-next-line @next/next/no-img-element -- official SVG logo
+                          <img src={l.logo} alt="Cambridge English" className={styles.langLogo} />
+                        )}
                         <Maybe value={l.level} />
+                        {l.logo && !publicExists(l.logo) && <Todo value={`TODO(nacho): logo ${l.logo}`} />}
                       </dd>
                     </div>
                   ))}

@@ -198,7 +198,9 @@ export type SiteContent = {
     stats: { value: number; prefix?: string; suffix?: string; label: string }[];
     photos: Photo[];
     timelineTitle: string;
-    timeline: { when: Text; title: string; body: Text }[];
+    /** Newest first. `current` items get a filled dot and the "now" label. */
+    timeline: { when: Text; title: string; body: Text; current?: boolean; logos?: string[] }[];
+    nowLabel: string;
     educationTitle: string;
     education: { name: string; detail: string; years: Text; logo: string; hover: string }[];
     languagesTitle: string;
