@@ -21,7 +21,6 @@ export function RootDocument({ locale, children }: { locale: Locale; children: R
           ui={c.ui.contact}
           closeLabel={c.ui.close}
           email={isTodo(c.person.email) ? null : c.person.email}
-          links={c.person.links}
         >
           <KeywordProvider locale={locale} keywords={c.keywords} ui={c.ui.keywords} cta={c.ui.cta}>
             {children}

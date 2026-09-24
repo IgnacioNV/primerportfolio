@@ -1,8 +1,9 @@
-import { ArrowUp, ArrowUpRight, Download, Mail } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Download } from "lucide-react";
 import type { SiteContent } from "@/content";
 import { publicExists } from "@/lib/assets";
 import { isTodo } from "@/lib/todo";
-import { CtaButton } from "@/components/contact/CtaButton";
+import { ContactForm } from "@/components/contact/ContactForm";
+import { EmailCopy } from "@/components/contact/EmailCopy";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
 import { RichText } from "@/components/ui/RichText";
@@ -40,31 +41,51 @@ export function Closing({ c, index }: { c: SiteContent; index: number }) {
           </Reveal>
         </div>
 
-        <Reveal className={styles.cta}>
-          <h3 className={styles.ctaTitle}>{closing.ctaTitle}</h3>
-          <p className={styles.ctaBody}>{closing.ctaBody}</p>
-          <div className={styles.actions}>
-            <CtaButton label={c.ui.cta} aria={c.ui.ctaAria} />
-            {email && (
-              <a className="btn btn-ghost" href={`mailto:${email}?subject=${encodeURIComponent(c.ui.contact.subject)}`}>
-                <Mail size={16} aria-hidden /> {email}
-              </a>
-            )}
-            {person.links.map((l) => (
-              <a key={l.href} className="btn btn-ghost" href={l.href} target="_blank" rel="noreferrer">
-                {l.label === "GitHub" && <BrandIcon name="github" size={16} />} {l.label} <ArrowUpRight size={16} aria-hidden />
-              </a>
-            ))}
-            {hasCv ? (
-              <a className="btn btn-ghost" href={cvPath} download>
-                <Download size={16} aria-hidden /> {closing.cvLabel}
-              </a>
-            ) : (
-              <Todo value={person.cv} />
-            )}
-            {!email && <Todo value={person.email} />}
+        <div className={styles.cta}>
+          <Reveal className={styles.ctaText}>
+            <h3 className={styles.ctaTitle}>{closing.ctaTitle}</h3>
+            <p className={styles.ctaBody}>{closing.ctaBody}</p>
+            <dl className={styles.channels}>
+              <div>
+                <dt className="meta">{c.ui.contact.emailLabel}</dt>
+                <dd>
+                  {email ? (
+                    <EmailCopy email={email} subject={c.ui.contact.subject} copy={c.ui.contact.copy} copied={c.ui.contact.copied} />
+                  ) : (
+                    <Todo value={person.email} />
+                  )}
+                </dd>
+              </div>
+              {person.links.map((l) => (
+                <div key={l.href}>
+                  <dt className="meta">{l.label}</dt>
+                  <dd>
+                    <a className="link" href={l.href} target="_blank" rel="noreferrer">
+                      {l.label === "GitHub" && <BrandIcon name="github" size={14} />} {l.href.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "").slice(0, 40)}
+                      <ArrowUpRight size={14} aria-hidden />
+                    </a>
+                  </dd>
+                </div>
+              ))}
+              {hasCv ? (
+                <div>
+                  <dt className="meta">CV</dt>
+                  <dd>
+                    <a className="link" href={cvPath} download>
+                      <Download size={14} aria-hidden /> {closing.cvLabel}
+                    </a>
+                  </dd>
+                </div>
+              ) : (
+                <Todo value={person.cv || "TODO(nacho): CV"} />
+              )}
+            </dl>
+          </Reveal>
+          <div className={styles.inlineForm} data-cta>
+            <h3 className="sr-only">{c.ui.contact.title}</h3>
+            <ContactForm ui={c.ui.contact} email={email} />
           </div>
-        </Reveal>
+        </div>
 
         <footer className={styles.footer}>
           <span className="meta">{c.footer}</span>

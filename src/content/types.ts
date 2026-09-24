@@ -102,11 +102,19 @@ export type SiteContent = {
     contact: {
       title: string;
       body: string;
+      fields: { firstName: string; lastName: string; email: string; company: string; phone: string; message: string };
+      optional: string;
+      messagePlaceholder: string;
+      errors: { required: string; email: string; messageMin: string; rateLimited: string };
+      submit: string;
+      sending: string;
+      success: string;
+      errorPrefix: string;
+      errorFallback: string;
       copy: string;
       copied: string;
-      write: string;
       subject: string;
-      noEmail: string;
+      emailLabel: string;
     };
     keywords: {
       counter: string;

@@ -1,12 +1,12 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Check, Copy, Mail, X } from "lucide-react";
-import { BrandIcon } from "@/components/ui/BrandIcon";
+import { X } from "lucide-react";
 import type { SiteContent } from "@/content";
-import styles from "./ContactModal.module.css";
+import { ContactForm } from "./ContactForm";
+import styles from "./ContactDrawer.module.css";
 
-type Ctx = { open: () => void };
+type Ctx = { open: () => void; isOpen: boolean };
 const ContactContext = createContext<Ctx | null>(null);
 
 export function useContact() {
@@ -19,89 +19,61 @@ type Props = {
   ui: SiteContent["ui"]["contact"];
   closeLabel: string;
   email: string | null;
-  links: { label: string; href: string }[];
   children: React.ReactNode;
 };
 
 /**
- * "Charlemos" opens a small modal instead of a bare mailto: — many recruiters
- * use webmail with no mail client configured, and mailto: silently does nothing.
- * The modal offers: copy the email (always works), open mail with a prefilled
- * subject, or go to LinkedIn. Built on <dialog>: focus trap and Esc for free.
+ * Every "Charlemos" opens the same form in a panel: a drawer from the right
+ * on desktop, a sheet from the bottom on mobile. Built on <dialog>: focus moves
+ * in, Esc closes, and focus returns to the button that opened it.
  */
-export function ContactProvider({ ui, closeLabel, email, links, children }: Props) {
+export function ContactProvider({ ui, closeLabel, email, children }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
-  const [copied, setCopied] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [formKey, setFormKey] = useState(0);
 
   const open = useCallback(() => {
-    setCopied(false);
-    ref.current?.showModal();
+    const d = ref.current;
+    if (!d || d.open) return;
+    d.showModal();
+    setIsOpen(true);
+    requestAnimationFrame(() => d.querySelector<HTMLElement>("input[name='firstName']")?.focus());
   }, []);
 
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
-    // Click on the backdrop closes it.
     const onClick = (e: MouseEvent) => {
-      if (e.target === d) d.close();
+      if (e.target === d) d.close(); // click on the backdrop
+    };
+    const onClose = () => {
+      setIsOpen(false);
+      // A sent form starts fresh next time.
+      if (d.querySelector("[data-sent]")) setFormKey((k) => k + 1);
     };
     d.addEventListener("click", onClick);
-    return () => d.removeEventListener("click", onClick);
+    d.addEventListener("close", onClose);
+    return () => {
+      d.removeEventListener("click", onClick);
+      d.removeEventListener("close", onClose);
+    };
   }, []);
 
-  const copy = async () => {
-    if (!email) return;
-    try {
-      await navigator.clipboard.writeText(email);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2200);
-    } catch {
-      /* clipboard blocked: the address is visible and selectable anyway */
-    }
-  };
-
   return (
-    <ContactContext.Provider value={{ open }}>
+    <ContactContext.Provider value={{ open, isOpen }}>
       {children}
-      <dialog ref={ref} className={styles.dialog} aria-labelledby="contact-title">
+      <dialog ref={ref} className={styles.drawer} aria-labelledby="contact-title">
         <div className={styles.inner}>
-          <button type="button" className={styles.close} onClick={() => ref.current?.close()} aria-label={closeLabel}>
-            <X size={20} aria-hidden />
-          </button>
-          <h2 id="contact-title" className={styles.title}>
-            {ui.title}
-          </h2>
+          <header className={styles.head}>
+            <h2 id="contact-title" className={styles.title}>
+              {ui.title}
+            </h2>
+            <button type="button" className={styles.close} onClick={() => ref.current?.close()} aria-label={closeLabel}>
+              <X size={20} aria-hidden />
+            </button>
+          </header>
           <p className={styles.body}>{ui.body}</p>
-
-          {email ? (
-            <div className={styles.emailRow}>
-              <span className={styles.email}>{email}</span>
-              <button type="button" className="btn btn-primary btn-small" onClick={copy} aria-live="polite">
-                {copied ? <Check size={16} aria-hidden /> : <Copy size={16} aria-hidden />}
-                {copied ? ui.copied : ui.copy}
-              </button>
-            </div>
-          ) : (
-            <p className={styles.body}>{ui.noEmail}</p>
-          )}
-
-          <ul className={styles.links}>
-            {email && (
-              <li>
-                <a href={`mailto:${email}?subject=${encodeURIComponent(ui.subject)}`} className="btn btn-ghost btn-small">
-                  <Mail size={16} aria-hidden /> {ui.write}
-                </a>
-              </li>
-            )}
-            {links.map((l) => (
-              <li key={l.href}>
-                <a href={l.href} target="_blank" rel="noreferrer" className="btn btn-ghost btn-small">
-                  {l.label === "GitHub" && <BrandIcon name="github" size={16} />} {l.label}
-                  <ArrowUpRight size={16} aria-hidden />
-                </a>
-              </li>
-            ))}
-          </ul>
+          <ContactForm key={formKey} ui={ui} email={email} />
         </div>
       </dialog>
     </ContactContext.Provider>

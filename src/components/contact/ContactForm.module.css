@@ -1,0 +1,129 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 14px;
+}
+
+@media (max-width: 480px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: var(--fw-medium);
+}
+
+.optional {
+  font-weight: var(--fw-body);
+  color: var(--c-muted);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 16px; /* no zoom on iOS */
+  color: var(--c-text);
+  background: #fbfaf7;
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-card);
+  transition:
+    border-color var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.45;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--c-muted);
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: none;
+  border-color: var(--c-accent);
+  box-shadow: 0 0 0 3px var(--c-accent-soft);
+}
+
+.field [aria-invalid="true"] {
+  border-color: #b3261e;
+}
+
+.error {
+  margin: 0;
+  font-size: 13px;
+  color: #b3261e; /* 5.6:1 on the page background */
+}
+
+.hp {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.footer {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.footer button[disabled] {
+  opacity: 0.75;
+  cursor: progress;
+}
+
+.status {
+  margin: 0;
+  font-size: 15px;
+  color: var(--c-text-2);
+  max-width: 44ch;
+}
+
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-card);
+  font-size: var(--fs-lead);
+  font-weight: var(--fw-medium);
+}
+
+.success svg {
+  color: #1f7a45;
+}
