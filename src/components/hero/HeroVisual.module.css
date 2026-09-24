@@ -1,0 +1,150 @@
+.wrap {
+  position: relative;
+  width: 100%;
+}
+
+.frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--c-surface);
+  cursor: none;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .frame {
+    cursor: auto;
+  }
+}
+
+.under,
+.top {
+  position: absolute;
+  inset: 0;
+}
+
+.top {
+  clip-path: inset(0 0 0 var(--reveal));
+}
+
+.seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--reveal);
+  width: 2px;
+  margin-left: -1px;
+  background: var(--c-bg);
+  box-shadow: 0 0 0 1px rgba(18, 18, 18, 0.15);
+  pointer-events: none;
+}
+
+.knob {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--c-bg);
+  color: var(--c-text);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.animate .top {
+  transition: clip-path 0.6s var(--ease);
+}
+
+.animate .seam {
+  transition: left 0.6s var(--ease);
+}
+
+.frame:not(.animate) .top {
+  transition: clip-path 0.08s linear;
+}
+
+.frame:not(.animate) .seam {
+  transition: left 0.08s linear;
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.contain {
+  object-fit: contain;
+  padding: 14%;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  text-align: center;
+  font-family: var(--f-mono);
+  font-size: 12px;
+  color: #8a5a00;
+  background: repeating-linear-gradient(135deg, #fff3cf 0 10px, #ffe9a8 10px 20px);
+}
+
+/* Custom cursor: a lens. */
+.lens {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--c-bg);
+  box-shadow:
+    0 0 0 1px rgba(18, 18, 18, 0.35),
+    inset 0 0 0 1px rgba(18, 18, 18, 0.2);
+  background: rgba(241, 239, 233, 0.12);
+  backdrop-filter: blur(0.5px);
+  pointer-events: none;
+}
+
+/* Touch signifier: ⇄ in the corner. */
+.swap {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 40px;
+  height: 40px;
+  display: none;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--c-bg);
+  color: var(--c-text);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .swap {
+    display: grid;
+  }
+  /* On touch the corner ⇄ is the handle; the seam stays as a plain line. */
+  .knob {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate .top,
+  .animate .seam {
+    transition: none;
+  }
+}

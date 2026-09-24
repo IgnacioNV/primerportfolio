@@ -134,20 +134,20 @@ export type SiteContent = {
   keywords: Record<KeywordId, Keyword>;
 
   hero: {
-    kicker: string;
-    line: string;
-    aside: string;
-    sub: Rich;
+    /** Full H1, always in the HTML (SEO, screen readers). */
+    title: string;
+    /** Animation pieces: `start` + typed `struck` (crossed out) → `replacement`. */
+    titleStart: string;
+    titleStruck: string;
+    titleReplacement: string;
+    sub: string;
     proofs: string[];
-    languages: Text[];
     portrait: Photo;
+    /** Work revealed under the photo, rotating. Missing files fall back to project logos. */
+    under: Photo[];
     visual: {
-      fixed: string;
-      pairs: { surface: string; depth: string }[];
-      hint: string;
-      hintTouch: string;
       label: string;
-      nextLabel: string;
+      toggle: string;
     };
   };
 
@@ -160,6 +160,9 @@ export type SiteContent = {
   };
 
   thinking: {
+    /** Big opening statement of the section. */
+    opening: string;
+    openingSub: string;
     title: string;
     lede: Rich;
     hint: string;

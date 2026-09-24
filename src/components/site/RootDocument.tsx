@@ -10,8 +10,10 @@ import "@/app/globals.css";
 export function RootDocument({ locale, children }: { locale: Locale; children: React.ReactNode }) {
   const c = getContent(locale);
   return (
-    <html lang={locale} className={fontVars}>
+    <html lang={locale} className={fontVars} suppressHydrationWarning>
       <body>
+        {/* Marks JS as available before first paint, so the H1 animation doesn't flash the final text. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <a href="#contenido" className="skip-link">
           {c.ui.skipToContent}
         </a>

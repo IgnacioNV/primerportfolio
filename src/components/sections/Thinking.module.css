@@ -1,3 +1,31 @@
+.qHead {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+@media (min-width: 900px) {
+  .qHead {
+    grid-template-columns: 5fr 6fr;
+    gap: 56px;
+    align-items: end;
+  }
+}
+
+.qTitle {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-display);
+  letter-spacing: var(--tracking-h);
+  line-height: var(--lh-snug);
+}
+
+.qLede {
+  margin: 0;
+  max-width: var(--measure);
+  color: var(--c-text-2);
+}
+
 .layout {
   display: grid;
   gap: 40px;

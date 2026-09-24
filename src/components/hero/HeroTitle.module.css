@@ -1,0 +1,89 @@
+.title {
+  margin: 0;
+  font-size: clamp(44px, 6.6vw, 96px);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  font-weight: var(--fw-display);
+  text-wrap: balance;
+}
+
+.visual {
+  position: relative;
+  display: block;
+}
+
+.anim {
+  position: absolute;
+  inset: 0;
+}
+
+/* While animating, the final sentence is only a spacer. */
+.visual:not([data-phase="ssr"]):not([data-phase="done"]) .final {
+  visibility: hidden;
+}
+
+/* With JS, the SSR frame shows only the start word until the animation begins
+   (the `js` class is set before paint; see RootDocument). */
+:global(html.js) .visual[data-phase="ssr"] .final {
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html.js) .visual[data-phase="ssr"] .final {
+    visibility: visible;
+  }
+}
+
+.old {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  transition:
+    opacity 0.28s var(--ease),
+    max-width 0.28s var(--ease),
+    color 0.3s var(--ease);
+  max-width: 12ch;
+  vertical-align: top;
+}
+
+.old::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  top: 52%;
+  height: 0.08em;
+  background: var(--c-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.36s var(--ease);
+}
+
+.struck {
+  color: var(--c-muted);
+}
+
+.struck::after {
+  transform: scaleX(1);
+}
+
+.gone {
+  opacity: 0;
+  max-width: 0;
+}
+
+.caret {
+  display: inline-block;
+  width: 0.06em;
+  height: 0.8em;
+  margin-left: 0.04em;
+  background: currentColor;
+  vertical-align: -0.02em;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

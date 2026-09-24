@@ -126,31 +126,24 @@ export const en: SiteContent = {
   },
 
   hero: {
-    kicker: "Product design · Brand · Buenos Aires",
-    line: "I care more about what an interface does to people than how it looks.",
-    aside: "(I still care how it looks.)",
-    sub: "I study Design at UdeSA and work on brand and digital product at Inspira RRHH. I look for the problem behind the problem — then I build it.",
-    proofs: ["World ORT STEM Communication Award 2025", "Design · UdeSA", "Brand & product · Inspira RRHH"],
-    languages: ["Spanish", "English", "Italian"],
+    title: "I design decisions, not just screens.",
+    titleStart: "I design",
+    titleStruck: "screens.",
+    titleReplacement: "decisions, not just screens.",
+    sub: "I study Design at UdeSA and work on brand and product at Inspira.",
+    proofs: ["🏆 World ORT Award 2025", "Design UdeSA", "Inspira RRHH"],
     portrait: {
       src: "/fotos/hero.jpg",
       alt: "Portrait of Ignacio Nuñez Valcarce",
     },
+    under: [
+      { src: "/fotos/hero-debajo-1.jpg", alt: "TODO(nacho): description of work image 1" },
+      { src: "/fotos/hero-debajo-2.jpg", alt: "TODO(nacho): description of work image 2" },
+      { src: "/fotos/hero-debajo-3.jpg", alt: "TODO(nacho): description of work image 3" },
+    ],
     visual: {
-      fixed: "This is",
-      pairs: [
-        { surface: "a button.", depth: "a decision." },
-        { surface: "a feed.", depth: "a habit." },
-        { surface: "a logo.", depth: "a memory." },
-        { surface: "an app.", depth: "a routine." },
-        { surface: "an insole.", depth: "a body." },
-        { surface: "a form.", depth: "a doubt." },
-        { surface: "a portfolio.", depth: "a question." },
-      ],
-      hint: "Move the cursor — that's where I look. Click for another.",
-      hintTouch: "Drag sideways to look underneath. Tap for another.",
-      label: "Interactive example: the surface reads one thing, underneath it reads another.",
-      nextLabel: "Show another example",
+      label: "Photo of Ignacio. Underneath, his projects. Use the arrow keys to reveal and Enter to toggle.",
+      toggle: "Toggle between the photo and the work",
     },
   },
 
@@ -281,6 +274,8 @@ export const en: SiteContent = {
   },
 
   thinking: {
+    opening: "I care more about what an interface does to people than how it looks.",
+    openingSub: "I look for the problem behind the problem — then I build it.",
     title: "I start with questions, not screens.",
     lede: "Design isn't only how something looks. It's a way to understand an experience and then change it. This is [[pensamiento:critical thinking]] in practice: the questions I keep coming back to.",
     hint: "Pick a question and see where I used it.",

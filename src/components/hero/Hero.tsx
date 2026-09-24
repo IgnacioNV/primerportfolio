@@ -1,45 +1,30 @@
-import Image from "next/image";
-import { ArrowDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import type { SiteContent } from "@/content";
 import { CtaButton } from "@/components/contact/CtaButton";
-import { RichText } from "@/components/ui/RichText";
-import { Todo } from "@/components/ui/Todo";
-import { isTodo } from "@/lib/todo";
+import { HeroTitle } from "./HeroTitle";
 import styles from "./Hero.module.css";
 
 type Props = {
   hero: SiteContent["hero"];
-  name: string;
   ui: SiteContent["ui"];
-  /** Whether /public/fotos/hero.jpg exists (checked at build time). */
-  hasPortrait: boolean;
   /**
-   * The interactive piece. Swappable on purpose: today it's the lens,
-   * later the "desktop-hero" concept replaces it without touching the rest.
+   * The visual on the right (photo with the work underneath). Swappable on
+   * purpose: the "desktop-hero" concept will replace it without touching the rest.
+   * null = nothing to show yet → the text takes the full width.
    */
-  visual: React.ReactNode;
+  visual: React.ReactNode | null;
 };
 
-/**
- * 0–5 seconds: who he is and what he does. Everything important is plain,
- * server-rendered text — readable before any animation runs.
- */
-export function Hero({ hero, name, ui, hasPortrait, visual }: Props) {
-  const languages = hero.languages.filter((l) => !isTodo(l));
+/** 0–5 s: who, what, why believe it, what to do. ~25 visible words. */
+export function Hero({ hero, ui, visual }: Props) {
   return (
-    <section id="hero" className={styles.hero} aria-labelledby="hero-name">
-      <div className={`${styles.grid} ${hasPortrait ? "" : styles.noPortrait}`}>
-        <div className={styles.text}>
-          <p className={`meta ${styles.kicker}`}>{hero.kicker}</p>
-          <h1 id="hero-name" className={styles.name}>
-            {name}
-          </h1>
-          <p className={styles.line}>
-            {hero.line} <span className={styles.aside}>{hero.aside}</span>
-          </p>
-          <p className={styles.sub}>
-            <RichText>{hero.sub}</RichText>
-          </p>
+    <section id="hero" className={styles.hero} aria-labelledby="hero-title">
+      <div className={`${styles.grid} ${visual ? "" : styles.textOnly}`}>
+        {visual && <div className={styles.visual}>{visual}</div>}
+
+        <div className={styles.text} id="hero-title">
+          <HeroTitle title={hero.title} start={hero.titleStart} struck={hero.titleStruck} replacement={hero.titleReplacement} />
+          <p className={styles.sub}>{hero.sub}</p>
 
           <ul className={styles.proofs}>
             {hero.proofs.map((p) => (
@@ -47,31 +32,16 @@ export function Hero({ hero, name, ui, hasPortrait, visual }: Props) {
             ))}
           </ul>
 
-          <div className={styles.actions} id="hero-cta">
-            <CtaButton label={ui.cta} aria={ui.ctaAria} />
+          <div className={styles.actions}>
+            <span data-cta>
+              <CtaButton label={ui.cta} aria={ui.ctaAria} />
+            </span>
             <a href="#proyectos" className={styles.secondary}>
-              {ui.seeProjects} <ArrowDown size={16} aria-hidden />
+              {ui.seeProjects} <ArrowRight size={16} aria-hidden />
             </a>
           </div>
-
-          <p className={`meta ${styles.langs}`}>
-            {languages.join(" · ")}{" "}
-            {hero.languages.filter(isTodo).map((l) => (
-              <Todo key={l} value={l} />
-            ))}
-          </p>
         </div>
-
-        {hasPortrait ? (
-          <div className={styles.portrait}>
-            <Image src={hero.portrait.src} alt={hero.portrait.alt} fill priority sizes="(min-width: 900px) 34vw, 90vw" />
-          </div>
-        ) : (
-          <Todo value="TODO(nacho): foto del hero en /public/fotos/hero.jpg" />
-        )}
       </div>
-
-      <div className={styles.visual}>{visual}</div>
     </section>
   );
 }

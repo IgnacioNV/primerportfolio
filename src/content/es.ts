@@ -130,31 +130,24 @@ export const es: SiteContent = {
   },
 
   hero: {
-    kicker: "Diseño de producto · Marca · Buenos Aires",
-    line: "Me interesa más lo que una interfaz le hace a las personas que cómo se ve.",
-    aside: "(Igual me importa cómo se ve.)",
-    sub: "Estudio Diseño en la UdeSA y trabajo en marca y producto digital en Inspira RRHH. Busco el problema detrás del problema, y después lo construyo.",
-    proofs: ["Premio World ORT STEM Communication 2025", "Diseño · UdeSA", "Brand & producto · Inspira RRHH"],
-    languages: ["Español", "Inglés", "Italiano"],
+    title: "Diseño decisiones, no solo pantallas.",
+    titleStart: "Diseño",
+    titleStruck: "pantallas.",
+    titleReplacement: "decisiones, no solo pantallas.",
+    sub: "Estudio Diseño en UdeSA y hago marca y producto en Inspira.",
+    proofs: ["🏆 Premio World ORT 2025", "Diseño UdeSA", "Inspira RRHH"],
     portrait: {
       src: "/fotos/hero.jpg",
       alt: "Retrato de Ignacio Nuñez Valcarce",
     },
+    under: [
+      { src: "/fotos/hero-debajo-1.jpg", alt: "TODO(nacho): descripción de la imagen de trabajo 1" },
+      { src: "/fotos/hero-debajo-2.jpg", alt: "TODO(nacho): descripción de la imagen de trabajo 2" },
+      { src: "/fotos/hero-debajo-3.jpg", alt: "TODO(nacho): descripción de la imagen de trabajo 3" },
+    ],
     visual: {
-      fixed: "Esto es",
-      pairs: [
-        { surface: "un botón.", depth: "una decisión." },
-        { surface: "un feed.", depth: "un hábito." },
-        { surface: "un logo.", depth: "una memoria." },
-        { surface: "una app.", depth: "una rutina." },
-        { surface: "una plantilla.", depth: "un cuerpo." },
-        { surface: "un formulario.", depth: "una duda." },
-        { surface: "un portfolio.", depth: "una pregunta." },
-      ],
-      hint: "Mové el cursor: ahí es donde miro. Clic para otro.",
-      hintTouch: "Arrastrá de costado para mirar abajo. Tocá para otro.",
-      label: "Ejemplo interactivo: en la superficie se lee una cosa y debajo, otra.",
-      nextLabel: "Ver otro ejemplo",
+      label: "Foto de Ignacio. Debajo, proyectos suyos. Usá las flechas para revelar y Enter para alternar.",
+      toggle: "Alternar entre la foto y el trabajo",
     },
   },
 
@@ -288,6 +281,8 @@ export const es: SiteContent = {
   },
 
   thinking: {
+    opening: "Me interesa más lo que una interfaz le hace a las personas que cómo se ve.",
+    openingSub: "Busco el problema detrás del problema, y después lo construyo.",
     title: "Arranco por preguntas, no por pantallas.",
     lede: "Para mí el diseño no es solo cómo se ve algo: es una forma de entender una experiencia y después cambiarla. Esto es [[pensamiento:pensamiento crítico]] aplicado: las preguntas a las que siempre vuelvo.",
     hint: "Elegí una pregunta y fijate dónde la apliqué.",

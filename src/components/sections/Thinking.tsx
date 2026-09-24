@@ -5,6 +5,7 @@ import type { Locale, SiteContent } from "@/content";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
 import { Todo } from "@/components/ui/Todo";
+import { RichText } from "@/components/ui/RichText";
 import { isTodo } from "@/lib/todo";
 import { ThinkingQuestions } from "./ThinkingQuestions";
 import styles from "./Thinking.module.css";
@@ -16,7 +17,14 @@ export function Thinking({ locale, c, index }: { locale: Locale; c: SiteContent;
   return (
     <section id="pienso" className="section">
       <div className="section-inner">
-        <SectionHead index={index} creative={nav.creative} label={nav.label} title={c.thinking.title} lede={c.thinking.lede} />
+        <SectionHead index={index} creative={nav.creative} label={nav.label} title={c.thinking.opening} lede={c.thinking.openingSub} />
+
+        <div className={styles.qHead}>
+          <h3 className={styles.qTitle}>{c.thinking.title}</h3>
+          <p className={styles.qLede}>
+            <RichText>{c.thinking.lede}</RichText>
+          </p>
+        </div>
 
         <ThinkingQuestions locale={locale} thinking={c.thinking} projects={c.projects.list} />
 
