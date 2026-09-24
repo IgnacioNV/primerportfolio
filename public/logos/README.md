@@ -1,8 +1,11 @@
-# Logos de formación
+# Logos (monocromo en el sitio; color al pasar el mouse en desktop)
 
-TODO(nacho): pasar los SVG oficiales. Nombres esperados:
+Nombres esperados — los que no existan no se muestran en producción:
 
-- `udesa.svg`
-- `ort.svg`
-
-Se muestran en monocromo y toman color al pasar el mouse. Hasta que existan, se muestra el nombre en texto.
+- `udesa.svg` — Universidad de San Andrés
+- `ort.svg` — ORT Argentina
+- `world-ort.svg` — World ORT (TODO(nacho): ort.org bloquea la descarga automática)
+- `scuola-italiana.svg` / `.png` — Scuola Italiana Cristoforo Colombo
+- `geba.svg` / `.png` — GEBA
+- `club-ciudad.svg` / `.png` — Club Ciudad de Buenos Aires
+- `cambridge.svg` — Cambridge English (junto al FCE)

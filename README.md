@@ -1,4 +1,4 @@
-# primerportfolio — v2
+# primerportfolio — v3
 
 Portfolio de Ignacio Nuñez Valcarce. Next.js 16 · React 19 · TypeScript · CSS Modules · Lucide.
 
@@ -8,6 +8,22 @@ npm run dev     # http://localhost:3000
 npm run lint
 npm run build
 ```
+
+## Formulario de contacto (Resend)
+
+Todos los "Charlemos" abren el mismo formulario, que envía a `POST /api/contact`. En **Vercel → Project → Settings → Environment Variables** configurá:
+
+| Variable | Valor |
+|---|---|
+| `RESEND_API_KEY` | API key de [resend.com](https://resend.com) (plan gratis: 3.000 mails/mes) |
+| `CONTACT_TO_EMAIL` | Donde te llegan los mensajes. Sin dominio verificado en Resend tiene que ser el mail de tu cuenta de Resend. |
+| `CONTACT_FROM_EMAIL` | Opcional. Por ejemplo `Portfolio <hola@tudominio.com>`, una vez que verifiques un dominio. |
+| `NEXT_PUBLIC_SITE_URL` | Opcional. El dominio final, para canonical, hreflang y OG. |
+
+Después de guardarlas, hacé *Redeploy*. El mail llega con **reply-to** de quien escribió, así que respondés directo.
+
+- En local, sin esas variables, el mensaje se imprime en la consola en lugar de enviarse.
+- **Antispam:** campo honeypot, tiempo mínimo de llenado y límite de 5 envíos cada 10 minutos por IP. El límite vive en memoria, así que en serverless es por instancia.
 
 ## Idiomas
 
