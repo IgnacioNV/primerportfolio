@@ -1,50 +1,23 @@
 import type { KeywordId } from "@/content";
 
 /*
- * Tiny external store for discovered keywords, shared by every <Keyword>
- * and the counter. Persisted in sessionStorage so switching language or
- * opening a case and coming back doesn't reset the game.
+ * Discovered keywords, shared by every <Keyword> and the indicator.
+ * In memory only, on purpose: every page load starts at 0.
  */
-const KEY = "portfolio:keywords";
 let found: KeywordId[] = [];
-let loaded = false;
 const listeners = new Set<() => void>();
-
-function load() {
-  if (loaded || typeof window === "undefined") return;
-  loaded = true;
-  try {
-    const raw = window.sessionStorage.getItem(KEY);
-    if (raw) found = JSON.parse(raw);
-  } catch {
-    /* storage blocked: the game still works for this page view */
-  }
-}
+const EMPTY: KeywordId[] = [];
 
 export const keywordStore = {
   subscribe(fn: () => void) {
-    load();
     listeners.add(fn);
     return () => listeners.delete(fn);
   },
-  getSnapshot(): KeywordId[] {
-    load();
-    return found;
-  },
-  getServerSnapshot(): KeywordId[] {
-    return EMPTY;
-  },
+  getSnapshot: (): KeywordId[] => found,
+  getServerSnapshot: (): KeywordId[] => EMPTY,
   discover(id: KeywordId) {
-    load();
     if (found.includes(id)) return;
     found = [...found, id];
-    try {
-      window.sessionStorage.setItem(KEY, JSON.stringify(found));
-    } catch {
-      /* ignore */
-    }
     listeners.forEach((l) => l());
   },
 };
-
-const EMPTY: KeywordId[] = [];

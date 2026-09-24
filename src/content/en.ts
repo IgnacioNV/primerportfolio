@@ -60,10 +60,10 @@ export const en: SiteContent = {
       emailLabel: "Email",
     },
     keywords: {
-      counter: "words",
       title: "Words that define me",
-      hint: "They're hidden across the page, always next to the proof.",
-      done: "You found them all. You know a fair bit about me by now — let's talk about the rest.",
+      firstFound: "You found one! There are 11 hidden.",
+      done: "Now you know me a little. Let's talk?",
+      progress: "{n} of {total} found",
     },
     lightbox: { open: "Enlarge photo", prev: "Previous photo", next: "Next photo", close: "Close" },
     filterLabel: "Filter experiments",
@@ -91,6 +91,16 @@ export const en: SiteContent = {
   ],
 
   keywords: {
+    autodidacta: {
+      label: "self-taught",
+      evidence: "I learned Figma to a professional level almost entirely on my own. Guitar, 100% on my own.",
+      section: "quien-soy",
+    },
+    curioso: {
+      label: "curious",
+      evidence: "I build things to understand how they work: apps, objects, volleyball stats.",
+      section: "laboratorio",
+    },
     innovacion: {
       label: "innovation",
       evidence: "SIMA uses machine learning to help detect multiple sclerosis; Trevian, iPhone scanning and 3D printing.",
@@ -317,7 +327,7 @@ export const en: SiteContent = {
 
   lab: {
     title: "Things I build to find out.",
-    lede: "Small [[proyectos:projects]], prototypes and ideas I start on my own. That's how I learn: pick something I want to exist and try to make it.",
+    lede: "I'm [[curioso:curious]]: small [[proyectos:projects]], prototypes and ideas I start on my own to understand how things work. I pick something I want to exist and try to make it.",
     tags: {
       pwa: "PWA",
       social: "Social",
@@ -398,7 +408,7 @@ export const en: SiteContent = {
       "I'm from Buenos Aires. I went to high school at ORT on the TIC track (programming, design, technology) and now I study Design at UdeSA.",
       "Along the way I learned something no curriculum covers: almost 10 years of federated volleyball, first at GEBA and then at Club Ciudad de Buenos Aires, with three national championships. That's where I really understood [[equipo:teamwork]], pressure and data.",
       "I was captain in call-ups to the Metropolitan team and the Argentine national team, and I gave ORT's graduation speech at the Gran Rex, together with another student, to more than 3,000 people. Some [[liderazgo:leadership]] had to be involved.",
-      "I've played guitar since I was 12. I've been taking photos since my grandfather gave me a professional camera.",
+      "I've played guitar since I was 12 (self-taught). I've been taking photos since my grandfather gave me a professional camera.",
     ],
     stats: [
       { value: 3000, prefix: "+", label: "people at the Gran Rex" },
@@ -442,7 +452,7 @@ export const en: SiteContent = {
     ],
     toolsTitle: "What I work with",
     toolsLede:
-      "I'm not a software engineer and I don't want to pretend to be one. Code is how I stop depending on someone else to find out if an idea works. I use AI to make things, not to design for me.",
+      "I'm pretty [[autodidacta:self-taught]]: I learned Figma to a professional level almost entirely on my own. I'm not a software engineer and don't want to pretend to be one; code is how I stop depending on someone else to find out if an idea works. I use AI to make things, not to design for me.",
     stages: ["Understand", "Prototype", "Build"],
     tools: [
       { name: "Conversations", icon: "", stages: [0] },

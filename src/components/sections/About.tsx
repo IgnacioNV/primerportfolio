@@ -175,7 +175,9 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
         <div className={styles.tools}>
           <div className={styles.toolsHead}>
             <h3 className={styles.toolsTitle}>{a.toolsTitle}</h3>
-            <p className={styles.toolsLede}>{a.toolsLede}</p>
+            <p className={styles.toolsLede}>
+              <RichText>{a.toolsLede}</RichText>
+            </p>
           </div>
           <div className={styles.chart}>
             <div className={styles.stages} aria-hidden>

@@ -3,99 +3,105 @@
   left: 16px;
   bottom: 16px;
   z-index: 44;
+  width: min(300px, calc(100vw - 32px));
+  font-size: 12px;
 }
 
 @media (min-width: 1100px) {
   .root {
     left: var(--gutter);
     bottom: 24px;
+    width: 280px;
   }
 }
 
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 40px;
-  padding: 0 14px;
+.card {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 12px;
   border: 1px solid var(--c-border-strong);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-card);
   background: var(--c-bg);
   color: var(--c-text);
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.3);
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.card:hover {
+  border-color: var(--c-accent);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.title {
   font-family: var(--f-mono);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: var(--tracking-meta);
   text-transform: uppercase;
-  cursor: pointer;
-  box-shadow: 0 6px 20px -8px rgba(0, 0, 0, 0.25);
-  transition:
-    transform var(--dur-fast) var(--ease),
-    border-color var(--dur-fast) var(--ease);
 }
 
-.pill:hover {
-  border-color: var(--c-accent);
+.count {
+  font-family: var(--f-mono);
+  font-size: 10px;
+  color: var(--c-muted);
+  font-variant-numeric: tabular-nums;
 }
 
-.bump {
-  animation: bump 0.6s var(--ease);
-}
-
-@keyframes bump {
-  30% {
-    transform: scale(1.12);
-  }
-}
-
-.done {
-  border-color: var(--c-accent);
-}
-
-.dots {
-  display: inline-grid;
-  grid-template-columns: repeat(9, 5px);
+.ticks {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
   gap: 3px;
 }
 
-.dots span {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
+.ticks span {
+  height: 3px;
+  border-radius: 2px;
   background: var(--c-border);
   transition: background var(--dur) var(--ease);
 }
 
-.dots .dotOn {
+.ticks .tickOn {
   background: var(--c-accent);
 }
 
-.count {
-  font-variant-numeric: tabular-nums;
-  color: var(--c-accent);
-  font-weight: 600;
+.pop {
+  animation: pop 0.5s var(--ease);
 }
 
-@media (max-width: 560px) {
-  .label {
-    display: none;
-  }
-  .dots {
-    display: none;
+@keyframes pop {
+  35% {
+    transform: scale(1.04);
   }
 }
 
-.panel {
-  position: absolute;
-  left: 0;
-  bottom: calc(100% + 10px);
-  width: min(300px, calc(100vw - 32px));
-  padding: 18px;
-  background: var(--c-bg);
-  color: var(--c-text);
+/* Slots: hidden until opened. */
+.slotsWrap {
+  display: none;
+  margin-top: 6px;
+  padding: 10px 12px 12px;
   border: 1px solid var(--c-border-strong);
   border-radius: var(--radius-card);
-  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.35);
-  animation: rise 0.22s var(--ease);
+  background: var(--c-bg);
+  box-shadow: 0 16px 40px -20px rgba(0, 0, 0, 0.35);
+}
+
+.open .slotsWrap {
+  display: block;
+  animation: rise 0.2s var(--ease);
+}
+
+/* The panel sits above the card. */
+.root {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 @keyframes rise {
@@ -105,40 +111,118 @@
   }
 }
 
-.title {
-  margin: 0 0 6px;
-}
-
-.hint {
-  margin: 0 0 14px;
-  font-size: 14px;
-  color: var(--c-text-2);
-  line-height: 1.4;
-}
-
-.list {
+.slots {
   list-style: none;
-  margin: 0 0 14px;
+  margin: 0;
   padding: 0;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 6px;
 }
 
-.found {
+.slot {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  min-height: 26px;
+  padding: 0 8px;
+  border: 1px dashed var(--c-border-strong);
+  border-radius: var(--radius-pill);
+  color: var(--c-border-strong);
+  opacity: 0.45;
+  font-size: 12px;
+}
+
+.filled {
+  opacity: 1;
+  border-style: solid;
+  border-color: var(--c-accent);
+}
+
+.filled a {
   color: var(--c-accent);
   font-weight: var(--fw-medium);
   text-decoration: none;
 }
 
-.found:hover {
+.filled a:hover {
   text-decoration: underline;
 }
 
-.pending {
-  color: var(--c-border);
-  letter-spacing: 0.2em;
-  user-select: none;
+.slotPop {
+  animation: pop 0.5s var(--ease);
+}
+
+.final {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--c-border);
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.final p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.done .card {
+  border-color: var(--c-accent);
+}
+
+.toast {
+  margin: 0 0 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-card);
+  background: var(--c-text);
+  color: var(--c-bg);
+  font-size: 13px;
+  line-height: 1.35;
+  animation: rise 0.25s var(--ease);
+  order: 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pop,
+  .slotPop,
+  .open .slotsWrap,
+  .toast {
+    animation: none;
+  }
+  .ticks span {
+    transition: none;
+  }
+}
+
+/* Wide screens: the slots are always visible (the indicator *is* the list). */
+@media (min-width: 1100px) {
+  .slotsWrap {
+    display: block;
+    margin: 0;
+    border-top: 0;
+    border-radius: 0 0 var(--radius-card) var(--radius-card);
+    box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.3);
+    padding-top: 2px;
+  }
+  .card {
+    border-bottom: 0;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+    box-shadow: none;
+    cursor: default;
+  }
+  .ticks {
+    display: none;
+  }
+  .root {
+    flex-direction: column;
+  }
+  .toast {
+    order: -1;
+  }
+  .slot {
+    min-height: 22px;
+    font-size: 11px;
+    padding: 0 7px;
+  }
 }

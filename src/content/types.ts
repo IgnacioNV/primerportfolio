@@ -24,7 +24,9 @@ export type KeywordId =
   | "equipo"
   | "pensamiento"
   | "estrategia"
-  | "producto";
+  | "producto"
+  | "autodidacta"
+  | "curioso";
 
 export type Keyword = {
   /** The word as it appears in the counter list. */
@@ -117,10 +119,11 @@ export type SiteContent = {
       emailLabel: string;
     };
     keywords: {
-      counter: string;
       title: string;
-      hint: string;
+      firstFound: string;
       done: string;
+      /** Screen-reader summary, e.g. "{n} de {total} encontradas". */
+      progress: string;
     };
     lightbox: { open: string; prev: string; next: string; close: string };
     filterAll: string;
@@ -202,7 +205,7 @@ export type SiteContent = {
     /** `unconfirmed` languages are hidden in production until confirmed. */
     languages: { name: string; level: Text; unconfirmed?: boolean; logo?: string }[];
     toolsTitle: string;
-    toolsLede: string;
+    toolsLede: Rich;
     stages: string[];
     tools: { name: string; icon: string; stages: (0 | 1 | 2)[] }[];
     nowTitle: string;

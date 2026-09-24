@@ -64,10 +64,10 @@ export const es: SiteContent = {
       emailLabel: "Mail",
     },
     keywords: {
-      counter: "palabras",
       title: "Palabras que me definen",
-      hint: "Están escondidas a lo largo de la página, siempre al lado de la prueba.",
-      done: "Las encontraste todas. Ya sabés bastante de mí; charlemos del resto.",
+      firstFound: "¡Encontraste una! Hay 11 escondidas.",
+      done: "Ahora ya me conocés un poco. ¿Charlemos?",
+      progress: "{n} de {total} encontradas",
     },
     lightbox: { open: "Ampliar foto", prev: "Foto anterior", next: "Foto siguiente", close: "Cerrar" },
     filterLabel: "Filtrar experimentos",
@@ -95,6 +95,16 @@ export const es: SiteContent = {
   ],
 
   keywords: {
+    autodidacta: {
+      label: "autodidacta",
+      evidence: "Aprendí Figma a nivel profesional prácticamente solo. La guitarra, 100% solo.",
+      section: "quien-soy",
+    },
+    curioso: {
+      label: "curioso",
+      evidence: "Construyo cosas para entender cómo funcionan: apps, objetos, estadísticas de vóley.",
+      section: "laboratorio",
+    },
     innovacion: {
       label: "innovación",
       evidence: "SIMA usa machine learning para detectar esclerosis múltiple; Trevian, escaneo con iPhone e impresión 3D.",
@@ -324,7 +334,7 @@ export const es: SiteContent = {
 
   lab: {
     title: "Cosas que construyo para averiguar.",
-    lede: "[[proyectos:Proyectos]] chicos, prototipos e ideas que arranco por mi cuenta. Así aprendo: elijo algo que quiero que exista y trato de hacerlo.",
+    lede: "Soy [[curioso:curioso]]: [[proyectos:proyectos]] chicos, prototipos e ideas que arranco por mi cuenta para entender cómo funcionan las cosas. Elijo algo que quiero que exista y trato de hacerlo.",
     tags: {
       pwa: "PWA",
       social: "Social",
@@ -405,7 +415,7 @@ export const es: SiteContent = {
       "Soy de Buenos Aires. Hice la secundaria en ORT con orientación TIC (programación, diseño, tecnología) y ahora estudio Diseño en la UdeSA.",
       "En el medio aprendí algo que no está en ningún programa: casi 10 años de vóley federado, primero en GEBA y después en Club Ciudad de Buenos Aires, con tres campeonatos nacionales. Ahí entendí de verdad cómo funciona el [[equipo:trabajo en equipo]], la presión y los datos.",
       "Fui capitán en convocatorias a la Selección Metropolitana y a la Selección Argentina, y di el discurso de graduación de ORT en el Gran Rex, junto con otra estudiante, frente a más de 3.000 personas. Algo de [[liderazgo:liderazgo]] tuvo que haber.",
-      "Toco la guitarra desde los 12. Saco fotos desde que mi abuelo me regaló una cámara profesional.",
+      "Toco la guitarra desde los 12 (aprendí solo). Saco fotos desde que mi abuelo me regaló una cámara profesional.",
     ],
     stats: [
       { value: 3000, prefix: "+", label: "personas en el Gran Rex" },
@@ -449,7 +459,7 @@ export const es: SiteContent = {
     ],
     toolsTitle: "Con qué trabajo",
     toolsLede:
-      "No soy ingeniero de software ni quiero presentarme así. Programar es mi forma de no depender de otro para saber si una idea funciona. La IA la uso para crear, no para que diseñe por mí.",
+      "Soy bastante [[autodidacta:autodidacta]]: Figma lo aprendí a nivel profesional prácticamente solo. No soy ingeniero de software ni quiero presentarme así; programar es mi forma de no depender de otro para saber si una idea funciona. La IA la uso para crear, no para que diseñe por mí.",
     stages: ["Entender", "Prototipar", "Construir"],
     tools: [
       { name: "Conversaciones", icon: "", stages: [0] },
