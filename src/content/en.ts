@@ -150,6 +150,7 @@ export const en: SiteContent = {
       hint: "Move the cursor — that's where I look. Click for another.",
       hintTouch: "Drag sideways to look underneath. Tap for another.",
       label: "Interactive example: the surface reads one thing, underneath it reads another.",
+      nextLabel: "Show another example",
     },
   },
 
@@ -429,7 +430,7 @@ export const en: SiteContent = {
     languages: [
       { name: "Spanish", level: "Native" },
       { name: "English", level: "TODO(nacho): English level" },
-      { name: "Italian", level: "TODO(nacho): confirm Italian and level" },
+      { name: "Italian", level: "TODO(nacho): confirm Italian and level", unconfirmed: true },
     ],
     toolsTitle: "What I work with",
     toolsLede:

@@ -13,12 +13,10 @@
   align-items: center;
   gap: 6px;
   text-decoration: none;
-  opacity: 0.8;
   width: fit-content;
 }
 
 .back:hover {
-  opacity: 1;
   text-decoration: underline;
 }
 
@@ -28,7 +26,6 @@
 }
 
 .heroBody :global(.meta) {
-  opacity: 0.8;
   margin: 0;
 }
 
@@ -59,7 +56,6 @@
 }
 
 .meta dt {
-  opacity: 0.75;
   margin-bottom: 4px;
 }
 

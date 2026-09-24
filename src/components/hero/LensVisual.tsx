@@ -11,7 +11,7 @@ type Props = SiteContent["hero"]["visual"];
  * Two identical layers of type; the top one is only visible through a lens
  * that follows the cursor: on the surface "a button", underneath "a decision".
  */
-export function LensVisual({ fixed, pairs, hint, hintTouch, label }: Props) {
+export function LensVisual({ fixed, pairs, hint, hintTouch, label, nextLabel }: Props) {
   const stageRef = useRef<HTMLDivElement>(null);
   const depthRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
@@ -127,20 +127,8 @@ export function LensVisual({ fixed, pairs, hint, hintTouch, label }: Props) {
 
   return (
     <figure className={styles.wrap}>
-      <div
-        ref={stageRef}
-        className={styles.stage}
-        onClick={next}
-        role="button"
-        tabIndex={0}
-        aria-label={`${label} ${fixed} ${pair.surface} → ${fixed} ${pair.depth}`}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            next();
-          }
-        }}
-      >
+      {/* Pointer users click the stage; keyboard and screen readers get the button below. */}
+      <div ref={stageRef} className={styles.stage} onClick={next} aria-hidden>
         <div className={styles.surface} aria-hidden>
           {words(pair.surface)}
         </div>
@@ -148,10 +136,14 @@ export function LensVisual({ fixed, pairs, hint, hintTouch, label }: Props) {
           {words(pair.depth)}
         </div>
       </div>
+      <p className="sr-only" aria-live="polite">
+        {label} {fixed} {pair.surface} → {fixed} {pair.depth}
+      </p>
       <figcaption className={`meta ${styles.hint}`}>
-        <span className={styles.count}>
-          {String(index + 1).padStart(2, "0")}/{String(pairs.length).padStart(2, "0")}
-        </span>
+        <button type="button" className={styles.count} onClick={next}>
+          {String(index + 1).padStart(2, "0")}/{String(pairs.length).padStart(2, "0")} <span aria-hidden>↻</span>
+          <span className="sr-only">{nextLabel}</span>
+        </button>
         <span className={styles.hintPointer}>{hint}</span>
         <span className={styles.hintTouch}>{hintTouch}</span>
       </figcaption>

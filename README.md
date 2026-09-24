@@ -1,64 +1,74 @@
-# primerportfolio — v1
+# primerportfolio — v2
 
-Portfolio personal de Ignacio Nuñez Valcarce. Next.js 16 + React 19 + TypeScript + CSS Modules.
-No hay otras dependencias: ni Tailwind ni librerías de animación. Todo el movimiento es CSS más un poco de JS propio.
+Portfolio de Ignacio Nuñez Valcarce. Next.js 16 · React 19 · TypeScript · CSS Modules · Lucide.
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
+npm run dev     # http://localhost:3000
+npm run lint
 npm run build
 ```
 
-## La idea
+## Idiomas
 
-El portfolio no muestra proyectos solamente: es un proyecto en sí. El concepto central es **mirar debajo de la superficie**.
+- Español (default): `/`, `/proyectos/[slug]`
+- Inglés: `/en`, `/en/projects/[slug]`
 
-- **00 Look.** Una lente sigue al cursor. En la superficie dice *"This is a button."* y debajo dice *"This is a decision."*. Es la tesis del sitio en un solo gesto: diseñar es mirar qué hay debajo de la interfaz. Con un clic cambia el par (logo → memory, feed → habit, form → doubt…). Si nadie la mueve, la lente recorre sola la palabra que cambia.
-- **01 Think.** Las preguntas que te hacés, cada una conectada con el proyecto donde intentaste responderla. Abajo está el video del World ORT STEM Award como ejemplo concreto de cómo pensás.
-- **02 Make.** Cinco proyectos. Arriba hay un mapa con cinco territorios (Design · Technology · Business · AI · People). Al pasar por un proyecto (o scrollear hasta él en mobile) se prenden los territorios que toca. Juntos cubren todo el mapa: el perfil híbrido se ve, no hace falta decirlo.
-- **03 Try.** El laboratorio, en fondo oscuro a propósito: el trabajo terminado vive sobre papel y los experimentos en el banco de trabajo. Tiene filtros por tipo de curiosidad.
-- **04 Trace.** Dos recorridos en paralelo: escuela y trabajo por un lado, y por otro vóley, guitarra y fotografía. Debajo, un diagrama de herramientas sobre *idea → prototype → product*.
-- **05 Next.** Las etiquetas (UX Designer, PM, Founder…) se tachan una por una y la sección termina en *"I'd rather pick problems."*.
+Son dos *route groups* (`app/(es)` y `app/(en)`), cada uno con su layout raíz, así que `<html lang>`, title, description y OG salen en el idioma correcto. No hay librería de i18n.
 
-La navegación también es el proceso: look → think → make → try → trace → next.
+## Dónde se edita cada cosa
 
-**Sistema visual:** papel e tinta, más un solo azul de anotación, como la birome que corrige un borrador. El azul solo aparece en lo que "mira debajo": la lente, los estados activos, los links y los placeholders. Tipografías: Instrument Sans, Instrument Serif (para las preguntas y los pensamientos) y JetBrains Mono (para las anotaciones).
+| Qué | Archivo |
+|---|---|
+| Todo el texto en español | `src/content/es.ts` |
+| Todo el texto en inglés | `src/content/en.ts` |
+| "Ahora mismo" (leyendo / escuchando / construyendo) | `src/content/now.ts` |
+| Colores y logos de proyectos | `src/content/shared.ts` |
+| Fotos | `public/fotos/` (ver su README con los nombres esperados) |
+| Logos de formación (SVG oficiales) | `public/logos/udesa.svg`, `public/logos/ort.svg` |
+| CV | `public/cv/cv-ignacio-nunez-valcarce.pdf` |
+| Tokens (color, tipografía, espaciado) | `src/app/globals.css` |
 
-## Cómo editar
+## TODO(nacho)
 
-**Todo el texto está en [`src/content/en.ts`](src/content/en.ts).** No hace falta tocar componentes para cambiar contenido.
+Todo lo que falta está escrito como `"TODO(nacho): …"`:
 
-- Lo que está escrito `[ASÍ]` aparece en la página como una etiqueta azul. Son los placeholders que tenés que completar.
-- Para agregar un proyecto, sumá un objeto a `work.projects`. Su case study se genera solo en `/work/<slug>`.
-- Para agregar un experimento, sumá un objeto a `lab.entries`.
-- Las imágenes van en `src/assets/img/` y se importan arriba de `en.ts`.
+```bash
+grep -rn "TODO(nacho)" src public
+```
 
-### Español
+- **En desarrollo** se ve como una etiqueta amarilla rayada.
+- **En producción** esos textos se vacían antes de llegar a los componentes: no se renderizan ni viajan en el HTML.
+- Una foto, un logo o el CV que todavía no existe en `/public` tampoco se muestra.
 
-La estructura ya lo soporta. Hay que copiar `en.ts` a `es.ts`, traducirlo y registrarlo en [`src/content/index.ts`](src/content/index.ts). Después falta la ruta `/es` y conectar el toggle EN/ES del header, que hoy muestra "Pronto".
+## Palabras clave
+
+En el contenido, `[[liderazgo:capitán]]` convierte "capitán" en la palabra clave `liderazgo`. La evidencia del tooltip está en `keywords` de cada idioma. Cada palabra tiene que aparecer marcada **una sola vez**. El contador guarda el progreso en `sessionStorage`.
 
 ## Estructura
 
 ```
 src/
-  app/
-    page.tsx               home (orden de secciones)
-    work/[slug]/page.tsx   case study
-    globals.css            tokens + tipografía compartida
-  components/              una sección = un componente + su .module.css
-  content/
-    types.ts               la forma del contenido
-    en.ts                  el contenido
-    index.ts               getContent(locale)
-  assets/img/
+  app/(es)/…  app/(en)/en/…   rutas por idioma
+  components/
+    hero/        Hero aislado + LensVisual (reemplazable por el desktop-hero)
+    contact/     Modal "Charlemos", botón CTA, botón flotante mobile
+    keywords/    Palabra clave, contador, store
+    sections/    Proyectos, Cómo pienso, Laboratorio, Quién soy, Cierre
+    site/        Nav, HomePage, CasePage, RootDocument
+    ui/          Reveal, SplitTitle, CountUp, RichText, Todo, BrandIcon
+  content/       es.ts, en.ts, now.ts, shared.ts, types.ts
+  lib/           todo.ts, assets.ts, metadata.ts
 ```
 
-## Pendiente (placeholders)
+## Reemplazar el hero
 
-- Email de contacto
-- Link al video del STEM Award
-- Pregunta disparadora de SIMA, NIHOL y Study Buddy
-- Año de NIHOL y de ORT London (y qué fue ORT London)
-- Case studies completos: proceso, imágenes, aprendizajes
-- Estado de cada experimento del lab
-- Selección de fotos propias
+`<Hero visual={…} />` recibe el visual como prop. Para el desktop-hero, cambiá `visual={<LensVisual … />}` en `components/site/HomePage.tsx`; el nombre, la línea, las pruebas y el CTA no se tocan.
+
+## Decisiones
+
+- **Sin Framer Motion.** Los reveals, contadores, subrayados y títulos por palabra usan IntersectionObserver y `transform`/`opacity`.
+- **Charlemos abre un modal, no un `mailto:`.** Mucha gente usa webmail y ahí `mailto:` no hace nada. El modal permite copiar el mail, abrir el cliente de correo con el asunto "Hola Nacho —" o ir a LinkedIn.
+- **Íconos.** Las acciones usan Lucide. Las herramientas usan trazos de Simple Icons (CC0) copiados en `BrandIcon.tsx`, así no se suma una segunda librería.
+- **El azul `#2A36FF`** se usa solo en CTAs, links, estados interactivos y palabras clave. En la sección oscura se usa un tinte más claro para cumplir el contraste AA.
+- **`prefers-reduced-motion`:** apaga los desplazamientos, los resaltados aparecen ya pintados y los números muestran el valor final.

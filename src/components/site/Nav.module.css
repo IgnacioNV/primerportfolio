@@ -94,9 +94,9 @@
   .right {
     gap: 10px;
   }
-  /* On phones the floating CTA takes over after the hero; the bar keeps a compact one. */
-  .cta {
-    padding: 0 12px;
+  /* No room on phones: the floating CTA (and the hero's) take over. */
+  .right .cta {
+    display: none;
   }
 }
 
@@ -230,4 +230,16 @@
     opacity: 0;
     transform: translateY(-8px);
   }
+}
+
+/* On a project's color, dimming text breaks contrast: keep full ink, underline instead. */
+.tinted .lang a {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.tinted .lang a:hover {
+  color: inherit;
+  text-decoration-thickness: 2px;
 }

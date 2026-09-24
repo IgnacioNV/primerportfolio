@@ -26,7 +26,7 @@ function Block({ label, items, num }: { label: string; items: string[]; num: str
         <span>{num}</span> {label}
       </h2>
       <div className={styles.blockBody}>
-        {items.map((t) => (isTodo(t) ? <Todo key={t} value={t} /> : <p key={t}>{t}</p>))}
+        {items.map((t, i) => (isTodo(t) ? <Todo key={i} value={t} /> : <p key={i}>{t}</p>))}
       </div>
     </Reveal>
   );
@@ -42,6 +42,7 @@ export function CasePage({ locale, slug }: { locale: Locale; slug: string }) {
   const i = all.findIndex((x) => x.slug === slug);
   const next = all[(i + 1) % all.length];
   const L = c.ui.caseLabels;
+  const role = p.role.filter((r) => !isTodo(r)).join(", ");
   const question = p.case.question !== undefined ? c.thinking.questions[p.case.question]?.q : undefined;
 
   return (
@@ -67,16 +68,20 @@ export function CasePage({ locale, slug }: { locale: Locale; slug: string }) {
             <p className={styles.line}>{plain(p.problem)}</p>
           </div>
           <dl className={styles.meta}>
-            <div>
-              <dt className="meta">{L.year}</dt>
-              <dd>
-                <Maybe value={p.year} />
-              </dd>
-            </div>
-            <div>
-              <dt className="meta">{L.role}</dt>
-              <dd>{p.role.filter((r) => !isTodo(r)).join(", ")}</dd>
-            </div>
+            {(showTodos || !isTodo(p.year)) && (
+              <div>
+                <dt className="meta">{L.year}</dt>
+                <dd>
+                  <Maybe value={p.year} />
+                </dd>
+              </div>
+            )}
+            {(showTodos || role) && (
+              <div>
+                <dt className="meta">{L.role}</dt>
+                <dd>{role || <Todo value={p.role.join(" ")} />}</dd>
+              </div>
+            )}
             {p.with && (
               <div>
                 <dt className="meta">{L.with}</dt>

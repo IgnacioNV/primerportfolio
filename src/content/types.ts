@@ -144,6 +144,7 @@ export type SiteContent = {
       hint: string;
       hintTouch: string;
       label: string;
+      nextLabel: string;
     };
   };
 
@@ -184,7 +185,8 @@ export type SiteContent = {
     educationTitle: string;
     education: { name: string; detail: string; years: Text; logo: string; hover: string }[];
     languagesTitle: string;
-    languages: { name: string; level: Text }[];
+    /** `unconfirmed` languages are hidden in production until confirmed. */
+    languages: { name: string; level: Text; unconfirmed?: boolean }[];
     toolsTitle: string;
     toolsLede: string;
     stages: string[];

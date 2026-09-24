@@ -9,8 +9,8 @@
   --c-bg: #f1efe9;
   --c-surface: #e8e5dd;
   --c-text: #121212;
-  --c-text-2: #45433e; /* 8.9:1 on bg */
-  --c-muted: #6b6860; /* 5.0:1 on bg — AA for body text */
+  --c-text-2: #45433e; /* 8.6:1 on bg */
+  --c-muted: #625f57; /* 5.5:1 on bg, 5.1:1 on surface */
   --c-border: rgba(18, 18, 18, 0.14);
   --c-border-strong: #121212;
 
@@ -24,14 +24,14 @@
   --c-night: #0f0f10;
   --c-night-surface: #1a1a1c;
   --c-night-text: #f1efe9;
-  --c-night-muted: #a19e96; /* 7.4:1 on night */
+  --c-night-muted: #a19e96; /* 7.2:1 on night */
   --c-night-border: rgba(241, 239, 233, 0.16);
-  --c-accent-on-night: #9aa1ff; /* #2A36FF is 2.6:1 on night; this tint is 7.6:1 */
+  --c-accent-on-night: #9aa1ff; /* #2A36FF is too dark on night; this tint is 8.1:1 */
 
   /* Type */
   --f-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --f-serif: var(--font-serif), ui-serif, Georgia, serif;
-  --f-mono: var(--font-mono), ui-monospace, "SF Mono", monospace;
+  --f-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
 
   --fs-display: clamp(44px, 6.4vw, 96px);
   --fs-h2: clamp(36px, 4vw, 56px);

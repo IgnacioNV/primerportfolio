@@ -154,6 +154,7 @@ export const es: SiteContent = {
       hint: "Mové el cursor: ahí es donde miro. Clic para otro.",
       hintTouch: "Arrastrá de costado para mirar abajo. Tocá para otro.",
       label: "Ejemplo interactivo: en la superficie se lee una cosa y debajo, otra.",
+      nextLabel: "Ver otro ejemplo",
     },
   },
 
@@ -436,7 +437,7 @@ export const es: SiteContent = {
     languages: [
       { name: "Español", level: "Nativo" },
       { name: "Inglés", level: "TODO(nacho): nivel de inglés" },
-      { name: "Italiano", level: "TODO(nacho): confirmar italiano y nivel" },
+      { name: "Italiano", level: "TODO(nacho): confirmar italiano y nivel", unconfirmed: true },
     ],
     toolsTitle: "Con qué trabajo",
     toolsLede:

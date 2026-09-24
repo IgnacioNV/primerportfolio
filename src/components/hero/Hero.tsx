@@ -47,7 +47,7 @@ export function Hero({ hero, name, ui, hasPortrait, visual }: Props) {
             ))}
           </ul>
 
-          <div className={styles.actions}>
+          <div className={styles.actions} id="hero-cta">
             <CtaButton label={ui.cta} aria={ui.ctaAria} />
             <a href="#proyectos" className={styles.secondary}>
               {ui.seeProjects} <ArrowDown size={16} aria-hidden />

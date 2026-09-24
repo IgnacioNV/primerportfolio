@@ -57,12 +57,9 @@
   text-transform: none;
   border-radius: var(--radius-card);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  opacity: 0;
-  transform: translateY(4px);
+  /* Closed tooltips take no layout space (they'd widen the page near the edge). */
+  display: none;
   pointer-events: none;
-  transition:
-    opacity var(--dur-fast) var(--ease),
-    transform var(--dur-fast) var(--ease);
 }
 
 .tipRight {
@@ -71,8 +68,15 @@
 }
 
 .tipOpen {
-  opacity: 1;
-  transform: none;
+  display: block;
+  animation: tip var(--dur-fast) var(--ease);
+}
+
+@keyframes tip {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
 }
 
 :global(.night) .tip {

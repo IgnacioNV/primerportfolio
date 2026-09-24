@@ -137,7 +137,7 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
               <h3 className={`meta ${styles.colTitle}`}>{a.languagesTitle}</h3>
               <dl className={styles.langs}>
                 {a.languages
-                  .filter((l) => showTodos || !isTodo(l.level) || !l.level.includes("confirm"))
+                  .filter((l) => showTodos || !l.unconfirmed)
                   .map((l) => (
                     <div key={l.name}>
                       <dt>{l.name}</dt>

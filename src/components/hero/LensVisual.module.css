@@ -59,14 +59,34 @@
 
 .hint {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 14px;
   margin-top: 12px;
   color: var(--c-muted);
 }
 
 .count {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 32px;
+  margin: -8px 0;
+  padding: 0 10px;
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-pill);
+  background: none;
+  font: inherit;
+  letter-spacing: inherit;
   font-variant-numeric: tabular-nums;
   color: var(--c-text);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+
+.count:hover {
+  color: var(--c-accent);
+  border-color: var(--c-accent);
 }
 
 .hintTouch {
