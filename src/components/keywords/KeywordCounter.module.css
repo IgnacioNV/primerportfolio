@@ -3,7 +3,8 @@
   left: 16px;
   bottom: 16px;
   z-index: 44;
-  width: min(300px, calc(100vw - 32px));
+  /* Leaves room for the floating "Charlemos" on the right (mobile). */
+  width: min(300px, calc(100vw - 210px));
   font-size: 12px;
 }
 
@@ -86,6 +87,7 @@
 /* Slots: hidden until opened. */
 .slotsWrap {
   display: none;
+  width: min(300px, calc(100vw - 32px));
   margin-top: 6px;
   padding: 10px 12px 12px;
   border: 1px solid var(--c-border-strong);
@@ -200,6 +202,7 @@
 @media (min-width: 1100px) {
   .slotsWrap {
     display: block;
+    width: auto;
     margin: 0;
     border-top: 0;
     border-radius: 0 0 var(--radius-card) var(--radius-card);
