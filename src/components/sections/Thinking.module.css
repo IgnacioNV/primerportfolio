@@ -188,19 +188,15 @@
   opacity: 0.25;
 }
 
-/* Award */
+/* Award: its own moment — full width, with air above and below. */
 .award {
-  margin-top: var(--space-section);
+  margin-block: clamp(96px, 12vw, 190px);
   display: grid;
-  gap: 32px;
+  gap: clamp(28px, 3vw, 44px);
 }
 
-@media (min-width: 900px) {
-  .award {
-    grid-template-columns: 6fr 5fr;
-    gap: 56px;
-    align-items: center;
-  }
+.awardText {
+  max-width: 64ch;
 }
 
 .awardMedia img {
@@ -208,6 +204,7 @@
   height: auto;
   border-radius: var(--radius-card);
 }
+
 
 .awardKicker {
   margin: 0;

@@ -30,7 +30,7 @@ export function Thinking({ locale, c, index }: { locale: Locale; c: SiteContent;
 
         <Reveal as="article" className={styles.award} aria-labelledby="award-title">
           <div className={styles.awardMedia}>
-            <Image src={stem} alt={award.title} sizes="(min-width: 900px) 45vw, 100vw" placeholder="blur" />
+            <Image src={stem} alt={award.title} sizes="(min-width: 1100px) 1100px, 100vw" placeholder="blur" />
           </div>
           <div className={styles.awardText}>
             <p className={`meta ${styles.awardKicker}`}>{award.kicker}</p>
