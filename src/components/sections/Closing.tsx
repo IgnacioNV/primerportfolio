@@ -1,4 +1,4 @@
-import { ArrowUp, ArrowUpRight, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import type { SiteContent } from "@/content";
 import { publicExists } from "@/lib/assets";
 import { isTodo } from "@/lib/todo";
@@ -9,7 +9,8 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
 import { RichText } from "@/components/ui/RichText";
 import { Todo } from "@/components/ui/Todo";
-import { BrandIcon } from "@/components/ui/BrandIcon";
+import { BackToTop } from "@/components/ui/BackToTop";
+import { SocialLinks } from "@/components/contact/SocialLinks";
 import styles from "./Closing.module.css";
 
 export function Closing({ c, index }: { c: SiteContent; index: number }) {
@@ -57,17 +58,12 @@ export function Closing({ c, index }: { c: SiteContent; index: number }) {
                   )}
                 </dd>
               </div>
-              {person.links.map((l) => (
-                <div key={l.href}>
-                  <dt className="meta">{l.label}</dt>
-                  <dd>
-                    <a className="link" href={l.href} target="_blank" rel="noreferrer">
-                      {l.label === "GitHub" && <BrandIcon name="github" size={14} />} {l.href.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "").slice(0, 40)}
-                      <ArrowUpRight size={14} aria-hidden />
-                    </a>
-                  </dd>
-                </div>
-              ))}
+              <div>
+                <dt className="meta">{c.ui.contact.socialLabel}</dt>
+                <dd>
+                  <SocialLinks links={person.links} />
+                </dd>
+              </div>
               {hasCv ? (
                 <div>
                   <dt className="meta">CV</dt>
@@ -90,9 +86,7 @@ export function Closing({ c, index }: { c: SiteContent; index: number }) {
 
         <footer className={styles.footer}>
           <span className="meta">{c.footer}</span>
-          <a href="#hero" className="meta">
-            <ArrowUp size={14} aria-hidden /> {c.person.name}
-          </a>
+          <BackToTop label={c.ui.backToTop} className="meta" />
         </footer>
       </div>
     </section>

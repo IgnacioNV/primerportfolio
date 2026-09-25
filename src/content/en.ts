@@ -55,8 +55,9 @@ export const en: SiteContent = {
       errorPrefix: "It couldn't be sent. Write to me directly at",
       errorFallback: "It couldn't be sent. Please try again in a bit.",
       copy: "Copy",
-      copied: "Copied",
+      copied: "Copied!",
       subject: "Hi Nacho —",
+      socialLabel: "Social",
       emailLabel: "Email",
     },
     keywords: {
@@ -66,6 +67,7 @@ export const en: SiteContent = {
       done: "You found them all. You know a fair bit about me by now — let's talk about the rest.",
     },
     lightbox: { open: "Enlarge photo", prev: "Previous photo", next: "Next photo", close: "Close" },
+    backToTop: "Back to top",
     filterLabel: "Filter experiments",
     filterAll: "All",
   },
@@ -74,11 +76,21 @@ export const en: SiteContent = {
     name: "Ignacio Nuñez Valcarce",
     city: "Buenos Aires",
     timezone: "America/Argentina/Buenos_Aires",
-    email: "TODO(nacho): mail",
+    email: "ignacionunezvalcarce@gmail.com",
     cv: "TODO(nacho): /cv/cv-ignacio-nunez-valcarce.pdf",
     links: [
-      { label: "LinkedIn", href: "https://www.linkedin.com/in/ignacio-nu%C3%B1ez-valcarce-7b870a211/" },
-      { label: "GitHub", href: "https://github.com/IgnacioNV" },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/in/ignacio-nu%C3%B1ez-valcarce-7b870a211/",
+        icon: "linkedin",
+        aria: "Ignacio Nuñez Valcarce on LinkedIn (opens in a new tab)",
+      },
+      {
+        label: "GitHub",
+        href: "https://github.com/IgnacioNV",
+        icon: "github",
+        aria: "Ignacio Nuñez Valcarce on GitHub (opens in a new tab)",
+      },
     ],
   },
 
@@ -506,5 +518,5 @@ export const en: SiteContent = {
     cvLabel: "Download CV",
   },
 
-  footer: "v2 · 2026. Designed and built in Buenos Aires, with Next.js and Claude.",
+  footer: "v4 · 2026. Designed and built in Buenos Aires, with Next.js and Claude.",
 };

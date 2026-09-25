@@ -7,12 +7,29 @@ import { Check, Copy } from "lucide-react";
 export function EmailCopy({ email, subject, copy, copied }: { email: string; subject: string; copy: string; copied: string }) {
   const [done, setDone] = useState(false);
   const onCopy = async () => {
+    let ok = false;
     try {
       await navigator.clipboard.writeText(email);
+      ok = true;
+    } catch {
+      // Clipboard API blocked (permissions, older browsers): classic fallback.
+      const ta = document.createElement("textarea");
+      ta.value = email;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        ok = document.execCommand("copy");
+      } catch {
+        ok = false;
+      }
+      ta.remove();
+    }
+    if (ok) {
       setDone(true);
       window.setTimeout(() => setDone(false), 2200);
-    } catch {
-      /* clipboard blocked: the address is visible and selectable */
     }
   };
   return (

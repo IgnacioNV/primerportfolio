@@ -117,7 +117,9 @@ export type SiteContent = {
       copied: string;
       subject: string;
       emailLabel: string;
+      socialLabel: string;
     };
+    backToTop: string;
     keywords: {
       counter: string;
       title: string;
@@ -135,7 +137,8 @@ export type SiteContent = {
     timezone: string;
     email: Text;
     cv: Text;
-    links: { label: string; href: string }[];
+    /** Social links, shown as icons. `aria` is the full accessible name. */
+    links: { label: string; href: string; icon: string; aria: string }[];
   };
 
   /** Creative name + clear label. */
