@@ -158,7 +158,7 @@ export const es: SiteContent = {
     titleStruck: "pantallas.",
     titleReplacement: "decisiones, no solo pantallas.",
     sub: "Estudio Diseño en UdeSA y hago marca y producto en Inspira.",
-    proofs: ["🏆 Premio World ORT 2025", "Diseño UdeSA", "Inspira RRHH"],
+    proofs: ["Diseño UdeSA", "Inspira RRHH"],
     portrait: {
       src: "/fotos/hero.jpg",
       alt: "Retrato de Ignacio Nuñez Valcarce",

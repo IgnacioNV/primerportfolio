@@ -1,11 +1,12 @@
 import { ArrowRight } from "lucide-react";
 import type { SiteContent } from "@/content";
 import { CtaButton } from "@/components/contact/CtaButton";
-import { HeroTitle } from "./HeroTitle";
+import { HeroLine } from "./HeroLine";
 import styles from "./Hero.module.css";
 
 type Props = {
   hero: SiteContent["hero"];
+  name: string;
   ui: SiteContent["ui"];
   /**
    * The visual on the right (photo with the work underneath). Swappable on
@@ -15,15 +16,18 @@ type Props = {
   visual: React.ReactNode | null;
 };
 
-/** 0–5 s: who, what, why believe it, what to do. ~25 visible words. */
-export function Hero({ hero, ui, visual }: Props) {
+/** 0–5 s: who (the name, biggest text on the site), what, proof, what to do. */
+export function Hero({ hero, name, ui, visual }: Props) {
   return (
     <section id="hero" className={styles.hero} aria-labelledby="hero-title">
       <div className={`${styles.grid} ${visual ? "" : styles.textOnly}`}>
         {visual && <div className={styles.visual}>{visual}</div>}
 
-        <div className={styles.text} id="hero-title">
-          <HeroTitle title={hero.title} start={hero.titleStart} struck={hero.titleStruck} replacement={hero.titleReplacement} />
+        <div className={styles.text}>
+          <h1 id="hero-title" className={styles.name}>
+            {name}
+          </h1>
+          <HeroLine title={hero.title} start={hero.titleStart} struck={hero.titleStruck} replacement={hero.titleReplacement} />
           <p className={styles.sub}>{hero.sub}</p>
 
           <ul className={styles.proofs}>

@@ -101,7 +101,7 @@
 }
 
 .statValue {
-  font-size: clamp(56px, 7vw, 104px);
+  font-size: clamp(44px, 6vw, 88px);
   line-height: var(--lh-tight);
   letter-spacing: var(--tracking-display);
   font-weight: var(--fw-display);

@@ -47,7 +47,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       <Nav locale={locale} homeHref={routes.home(locale)} altHref={routes.home(other)} name={c.person.name} ui={c.ui} items={c.nav} />
 
       <main id="contenido">
-        <Hero hero={c.hero} ui={c.ui} visual={heroVisual} />
+        <Hero hero={c.hero} name={c.person.name} ui={c.ui} visual={heroVisual} />
         <Projects locale={locale} c={c} index={1} />
         <Thinking locale={locale} c={c} index={2} />
         <Lab c={c} index={3} />
