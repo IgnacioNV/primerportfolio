@@ -93,8 +93,6 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
                   title: t.title,
                   body: t.body,
                   current: t.current,
-                  logos: (t.logos ?? []).filter(publicExists),
-                  missing: showTodos ? (t.logos ?? []).filter((l) => !publicExists(l)) : [],
                 }))}
             />
           </div>
@@ -104,23 +102,24 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
               <h3 className={`meta ${styles.colTitle}`}>{a.educationTitle}</h3>
               <ul className={styles.edu}>
                 {a.education.map((e) => {
-                  const hasLogo = publicExists(e.logo);
+                  const hasLogo = !!e.logo && publicExists(e.logo);
                   return (
-                    <li key={e.name} className={styles.eduItem}>
-                      <div className={styles.eduLogo}>
-                        {hasLogo ? (
-                          // eslint-disable-next-line @next/next/no-img-element -- official SVG logos, no optimization needed
-                          <img src={e.logo} alt={e.name} />
-                        ) : (
-                          <>
-                            <span className={styles.eduFallback}>{e.name}</span>
-                            <Todo value={`TODO(nacho): SVG oficial en ${e.logo}`} />
-                          </>
-                        )}
-                        <span className={`meta ${styles.eduHover}`} aria-hidden>
-                          {e.hover}
-                        </span>
-                      </div>
+                    <li key={e.name} className={`${styles.eduItem} ${e.logo ? "" : styles.eduNoLogo}`}>
+                      {e.logo && (
+                        <div className={styles.eduLogo}>
+                          {hasLogo ? (
+                            // eslint-disable-next-line @next/next/no-img-element -- official logos, no optimization needed
+                            <img src={e.logo} alt={e.name} />
+                          ) : (
+                            <Todo value={`TODO(nacho): logo ${e.logo}`} />
+                          )}
+                          {e.hover && (
+                            <span className={`meta ${styles.eduHover}`} aria-hidden>
+                              {e.hover}
+                            </span>
+                          )}
+                        </div>
+                      )}
                       <p className={styles.eduText}>
                         <strong>{e.name}</strong>
                         <br />

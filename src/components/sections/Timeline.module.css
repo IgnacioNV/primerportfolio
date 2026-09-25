@@ -96,24 +96,6 @@
   letter-spacing: -0.01em;
 }
 
-/* Institution logos: uniform height, monochrome; color on hover (desktop only). */
-.logo {
-  height: 26px;
-  width: auto;
-  filter: grayscale(1) contrast(1.15);
-  opacity: 0.85;
-  transition:
-    filter var(--dur) var(--ease),
-    opacity var(--dur) var(--ease);
-}
-
-@media (hover: hover) {
-  .item:hover .logo {
-    filter: none;
-    opacity: 1;
-  }
-}
-
 .body {
   margin: 0;
   color: var(--c-text-2);

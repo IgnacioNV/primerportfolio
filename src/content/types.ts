@@ -200,10 +200,11 @@ export type SiteContent = {
     photos: Photo[];
     timelineTitle: string;
     /** Newest first. `current` items get a filled dot and the "now" label. */
-    timeline: { when: Text; title: string; body: Text; current?: boolean; logos?: string[] }[];
+    timeline: { when: Text; title: string; body: Text; current?: boolean }[];
     nowLabel: string;
     educationTitle: string;
-    education: { name: string; detail: string; years: Text; logo: string; hover: string }[];
+    /** Logos only here (not in the timeline). No `logo` = name only. */
+    education: { name: string; detail: string; years: Text; logo?: string; hover?: string }[];
     languagesTitle: string;
     /** `unconfirmed` languages are hidden in production until confirmed. */
     languages: { name: string; level: Text; unconfirmed?: boolean; logo?: string }[];

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { Maybe, Todo } from "@/components/ui/Todo";
+import { Maybe } from "@/components/ui/Todo";
 import styles from "./Timeline.module.css";
 
 export type TimelineItem = {
@@ -9,10 +9,6 @@ export type TimelineItem = {
   title: string;
   body: string;
   current?: boolean;
-  /** Logos that exist in /public/logos. */
-  logos: string[];
-  /** Logos still missing (dev marker only). */
-  missing: string[];
 };
 
 /**
@@ -62,19 +58,10 @@ export function Timeline({ items, nowLabel }: { items: TimelineItem[]; nowLabel:
             {t.current && <span className={`meta ${styles.now}`}>{nowLabel}</span>}
           </div>
           <div className={styles.content}>
-            <p className={styles.title}>
-              {t.logos.map((src) => (
-                // eslint-disable-next-line @next/next/no-img-element -- small official SVG logos
-                <img key={src} src={src} alt="" className={styles.logo} aria-hidden />
-              ))}
-              <span>{t.title}</span>
-            </p>
+            <p className={styles.title}>{t.title}</p>
             <p className={styles.body}>
               <Maybe value={t.body} />
             </p>
-            {t.missing.map((m) => (
-              <Todo key={m} value={`TODO(nacho): logo ${m}`} />
-            ))}
           </div>
         </li>
       ))}

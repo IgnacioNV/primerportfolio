@@ -430,32 +430,31 @@ export const es: SiteContent = {
     ],
     timelineTitle: "Trayectoria",
     timeline: [
-      { when: "Sep 2026 —", title: "Inspira Recursos Humanos", body: "Diseñador de marca y producto digital.", current: true },
-      { when: "2026 —", title: "Diseño en la UdeSA", body: "Pensamiento proyectual, y alrededor: negocios, tecnología, análisis y código.", current: true, logos: ["/logos/udesa.svg"] },
-      { when: "2025", title: "Discurso de graduación en el Gran Rex", body: "En nombre de los egresados de ORT, ante más de 3.000 personas.", logos: ["/logos/ort.png"] },
-      { when: "2025", title: "World ORT STEM Communication Award", body: "Por un video sobre diseño de interfaces, adicción y ansiedad.", logos: ["/logos/world-ort.svg"] },
+      { when: "2026 —", title: "Inspira Recursos Humanos", body: "Diseñador de marca y producto digital.", current: true },
+      { when: "2026 —", title: "Diseño en la UdeSA", body: "Pensamiento proyectual, y alrededor: negocios, tecnología, análisis y código.", current: true },
+      { when: "2025", title: "Discurso de graduación en el Gran Rex", body: "En nombre de los egresados de ORT, ante más de 3.000 personas." },
+      { when: "2025", title: "World ORT STEM Communication Award", body: "Por un video sobre diseño de interfaces, adicción y ansiedad." },
       {
-        when: "Feb 2025",
+        when: "2025",
         title: "World ORT Ecology Summer School, Panamá",
-        body: "Curso de ecología tropical en el Parque Nacional Soberanía.",
-        logos: ["/logos/world-ort.svg"],
+        body: "Curso de ecología tropical en el Parque Nacional Soberanía."
       },
       { when: "TODO(nacho): año", title: "ORT London", body: "TODO(nacho): qué fue ORT London" },
       {
         when: "2020 — 2025",
         title: "ORT Argentina, orientación TIC",
-        body: "Programación, diseño, tecnología y comunicación. Promedio cercano a 9,5; mis mejores notas, en Inglés, TIC y Programación.",
-        logos: ["/logos/ort.png"],
+        body: "Programación, diseño, tecnología y comunicación. Promedio cercano a 9,5; mis mejores notas, en Inglés, TIC y Programación."
       },
       { when: "2019", title: "Club Ciudad de Buenos Aires", body: "Vóley. Tres campeonatos nacionales con el club." },
       { when: "2018", title: "GEBA", body: "Me federé en vóley." },
-      { when: "2013 — 2019", title: "Scuola Italiana Cristoforo Colombo", body: "Primaria.", logos: ["/logos/scuola-italiana.png"] },
+      { when: "2013 — 2019", title: "Scuola Italiana Cristoforo Colombo", body: "Primaria." },
     ],
     nowLabel: "Ahora",
     educationTitle: "Formación",
     education: [
       { name: "Universidad de San Andrés", detail: "Diseño", years: "2026 —", logo: "/logos/udesa.svg", hover: "Diseño · 2026–" },
       { name: "ORT Argentina", detail: "Secundaria técnica, orientación TIC", years: "2020 — 2025", logo: "/logos/ort.png", hover: "TIC · 2020–2025" },
+      { name: "Scuola Italiana Cristoforo Colombo", detail: "Primaria", years: "2013 — 2019" },
     ],
     languagesTitle: "Idiomas",
     languages: [

@@ -423,32 +423,31 @@ export const en: SiteContent = {
     ],
     timelineTitle: "Path",
     timeline: [
-      { when: "Sep 2026 —", title: "Inspira Recursos Humanos", body: "Brand & digital product designer.", current: true },
-      { when: "2026 —", title: "Design at UdeSA", body: "Project thinking — plus business, technology, analysis and code around it.", current: true, logos: ["/logos/udesa.svg"] },
-      { when: "2025", title: "Graduation speech at the Gran Rex", body: "On behalf of ORT's graduates, to more than 3,000 people.", logos: ["/logos/ort.png"] },
-      { when: "2025", title: "World ORT STEM Communication Award", body: "For a video on interface design, addiction and anxiety.", logos: ["/logos/world-ort.svg"] },
+      { when: "2026 —", title: "Inspira Recursos Humanos", body: "Brand & digital product designer.", current: true },
+      { when: "2026 —", title: "Design at UdeSA", body: "Project thinking — plus business, technology, analysis and code around it.", current: true },
+      { when: "2025", title: "Graduation speech at the Gran Rex", body: "On behalf of ORT's graduates, to more than 3,000 people." },
+      { when: "2025", title: "World ORT STEM Communication Award", body: "For a video on interface design, addiction and anxiety." },
       {
-        when: "Feb 2025",
+        when: "2025",
         title: "World ORT Ecology Summer School, Panama",
-        body: "A course in tropical ecology at Soberanía National Park.",
-        logos: ["/logos/world-ort.svg"],
+        body: "A course in tropical ecology at Soberanía National Park."
       },
       { when: "TODO(nacho): year", title: "ORT London", body: "TODO(nacho): what ORT London was" },
       {
         when: "2020 — 2025",
         title: "ORT Argentina, TIC track",
-        body: "Programming, design, technology and communication. Average around 9.5/10; best marks in English, TIC and Programming.",
-        logos: ["/logos/ort.png"],
+        body: "Programming, design, technology and communication. Average around 9.5/10; best marks in English, TIC and Programming."
       },
       { when: "2019", title: "Club Ciudad de Buenos Aires", body: "Volleyball. Three national championships with the club." },
       { when: "2018", title: "GEBA", body: "Started playing federated volleyball." },
-      { when: "2013 — 2019", title: "Scuola Italiana Cristoforo Colombo", body: "Primary school.", logos: ["/logos/scuola-italiana.png"] },
+      { when: "2013 — 2019", title: "Scuola Italiana Cristoforo Colombo", body: "Primary school." },
     ],
     nowLabel: "Now",
     educationTitle: "Education",
     education: [
       { name: "Universidad de San Andrés", detail: "Design", years: "2026 —", logo: "/logos/udesa.svg", hover: "Design · 2026–" },
       { name: "ORT Argentina", detail: "Technical high school, TIC track", years: "2020 — 2025", logo: "/logos/ort.png", hover: "TIC · 2020–2025" },
+      { name: "Scuola Italiana Cristoforo Colombo", detail: "Primary school", years: "2013 — 2019" },
     ],
     languagesTitle: "Languages",
     languages: [
