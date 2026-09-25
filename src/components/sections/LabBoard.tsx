@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import type { LabTag, SiteContent } from "@/content";
 import { Maybe } from "@/components/ui/Todo";
 import styles from "./Lab.module.css";
@@ -8,30 +8,75 @@ import styles from "./Lab.module.css";
 /* Slight, fixed tilts: notes pinned on a workbench, not a grid of tiles. */
 const TILT = [-1.6, 1.1, -0.6, 1.8, -1.2, 0.7, -0.4];
 
-export function LabBoard({ lab, allLabel, groupLabel }: { lab: SiteContent["lab"]; allLabel: string; groupLabel: string }) {
+type Props = { lab: SiteContent["lab"]; allLabel: string; groupLabel: string };
+
+/**
+ * Filtering reorders the bench: matching notes move to the front (keeping their
+ * original order), the rest follow, dimmed. The move is animated with FLIP
+ * (~300 ms); with reduced motion it just happens. "All" restores the order.
+ */
+export function LabBoard({ lab, allLabel, groupLabel }: Props) {
   const [tag, setTag] = useState<LabTag | "all">("all");
+  const listRef = useRef<HTMLUListElement>(null);
+  const before = useRef<Map<string, DOMRect> | null>(null);
+
   const tags = (Object.keys(lab.tags) as LabTag[]).filter((t) => lab.entries.some((e) => e.tags.includes(t)));
+  const matches = (e: (typeof lab.entries)[number]) => tag === "all" || e.tags.includes(tag);
   const count = (t: LabTag | "all") => (t === "all" ? lab.entries.length : lab.entries.filter((e) => e.tags.includes(t)).length);
+  const ordered = tag === "all" ? lab.entries : [...lab.entries.filter(matches), ...lab.entries.filter((e) => !matches(e))];
+
+  const choose = (t: LabTag | "all") => {
+    // F(irst): remember where every note is before the reorder.
+    const map = new Map<string, DOMRect>();
+    listRef.current?.querySelectorAll<HTMLElement>("[data-id]").forEach((el) => map.set(el.dataset.id!, el.getBoundingClientRect()));
+    before.current = map;
+    setTag(t);
+  };
+
+  // L(ast), I(nvert), P(lay).
+  useLayoutEffect(() => {
+    const prev = before.current;
+    before.current = null;
+    if (!prev || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    listRef.current?.querySelectorAll<HTMLElement>("[data-id]").forEach((el) => {
+      const a = prev.get(el.dataset.id!);
+      if (!a) return;
+      const b = el.getBoundingClientRect();
+      const dx = a.left - b.left;
+      const dy = a.top - b.top;
+      if (!dx && !dy) return;
+      el.animate([{ translate: `${dx}px ${dy}px` }, { translate: "0 0" }], { duration: 300, easing: "cubic-bezier(0.2, 0.7, 0.1, 1)" });
+    });
+  }, [tag]);
+
+  const n = count(tag);
+  const announce =
+    tag === "all"
+      ? lab.result.all.replace("{n}", String(n))
+      : (n === 1 ? lab.result.one : lab.result.other).replace("{n}", String(n)).replace("{tag}", lab.tags[tag]);
 
   return (
     <>
       <div className={styles.filters} role="group" aria-label={groupLabel}>
         {(["all", ...tags] as const).map((t) => (
-          <button key={t} type="button" className={`meta ${styles.filter}`} aria-pressed={tag === t} onClick={() => setTag(t)}>
+          <button key={t} type="button" className={`meta ${styles.filter}`} aria-pressed={tag === t} onClick={() => choose(t)}>
             {t === "all" ? allLabel : lab.tags[t]} <span className={styles.fcount}>{count(t)}</span>
           </button>
         ))}
       </div>
+      <p className="sr-only" role="status" aria-live="polite">
+        {announce}
+      </p>
 
-      <ul className={styles.board}>
-        {lab.entries.map((e, i) => {
-          const match = tag === "all" || e.tags.includes(tag);
+      <ul ref={listRef} className={styles.board}>
+        {ordered.map((e) => {
+          const i = lab.entries.indexOf(e);
           return (
             <li
               key={e.id}
-              className={`${styles.note} ${match ? "" : styles.dim}`}
+              data-id={e.id}
+              className={`${styles.note} ${matches(e) ? "" : styles.dim}`}
               style={{ ["--tilt" as string]: `${TILT[i % TILT.length]}deg` }}
-              aria-hidden={!match || undefined}
             >
               <div className={styles.noteTop}>
                 <span className="meta">{e.id}</span>

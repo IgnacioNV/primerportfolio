@@ -186,6 +186,8 @@ export type SiteContent = {
     title: string;
     lede: Rich;
     tags: Record<LabTag, string>;
+    /** Announced after filtering. {n} = count, {tag} = filter name. */
+    result: { one: string; other: string; all: string };
     entries: { id: string; title: string; line: Text; tags: LabTag[]; status: Text; note: Text }[];
   };
 

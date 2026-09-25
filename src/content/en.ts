@@ -336,6 +336,7 @@ export const en: SiteContent = {
       photo: "Photo",
       meta: "Meta",
     },
+    result: { one: "1 experiment in {tag}", other: "{n} experiments in {tag}", all: "{n} experiments" },
     entries: [
       {
         id: "L-01",

@@ -343,6 +343,7 @@ export const es: SiteContent = {
       photo: "Foto",
       meta: "Meta",
     },
+    result: { one: "1 experimento en {tag}", other: "{n} experimentos en {tag}", all: "{n} experimentos" },
     entries: [
       {
         id: "L-01",
