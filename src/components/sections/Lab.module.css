@@ -122,3 +122,9 @@
     transform: none;
   }
 }
+
+.media {
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius-card) - 2px);
+}

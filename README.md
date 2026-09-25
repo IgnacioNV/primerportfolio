@@ -1,4 +1,4 @@
-# primerportfolio — v3
+# primerportfolio — v4
 
 Portfolio de Ignacio Nuñez Valcarce. Next.js 16 · React 19 · TypeScript · CSS Modules · Lucide.
 
@@ -7,6 +7,13 @@ npm install
 npm run dev     # http://localhost:3000
 npm run lint
 npm run build
+```
+
+## Chequeo de letras cortadas
+
+```bash
+npm run dev
+node scripts/text-check.mjs text-check    # capturas + hojas de contacto en ./text-check
 ```
 
 ## Formulario de contacto (Resend)
@@ -40,6 +47,10 @@ Son dos *route groups* (`app/(es)` y `app/(en)`), cada uno con su layout raíz, 
 | Todo el texto en inglés | `src/content/en.ts` |
 | "Ahora mismo" (leyendo / escuchando / construyendo) | `src/content/now.ts` |
 | Colores y logos de proyectos | `src/content/shared.ts` |
+| Fotos del hero (foto + trabajo debajo) | `src/data/hero.ts` |
+| Galería, video y manual de cada caso | `src/data/proyectos.ts` → archivos en `public/proyectos/<slug>/` |
+| Imágenes o videos del Laboratorio | `src/data/laboratorio.ts` → `public/laboratorio/` |
+| Galería "Fotos que saqué" | `src/data/fotos.ts` (aparece con 6 o más) |
 | Fotos | `public/fotos/` (ver su README con los nombres esperados) |
 | Logos de formación (SVG oficiales) | `public/logos/udesa.svg`, `public/logos/ort.svg` |
 | CV | `public/cv/cv-ignacio-nunez-valcarce.pdf` |

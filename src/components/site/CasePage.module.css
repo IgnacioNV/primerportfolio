@@ -211,3 +211,56 @@
 .next:hover .nextName svg {
   transform: translateX(10px);
 }
+
+/* Case media (from src/data/proyectos.ts) */
+.media {
+  max-width: var(--max);
+  margin: var(--space-block) auto 0;
+  padding: 0 var(--gutter);
+  display: grid;
+  gap: var(--space-block);
+}
+
+.videoEl {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+  background: var(--c-surface);
+}
+
+.gallery {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.gallery img,
+.manualPages img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+}
+
+.manual {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.manualPages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}

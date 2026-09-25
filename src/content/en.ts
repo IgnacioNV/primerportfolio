@@ -167,15 +167,6 @@ export const en: SiteContent = {
     titleReplacement: "decisions, not just screens.",
     sub: "I study Design at UdeSA and work on brand and product at Inspira.",
     proofs: ["Design UdeSA", "Inspira RRHH"],
-    portrait: {
-      src: "/fotos/hero.jpg",
-      alt: "Portrait of Ignacio Nuñez Valcarce",
-    },
-    under: [
-      { src: "/fotos/hero-debajo-1.jpg", alt: "TODO(nacho): description of work image 1" },
-      { src: "/fotos/hero-debajo-2.jpg", alt: "TODO(nacho): description of work image 2" },
-      { src: "/fotos/hero-debajo-3.jpg", alt: "TODO(nacho): description of work image 3" },
-    ],
     visual: {
       label: "Photo of Ignacio. Underneath, his projects. Use the arrow keys to reveal and Enter to toggle.",
       toggle: "Toggle between the photo and the work",

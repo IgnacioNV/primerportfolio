@@ -155,9 +155,6 @@ export type SiteContent = {
     titleReplacement: string;
     sub: string;
     proofs: string[];
-    portrait: Photo;
-    /** Work revealed under the photo, rotating. Missing files fall back to project logos. */
-    under: Photo[];
     visual: {
       label: string;
       toggle: string;

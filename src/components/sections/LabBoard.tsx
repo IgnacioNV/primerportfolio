@@ -2,20 +2,25 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import type { LabTag, SiteContent } from "@/content";
+import Image from "next/image";
 import { Maybe } from "@/components/ui/Todo";
+import { MediaVideo } from "@/components/ui/MediaVideo";
+import type { Image as ImageData, Video } from "@/data/types";
 import styles from "./Lab.module.css";
 
 /* Slight, fixed tilts: notes pinned on a workbench, not a grid of tiles. */
 const TILT = [-1.6, 1.1, -0.6, 1.8, -1.2, 0.7, -0.4];
 
-type Props = { lab: SiteContent["lab"]; allLabel: string; groupLabel: string };
+export type LabMedia = { image?: ImageData & { altText: string }; video?: Video; videoAlt?: string };
+
+type Props = { lab: SiteContent["lab"]; allLabel: string; groupLabel: string; media: Record<string, LabMedia> };
 
 /**
  * Filtering reorders the bench: matching notes move to the front (keeping their
  * original order), the rest follow, dimmed. The move is animated with FLIP
  * (~300 ms); with reduced motion it just happens. "All" restores the order.
  */
-export function LabBoard({ lab, allLabel, groupLabel }: Props) {
+export function LabBoard({ lab, allLabel, groupLabel, media }: Props) {
   const [tag, setTag] = useState<LabTag | "all">("all");
   const listRef = useRef<HTMLUListElement>(null);
   const before = useRef<Map<string, DOMRect> | null>(null);
@@ -84,6 +89,17 @@ export function LabBoard({ lab, allLabel, groupLabel }: Props) {
                   <Maybe value={e.status} />
                 </span>
               </div>
+              {media[e.id]?.image && (
+                <Image
+                  className={styles.media}
+                  src={media[e.id].image!.src}
+                  alt={media[e.id].image!.altText}
+                  width={media[e.id].image!.width}
+                  height={media[e.id].image!.height}
+                  sizes="(min-width: 900px) 25vw, 90vw"
+                />
+              )}
+              {media[e.id]?.video && <MediaVideo video={media[e.id].video!} alt={media[e.id].videoAlt ?? ""} className={styles.media} />}
               <h3 className={styles.title}>{e.title}</h3>
               <p className={styles.line}>
                 <Maybe value={e.line} />

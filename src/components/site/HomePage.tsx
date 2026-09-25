@@ -3,7 +3,8 @@ import { publicExists } from "@/lib/assets";
 import { Nav } from "./Nav";
 import { Hero } from "@/components/hero/Hero";
 import { HeroVisual, type Layer } from "@/components/hero/HeroVisual";
-import { isTodo, showTodos } from "@/lib/todo";
+import { showTodos } from "@/lib/todo";
+import { hero as heroMedia } from "@/data/hero";
 import { FloatingCta } from "@/components/contact/FloatingCta";
 import { Projects } from "@/components/sections/Projects";
 import { Thinking } from "@/components/sections/Thinking";
@@ -23,10 +24,8 @@ export function HomePage({ locale }: { locale: Locale }) {
   // Hero visual: my photo on top, work underneath. Until the photos exist,
   // the work falls back to the real project logos; without a portrait the
   // visual stays hidden in production (the text takes the full width).
-  const hasPortrait = publicExists(c.hero.portrait.src);
-  const underPhotos: Layer[] = c.hero.under
-    .filter((u) => publicExists(u.src))
-    .map((u) => ({ src: u.src, alt: isTodo(u.alt) ? "" : u.alt }));
+  const hasPortrait = publicExists(heroMedia.portrait.src);
+  const underPhotos: Layer[] = heroMedia.under.filter((u) => publicExists(u.src)).map((u) => ({ src: u.src, alt: u.alt[locale] }));
   const under: Layer[] = underPhotos.length
     ? underPhotos
     : c.projects.list
@@ -35,7 +34,7 @@ export function HomePage({ locale }: { locale: Locale }) {
   const heroVisual =
     hasPortrait || showTodos ? (
       <HeroVisual
-        top={hasPortrait ? { src: c.hero.portrait.src, alt: c.hero.portrait.alt } : null}
+        top={hasPortrait ? { src: heroMedia.portrait.src, alt: heroMedia.portrait.alt[locale] } : null}
         under={under}
         label={c.hero.visual.label}
         toggle={c.hero.visual.toggle}

@@ -10,6 +10,8 @@ import { plain } from "@/components/ui/RichText";
 import { Maybe, Todo } from "@/components/ui/Todo";
 import { isTodo, showTodos } from "@/lib/todo";
 import { Nav } from "./Nav";
+import { CaseMedia } from "./CaseMedia";
+import { proyectos } from "@/data/proyectos";
 import styles from "./CasePage.module.css";
 
 /*
@@ -104,6 +106,8 @@ export function CasePage({ locale, slug }: { locale: Locale; slug: string }) {
             <Image src={p.logo} alt={`${p.name} — logo`} sizes="(min-width: 900px) 50vw, 90vw" />
           </figure>
         )}
+
+        <CaseMedia media={proyectos[slug]} locale={locale} />
 
         <div className={styles.blocks}>
           <Block num="01" label={L.problem} items={p.case.problem} />

@@ -171,15 +171,6 @@ export const es: SiteContent = {
     titleReplacement: "decisiones, no solo pantallas.",
     sub: "Estudio Diseño en UdeSA y hago marca y producto en Inspira.",
     proofs: ["Diseño UdeSA", "Inspira RRHH"],
-    portrait: {
-      src: "/fotos/hero.jpg",
-      alt: "Retrato de Ignacio Nuñez Valcarce",
-    },
-    under: [
-      { src: "/fotos/hero-debajo-1.jpg", alt: "TODO(nacho): descripción de la imagen de trabajo 1" },
-      { src: "/fotos/hero-debajo-2.jpg", alt: "TODO(nacho): descripción de la imagen de trabajo 2" },
-      { src: "/fotos/hero-debajo-3.jpg", alt: "TODO(nacho): descripción de la imagen de trabajo 3" },
-    ],
     visual: {
       label: "Foto de Ignacio. Debajo, proyectos suyos. Usá las flechas para revelar y Enter para alternar.",
       toggle: "Alternar entre la foto y el trabajo",
