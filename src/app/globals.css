@@ -45,7 +45,7 @@
   --fw-medium: 500;
   --fw-body: 400;
 
-  --lh-tight: 0.95;
+  --lh-tight: 1.1; /* display: never below 1.1 — accents and descenders need room */
   --lh-snug: 1.2;
   --lh-body: 1.55;
 
@@ -222,7 +222,7 @@ button {
 
 .section-title {
   font-size: var(--fs-h2);
-  line-height: 1;
+  line-height: var(--lh-tight);
   letter-spacing: var(--tracking-display);
   font-weight: var(--fw-display);
   margin: 0;

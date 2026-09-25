@@ -59,7 +59,7 @@
 .ctaTitle {
   margin: 0;
   font-size: var(--fs-h2);
-  line-height: 1;
+  line-height: var(--lh-tight);
   letter-spacing: var(--tracking-display);
   font-weight: var(--fw-display);
   max-width: 14ch;

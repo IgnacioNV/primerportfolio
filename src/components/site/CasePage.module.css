@@ -32,7 +32,7 @@
 .name {
   margin: 12px 0 18px;
   font-size: clamp(64px, 13vw, 200px);
-  line-height: 0.85;
+  line-height: var(--lh-tight);
   letter-spacing: -0.06em;
   font-weight: var(--fw-display);
 }
@@ -41,7 +41,7 @@
   margin: 0;
   max-width: 42ch;
   font-size: var(--fs-lead);
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .meta {
@@ -198,7 +198,7 @@
   margin-top: 8px;
   font-size: clamp(44px, 8vw, 128px);
   letter-spacing: -0.055em;
-  line-height: 0.95;
+  line-height: var(--lh-tight);
   font-weight: var(--fw-display);
 }
 

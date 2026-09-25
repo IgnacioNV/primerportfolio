@@ -167,7 +167,7 @@
 .final p {
   margin: 0;
   font-size: 14px;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .done .card {
@@ -181,7 +181,7 @@
   background: var(--c-text);
   color: var(--c-bg);
   font-size: 13px;
-  line-height: 1.35;
+  line-height: 1.4;
   animation: rise 0.25s var(--ease);
   order: 3;
 }
