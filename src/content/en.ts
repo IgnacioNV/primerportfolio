@@ -60,10 +60,10 @@ export const en: SiteContent = {
       emailLabel: "Email",
     },
     keywords: {
+      counter: "words",
       title: "Words that define me",
-      firstFound: "You found one! There are 11 hidden.",
-      done: "Now you know me a little. Let's talk?",
-      progress: "{n} of {total} found",
+      hint: "They're hidden across the page, always next to the proof.",
+      done: "You found them all. You know a fair bit about me by now — let's talk about the rest.",
     },
     lightbox: { open: "Enlarge photo", prev: "Previous photo", next: "Next photo", close: "Close" },
     filterLabel: "Filter experiments",

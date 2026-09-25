@@ -64,10 +64,10 @@ export const es: SiteContent = {
       emailLabel: "Mail",
     },
     keywords: {
+      counter: "palabras",
       title: "Palabras que me definen",
-      firstFound: "¡Encontraste una! Hay 11 escondidas.",
-      done: "Ahora ya me conocés un poco. ¿Charlemos?",
-      progress: "{n} de {total} encontradas",
+      hint: "Están escondidas a lo largo de la página, siempre al lado de la prueba.",
+      done: "Las encontraste todas. Ya sabés bastante de mí; charlemos del resto.",
     },
     lightbox: { open: "Ampliar foto", prev: "Foto anterior", next: "Foto siguiente", close: "Cerrar" },
     filterLabel: "Filtrar experimentos",

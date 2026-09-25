@@ -119,11 +119,10 @@ export type SiteContent = {
       emailLabel: string;
     };
     keywords: {
+      counter: string;
       title: string;
-      firstFound: string;
+      hint: string;
       done: string;
-      /** Screen-reader summary, e.g. "{n} de {total} encontradas". */
-      progress: string;
     };
     lightbox: { open: string; prev: string; next: string; close: string };
     filterAll: string;
