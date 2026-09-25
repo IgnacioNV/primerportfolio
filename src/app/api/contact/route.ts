@@ -29,6 +29,18 @@ function rateLimited(ip: string) {
 
 const clip = (s: unknown, n: number) => (typeof s === "string" ? s.slice(0, n) : "");
 
+const missingEnv = () =>
+  (["RESEND_API_KEY", "CONTACT_TO_EMAIL"] as const).filter((k) => !process.env[k]?.trim());
+
+/**
+ * GET /api/contact → quick setup check. Only says whether each variable is
+ * present (never its value), so it's safe to open in the browser.
+ */
+export function GET() {
+  const missing = missingEnv();
+  return NextResponse.json({ ok: missing.length === 0, missing });
+}
+
 export async function POST(req: Request) {
   let body: Record<string, unknown>;
   try {
@@ -60,8 +72,8 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "invalid", fields: errors }, { status: 422 });
   }
 
-  const key = process.env.RESEND_API_KEY;
-  const to = process.env.CONTACT_TO_EMAIL;
+  const key = process.env.RESEND_API_KEY?.trim();
+  const to = process.env.CONTACT_TO_EMAIL?.trim();
   const lines = [`Nombre: ${f.firstName} ${f.lastName}`, `Email: ${f.email}`];
   if (f.company) lines.push(`Empresa: ${f.company}`);
   if (f.phone) lines.push(`Teléfono: ${f.phone}`);
@@ -73,24 +85,32 @@ export async function POST(req: Request) {
       console.info("[contact] RESEND_API_KEY / CONTACT_TO_EMAIL missing — message not sent:\n" + text);
       return NextResponse.json({ ok: true, dev: true });
     }
-    return NextResponse.json({ ok: false, error: "not_configured" }, { status: 500 });
+    console.error("[contact] missing env:", missingEnv().join(", "));
+    return NextResponse.json({ ok: false, error: "not_configured", missing: missingEnv() }, { status: 500 });
   }
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL || "Portfolio <onboarding@resend.dev>",
-      to: [to],
-      reply_to: f.email,
-      subject: `Portfolio — ${f.firstName} ${f.lastName}${f.company ? ` (${f.company})` : ""}`,
-      text,
-    }),
-  });
+  let res: Response;
+  try {
+    res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: process.env.CONTACT_FROM_EMAIL || "Portfolio <onboarding@resend.dev>",
+        to: [to],
+        reply_to: f.email,
+        subject: `Portfolio — ${f.firstName} ${f.lastName}${f.company ? ` (${f.company})` : ""}`,
+        text,
+      }),
+    });
+  } catch (err) {
+    console.error("[contact] could not reach Resend", err);
+    return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
+  }
 
   if (!res.ok) {
-    console.error("[contact] Resend error", res.status, await res.text().catch(() => ""));
-    return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
+    const detail = await res.text().catch(() => "");
+    console.error("[contact] Resend error", res.status, detail);
+    return NextResponse.json({ ok: false, error: "send_failed", status: res.status }, { status: 502 });
   }
   return NextResponse.json({ ok: true });
 }
