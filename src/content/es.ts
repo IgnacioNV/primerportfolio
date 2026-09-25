@@ -15,13 +15,13 @@ export const es: SiteContent = {
   meta: {
     title: "Ignacio Nuñez Valcarce — Diseño de producto y marca",
     description:
-      "Estudio Diseño en la UdeSA y trabajo en marca y producto digital en Inspira RRHH. Me interesa el problema detrás del problema, y construir lo que lo resuelve.",
+      "Estudio Diseño en la UdeSA y trabajo en marca y producto digital en Inspira RRHH. Me interesa el problema detrás del problema y construir lo que lo resuelve.",
     ogLocale: "es_AR",
   },
 
   ui: {
     cta: "Charlemos",
-    ctaAria: "Charlemos: abrir datos de contacto",
+    ctaAria: "Charlemos: abrir el formulario de contacto",
     seeProjects: "Ver proyectos",
     seeCase: "Ver caso",
     backToProjects: "Todos los proyectos",
@@ -144,7 +144,7 @@ export const es: SiteContent = {
     },
     proyectos: {
       label: "proyectos",
-      evidence: "Siete experimentos que arranqué por mi cuenta, sin que nadie me los pida.",
+      evidence: "Siete experimentos que arranqué por mi cuenta, sin que nadie me los pidiera.",
       section: "laboratorio",
     },
     liderazgo: {
@@ -443,7 +443,7 @@ export const es: SiteContent = {
     timelineTitle: "Trayectoria",
     timeline: [
       { when: "2026 —", title: "Inspira Recursos Humanos", body: "Diseñador de marca y producto digital.", current: true },
-      { when: "2026 —", title: "Diseño en la UdeSA", body: "Pensamiento proyectual, y alrededor: negocios, tecnología, análisis y código.", current: true },
+      { when: "2026 —", title: "Diseño en la UdeSA", body: "Pensamiento proyectual y, alrededor, negocios, tecnología, análisis y código.", current: true },
       { when: "2025", title: "Discurso de graduación en el Gran Rex", body: "En nombre de los egresados de ORT, ante más de 3.000 personas." },
       { when: "2025", title: "World ORT STEM Communication Award", body: "Por un video sobre diseño de interfaces, adicción y ansiedad." },
       {
@@ -455,7 +455,7 @@ export const es: SiteContent = {
       {
         when: "2020 — 2025",
         title: "ORT Argentina, orientación TIC",
-        body: "Programación, diseño, tecnología y comunicación. Promedio cercano a 9,5; mis mejores notas, en Inglés, TIC y Programación."
+        body: "Programación, diseño, tecnología y comunicación. Promedio cercano a 9,5; mis mejores notas fueron en Inglés, TIC y Programación."
       },
       { when: "2019", title: "Club Ciudad de Buenos Aires", body: "Vóley. Tres campeonatos nacionales con el club." },
       { when: "2018", title: "GEBA", body: "Me federé en vóley." },
@@ -503,7 +503,7 @@ export const es: SiteContent = {
     title: "Hacia dónde voy.",
     body: [
       "Todavía no elegí una etiqueta, y es a propósito. Me interesa el lugar entre diseño, tecnología y negocio: detectar un problema, investigarlo, entender a las personas, pensar una estrategia, diseñar la solución y construir un prototipo que funcione.",
-      "Eso es [[emprendedora:mentalidad emprendedora]]: algo entre product designer, product manager e innovador. En productos digitales, startups, empresas de tecnología, o en proyectos propios.",
+      "Eso es [[emprendedora:mentalidad emprendedora]]: algo entre product designer, product manager e innovador. En productos digitales, startups, empresas de tecnología o proyectos propios.",
     ],
     spacesTitle: "Territorios que exploro",
     spaces: [

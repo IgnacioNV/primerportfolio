@@ -17,7 +17,7 @@ export const en: SiteContent = {
 
   ui: {
     cta: "Let's talk",
-    ctaAria: "Let's talk: open contact details",
+    ctaAria: "Let's talk: open the contact form",
     seeProjects: "See projects",
     seeCase: "See case",
     backToProjects: "All projects",
@@ -495,7 +495,7 @@ export const en: SiteContent = {
   closing: {
     title: "Where I'm going.",
     body: [
-      "I haven't picked a label yet, on purpose. I'm into the space between design, technology and business: spotting a problem, researching it, understanding the people in it, thinking a strategy, designing the solution and building a prototype that works.",
+      "I haven't picked a label yet, on purpose. I'm into the space between design, technology and business: spotting a problem, researching it, understanding the people in it, thinking through a strategy, designing the solution and building a prototype that works.",
       "Call it an [[emprendedora:entrepreneurial mindset]]: somewhere between product designer, product manager and innovator. In digital products, startups, tech companies — or my own projects.",
     ],
     spacesTitle: "Territories I'm exploring",

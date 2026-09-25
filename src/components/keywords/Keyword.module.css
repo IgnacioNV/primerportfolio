@@ -38,11 +38,11 @@
   color: var(--c-accent-on-night);
 }
 
+/* Floating: rendered in <body>, positioned from the word (see Keyword.tsx). */
 .tip {
-  position: absolute;
-  left: 0;
-  bottom: calc(100% + 10px);
-  z-index: 30;
+  position: fixed;
+  transform: translateY(-100%);
+  z-index: 60;
   width: max-content;
   max-width: min(300px, 80vw);
   padding: 12px 14px;
@@ -62,11 +62,6 @@
   pointer-events: none;
 }
 
-.tipRight {
-  left: auto;
-  right: 0;
-}
-
 .tipOpen {
   display: block;
   animation: tip var(--dur-fast) var(--ease);
@@ -75,11 +70,11 @@
 @keyframes tip {
   from {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(calc(-100% + 4px));
   }
 }
 
-:global(.night) .tip {
+.tipNight {
   background: var(--c-night-text);
   color: var(--c-night);
 }
@@ -94,7 +89,7 @@
   color: #9aa1ff;
 }
 
-:global(.night) .tipLabel {
+.tipNight .tipLabel {
   color: var(--c-accent);
 }
 

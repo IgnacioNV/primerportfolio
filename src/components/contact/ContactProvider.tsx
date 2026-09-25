@@ -35,6 +35,7 @@ export function ContactProvider({ ui, closeLabel, email, children }: Props) {
   const open = useCallback(() => {
     const d = ref.current;
     if (!d || d.open) return;
+    d.inert = false; // leave the a11y tree only while closed
     d.showModal();
     setIsOpen(true);
     requestAnimationFrame(() => d.querySelector<HTMLElement>("input[name='firstName']")?.focus());
@@ -62,7 +63,7 @@ export function ContactProvider({ ui, closeLabel, email, children }: Props) {
   return (
     <ContactContext.Provider value={{ open, isOpen }}>
       {children}
-      <dialog ref={ref} className={styles.drawer} aria-labelledby="contact-title">
+      <dialog ref={ref} className={styles.drawer} aria-labelledby="contact-title" inert={!isOpen}>
         <div className={styles.inner}>
           <header className={styles.head}>
             <h2 id="contact-title" className={styles.title}>

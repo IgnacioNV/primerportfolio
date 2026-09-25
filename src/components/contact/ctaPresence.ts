@@ -10,25 +10,37 @@ import { useEffect, useId, useSyncExternalStore, type RefObject } from "react";
  */
 const visible = new Set<string>();
 const listeners = new Set<() => void>();
-let count = 0;
+let inPage = 0;
+/** A floating CTA (the 11/11 keyword panel) that is on screen. */
+let overlay = false;
+let total = 0;
 
 function emit() {
-  count = visible.size;
+  inPage = visible.size;
+  total = inPage + (overlay ? 1 : 0);
   listeners.forEach((l) => l());
 }
 
-const store = {
-  subscribe(fn: () => void) {
-    listeners.add(fn);
-    return () => listeners.delete(fn);
-  },
-  get: () => count,
-  server: () => 0,
+const subscribe = (fn: () => void) => {
+  listeners.add(fn);
+  return () => listeners.delete(fn);
 };
 
-/** How many in-page CTAs are visible right now. */
+/** Every visible CTA, in-page or floating. The nav and mobile buttons step aside when > 0. */
 export function useVisibleCtas() {
-  return useSyncExternalStore(store.subscribe, store.get, store.server);
+  return useSyncExternalStore(subscribe, () => total, () => 0);
+}
+
+/** Only the in-page ones (hero, end of projects, case, inline form). */
+export function useInPageCtas() {
+  return useSyncExternalStore(subscribe, () => inPage, () => 0);
+}
+
+/** A floating CTA announces itself here (not through an IntersectionObserver). */
+export function setOverlayCta(on: boolean) {
+  if (overlay === on) return;
+  overlay = on;
+  emit();
 }
 
 /** Register an element as an in-page CTA while it's on screen. */

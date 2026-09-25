@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import type { KeywordId } from "@/content";
 import { useKeywords } from "./KeywordProvider";
 import { keywordStore } from "./store";
@@ -10,13 +11,22 @@ import styles from "./Keyword.module.css";
  * A word that defines me, next to its proof. When it scrolls into view the
  * highlight paints itself once and it counts as discovered. Hover, focus or
  * tap shows the evidence.
+ *
+ * The tooltip is rendered outside the paragraph (in <body>) and linked with
+ * aria-describedby, so screen readers don't read the evidence in the middle
+ * of the sentence. It looks and behaves exactly the same.
  */
+const noop = () => () => {};
+const useMounted = () => useSyncExternalStore(noop, () => true, () => false);
+
+type Pos = { top: number; left?: number; right?: number; night: boolean };
 export function Keyword({ id, children }: { id: KeywordId; children: React.ReactNode }) {
   const { keywords } = useKeywords();
   const ref = useRef<HTMLButtonElement>(null);
   const [painted, setPainted] = useState(false);
   const [open, setOpen] = useState(false);
-  const [alignRight, setAlignRight] = useState(false);
+  const [pos, setPos] = useState<Pos | null>(null);
+  const mounted = useMounted();
   const tipId = useId();
   const kw = keywords[id];
 
@@ -36,24 +46,39 @@ export function Keyword({ id, children }: { id: KeywordId; children: React.React
     return () => io.disconnect();
   }, [id]);
 
+  // Anchor the floating tooltip to the word; open toward whichever side has room.
+  const measure = () => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const night = !!el.closest(".night");
+    setPos(
+      r.left + 316 > window.innerWidth
+        ? { top: r.top - 10, right: window.innerWidth - r.right, night }
+        : { top: r.top - 10, left: r.left, night },
+    );
+  };
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     const onDoc = (e: PointerEvent) => {
-      if (!ref.current?.parentElement?.contains(e.target as Node)) setOpen(false);
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
     };
     window.addEventListener("keydown", onKey);
     document.addEventListener("pointerdown", onDoc);
+    window.addEventListener("scroll", measure, { passive: true });
+    window.addEventListener("resize", measure);
     return () => {
       window.removeEventListener("keydown", onKey);
       document.removeEventListener("pointerdown", onDoc);
+      window.removeEventListener("scroll", measure);
+      window.removeEventListener("resize", measure);
     };
   }, [open]);
 
-  // Open toward whichever side has room.
   const show = () => {
-    const r = ref.current?.getBoundingClientRect();
-    if (r) setAlignRight(r.left + 316 > window.innerWidth);
+    measure();
     setOpen(true);
   };
 
@@ -75,10 +100,19 @@ export function Keyword({ id, children }: { id: KeywordId; children: React.React
       >
         {children}
       </button>
-      <span id={tipId} role="tooltip" className={`${styles.tip} ${open ? styles.tipOpen : ""} ${alignRight ? styles.tipRight : ""}`}>
-        <span className={styles.tipLabel}>{kw.label}</span>
-        {kw.evidence}
-      </span>
+      {mounted &&
+        createPortal(
+          <span
+            id={tipId}
+            role="tooltip"
+            className={`${styles.tip} ${open ? styles.tipOpen : ""} ${pos?.night ? styles.tipNight : ""}`}
+            style={pos ? { top: pos.top, left: pos.left, right: pos.right } : undefined}
+          >
+            <span className={styles.tipLabel}>{kw.label}</span>
+            {kw.evidence}
+          </span>,
+          document.body,
+        )}
     </span>
   );
 }

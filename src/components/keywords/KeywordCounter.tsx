@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
 import type { Keyword, KeywordId, SiteContent } from "@/content";
 import { CtaButton } from "@/components/contact/CtaButton";
+import { setOverlayCta, useInPageCtas } from "@/components/contact/ctaPresence";
 import styles from "./KeywordCounter.module.css";
 
 type Props = {
@@ -53,6 +54,13 @@ export function KeywordCounter({ keywords, found, ui, cta }: Props) {
   }, [open]);
 
   const done = found.length >= total;
+  // One "Let's talk" at a time: the 11/11 button only shows when no other one is on screen.
+  const inPage = useInPageCtas();
+  const showCta = open && done && inPage === 0;
+  useEffect(() => {
+    setOverlayCta(showCta);
+    return () => setOverlayCta(false);
+  }, [showCta]);
 
   return (
     <div className={styles.root}>
@@ -78,7 +86,7 @@ export function KeywordCounter({ keywords, found, ui, cta }: Props) {
               );
             })}
           </ul>
-          {done && <CtaButton label={cta} small />}
+          {showCta && <CtaButton label={cta} small track={false} />}
         </div>
       )}
       <button

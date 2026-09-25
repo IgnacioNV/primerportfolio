@@ -134,7 +134,7 @@ export function ContactForm({ ui, email, autoFocus = false }: Props) {
       <div className={styles.hp} aria-hidden>
         <label>
           Website
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" value={honey} onChange={(e) => setHoney(e.target.value)} />
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden value={honey} onChange={(e) => setHoney(e.target.value)} />
         </label>
       </div>
 
