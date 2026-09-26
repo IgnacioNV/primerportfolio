@@ -44,6 +44,19 @@
   transition: transform 1s var(--ease);
 }
 
+/* Vertical clip in a landscape cell: shown whole, on black. */
+.videoBox {
+  background: #000;
+}
+
+.videoBox video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .photo:hover .photoImg img {
   transform: scale(1.03);
 }

@@ -313,7 +313,7 @@ export const es: SiteContent = {
       {
         slug: "freshal",
         name: "Freshal",
-        year: "TODO(nacho): año de Freshal",
+        year: "2025",
         role: ["Manual de marca"],
         problem: "El manual de marca con el que empecé a experimentar en branding: mis primeros entendimientos de cómo se conforma una marca.",
         tier: "sm",
@@ -322,7 +322,9 @@ export const es: SiteContent = {
           problem: ["Un manual de marca que diseñé hace un tiempo."],
           role: ["Diseñé el manual de marca."],
           process: ["TODO(nacho): proceso de Freshal"],
-          result: ["TODO(nacho): resultado de Freshal"],
+          result: [
+            "Un manual de 14 páginas para una marca de jugos frutales naturales (slogan: «Sabor que nace. Sabor que cuida.»): misión y propósito, logo principal y sus versiones, áreas de reserva y tamaños mínimos, uso en colaboraciones, tono de voz, paleta primaria y secundaria, tipografías (Recoleta Alt y Figtree) y usos correctos e indebidos del logo.",
+          ],
           learned: [
             "Con este proyecto empecé a experimentar en el mundo del branding. Fueron mis primeros entendimientos de marca: de cómo se conforma una marca.",
           ],
@@ -452,7 +454,20 @@ export const es: SiteContent = {
     ],
     photos: [
       { src: "/fotos/voley-01.jpg", alt: "El equipo de vóley levantando la copa después de ganar un campeonato" },
-      { src: "/fotos/trabajando-01.jpg", alt: "TODO(nacho): foto trabajando" },
+      {
+        src: "/fotos/voley-seleccion.jpg",
+        alt: "Desfile de las delegaciones con banderas en el Torneo Nacional Argentino de Vóley 2026, en Misiones",
+        caption: "Con la Selección Metropolitana. Torneo Nacional 2026, Misiones.",
+      },
+      { src: "/fotos/voley-saque.jpg", alt: "Sacando en un partido de vóley" },
+      { src: "/fotos/clase-ux.jpg", alt: "Dando una clase de UX en ORT, frente al pizarrón", caption: "Clases de UX y Figma en ORT." },
+      {
+        src: "/videos/gran-rex-discurso.jpg",
+        video: "/videos/gran-rex-discurso.mp4",
+        alt: "Video: dando el discurso de graduación en el atril de ORT, en el Gran Rex",
+        caption: "Discurso de egreso en el Gran Rex.",
+      },
+      { src: "/fotos/panama.jpg", alt: "En Panamá, con un chico en brazos, frente a casas con techo de paja", caption: "Ecology Summer School, Panamá." },
       { src: "/fotos/guitarra.jpg", alt: "TODO(nacho): foto con la guitarra" },
     ],
     timelineTitle: "Trayectoria",

@@ -309,7 +309,7 @@ export const en: SiteContent = {
       {
         slug: "freshal",
         name: "Freshal",
-        year: "TODO(nacho): Freshal year",
+        year: "2025",
         role: ["Brand manual"],
         problem: "The brand manual where I started experimenting with branding: my first understanding of how a brand comes together.",
         tier: "sm",
@@ -318,7 +318,9 @@ export const en: SiteContent = {
           problem: ["A brand manual I designed a while ago."],
           role: ["I designed the brand manual."],
           process: ["TODO(nacho): Freshal process"],
-          result: ["TODO(nacho): Freshal outcome"],
+          result: [
+            "A 14-page manual for a natural fruit juice brand (tagline: “Sabor que nace. Sabor que cuida.”): mission and purpose, the main logo and its versions, clear space and minimum sizes, use in collaborations, tone of voice, primary and secondary palettes, typefaces (Recoleta Alt and Figtree) and correct and incorrect uses of the logo.",
+          ],
           learned: [
             "This is where I started experimenting with branding. It was my first understanding of brands: how a brand comes together.",
           ],
@@ -447,8 +449,21 @@ export const en: SiteContent = {
       { value: 10, prefix: "~", label: "years of federated volleyball" },
     ],
     photos: [
-      { src: "/fotos/voley-01.jpg", alt: "The volleyball team lifting the trophy after winning a championship" },
-      { src: "/fotos/trabajando-01.jpg", alt: "TODO(nacho): photo working" },
+      { src: "/fotos/voley-01.jpg", alt: "The volleyball team lifting the cup after winning a championship" },
+      {
+        src: "/fotos/voley-seleccion.jpg",
+        alt: "Delegations parading with flags at the 2026 Argentine National Volleyball Tournament, in Misiones",
+        caption: "With the Metropolitan team. National Tournament 2026, Misiones.",
+      },
+      { src: "/fotos/voley-saque.jpg", alt: "Serving in a volleyball match" },
+      { src: "/fotos/clase-ux.jpg", alt: "Teaching a UX class at ORT, at the whiteboard", caption: "UX and Figma classes at ORT." },
+      {
+        src: "/videos/gran-rex-discurso.jpg",
+        video: "/videos/gran-rex-discurso.mp4",
+        alt: "Video: giving the graduation speech at the ORT lectern, at the Gran Rex",
+        caption: "Graduation speech at the Gran Rex.",
+      },
+      { src: "/fotos/panama.jpg", alt: "In Panama, holding a child, in front of thatched-roof houses", caption: "Ecology Summer School, Panama." },
       { src: "/fotos/guitarra.jpg", alt: "TODO(nacho): photo with the guitar" },
     ],
     timelineTitle: "Path",

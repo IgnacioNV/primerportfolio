@@ -7,7 +7,10 @@ import type { Alt } from "./types";
 export const hero: { portrait: { src: string; alt: Alt }; under: { src: string; alt: Alt }[] } = {
   portrait: {
     src: "/fotos/hero.jpg",
-    alt: { es: "Retrato de Ignacio Nuñez Valcarce", en: "Portrait of Ignacio Nuñez Valcarce" },
+    alt: {
+      es: "Ignacio presentando SIMA con micrófono en el Seminario Internacional de CLAYSS, en la UCA",
+      en: "Ignacio presenting SIMA with a microphone at the CLAYSS International Seminar, at UCA",
+    },
   },
   under: [
     // { src: "/fotos/hero-debajo-1.jpg", alt: { es: "…", en: "…" } },

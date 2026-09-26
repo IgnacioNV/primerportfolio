@@ -242,6 +242,47 @@
   }
 }
 
+.manualPages.manualSingle {
+  grid-template-columns: minmax(0, 880px);
+}
+
+.manualPage {
+  position: relative;
+  display: block;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--c-border);
+}
+
+.manualPage img {
+  display: block;
+  transition: transform 0.8s var(--ease);
+}
+
+.manualPage:hover img {
+  transform: scale(1.015);
+}
+
+.manualOpen {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--c-bg);
+  color: var(--c-text);
+  opacity: 0.92;
+}
+
+.manualPage:hover .manualOpen,
+.manualPage:focus-visible .manualOpen {
+  color: var(--c-accent);
+  opacity: 1;
+}
+
 .gallery img,
 .manualPages img {
   width: 100%;

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Download } from "lucide-react";
+import { Download, ExternalLink } from "lucide-react";
 import type { Locale } from "@/content";
 import type { ProjectMedia } from "@/data/proyectos";
 import { publicExists } from "@/lib/assets";
@@ -14,6 +14,7 @@ export function CaseMedia({ media, locale }: { media: ProjectMedia | undefined; 
   const video = media.video && publicExists(media.video.src) ? media.video : null;
   const manual = media.manual && publicExists(media.manual.src) ? media.manual : null;
   if (!gallery.length && !video && !manual) return null;
+  const manualPages = manual ? manual.pages.filter((p) => publicExists(p.src)) : [];
 
   return (
     <div className={styles.media}>
@@ -35,14 +36,18 @@ export function CaseMedia({ media, locale }: { media: ProjectMedia | undefined; 
 
       {manual && (
         <Reveal className={styles.manual}>
-          <ul className={styles.manualPages}>
-            {manual.pages
-              .filter((p) => publicExists(p.src))
-              .map((p) => (
-                <li key={p.src}>
-                  <Image src={p.src} alt={p.alt[locale]} width={p.width} height={p.height} sizes="(min-width: 900px) 25vw, 50vw" />
-                </li>
-              ))}
+          <ul className={`${styles.manualPages} ${manualPages.length === 1 ? styles.manualSingle : ""}`}>
+            {manualPages.map((p) => (
+              <li key={p.src}>
+                {/* The preview opens the full PDF in the browser's own viewer. */}
+                <a href={manual.src} target="_blank" rel="noopener" className={styles.manualPage} aria-label={`${p.alt[locale]} — ${manual.open[locale]}`}>
+                  <Image src={p.src} alt="" width={p.width} height={p.height} sizes="(min-width: 900px) 60vw, 100vw" />
+                  <span className={`meta ${styles.manualOpen}`} aria-hidden>
+                    <ExternalLink size={14} /> {manual.open[locale]}
+                  </span>
+                </a>
+              </li>
+            ))}
           </ul>
           <a className="btn btn-ghost" href={manual.src} download>
             <Download size={16} aria-hidden /> {manual.label[locale]} <span className="meta">PDF · {manual.sizeMb} MB</span>

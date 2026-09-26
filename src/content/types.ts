@@ -44,6 +44,8 @@ export type Photo = {
   src: string;
   alt: string;
   caption?: Text;
+  /** MP4 with sound (controls, never autoplays). `src` is then its poster. */
+  video?: string;
 };
 
 export type Project = {

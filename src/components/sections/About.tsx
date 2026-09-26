@@ -25,8 +25,12 @@ function PhotoSlot({ photo, exists, className = "" }: { photo: Photo; exists: bo
   }
   return (
     <figure className={`${styles.photo} ${className}`}>
-      <div className={styles.photoImg}>
-        <Image src={photo.src} alt={isTodo(photo.alt) ? "" : photo.alt} fill sizes="(min-width: 900px) 33vw, 90vw" />
+      <div className={`${styles.photoImg} ${photo.video ? styles.videoBox : ""}`}>
+        {photo.video && publicExists(photo.video) ? (
+          <video src={photo.video} poster={photo.src} aria-label={photo.alt} preload="none" controls playsInline />
+        ) : (
+          <Image src={photo.src} alt={isTodo(photo.alt) ? "" : photo.alt} fill sizes="(min-width: 900px) 33vw, 90vw" />
+        )}
       </div>
       {photo.caption && !isTodo(photo.caption) && <figcaption className="meta">{photo.caption}</figcaption>}
     </figure>

@@ -27,6 +27,8 @@ export type Pdf = {
   /** 3–4 pages exported as images, shown as a preview. */
   pages: Image[];
   label: Alt; // e.g. { es: "Descargar manual", en: "Download manual" }
+  /** Shown on the preview, which opens the whole PDF in the browser. */
+  open: Alt;
   /** Size in MB, shown next to the button. */
   sizeMb: number;
 };

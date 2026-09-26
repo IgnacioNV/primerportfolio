@@ -1,8 +1,8 @@
 import type { Project } from "./types";
 
-import sima from "@/assets/img/sima.png";
+import sima from "@/assets/img/sima.svg";
 import trevian from "@/assets/img/trevian.png";
-import nihol from "@/assets/img/nihol.png";
+import nihol from "@/assets/img/nihol.svg";
 import studybuddy from "@/assets/img/studybuddy.png";
 
 /** Language-independent project data: brand colors and logos. */
@@ -11,7 +11,7 @@ export const projectAssets: Record<string, Pick<Project, "color" | "ink" | "medi
   trevian: { color: "#030026", ink: "#8FF5DA", mediaBg: "#030026", logo: trevian },
   nihol: { color: "#2E1800", ink: "#F5B640", mediaBg: "#2E1800", logo: nihol },
   inspira: { color: "#1B1B1B", ink: "#F1EFE9", mediaBg: "#1B1B1B" },
-  // TODO(nacho): Freshal brand colors (from the manual) — neutral until then.
-  freshal: { color: "#E8E5DD", ink: "#121212", mediaBg: "#E8E5DD" },
+  // From the manual: "Verde suave" background, "Verde raíz" ink.
+  freshal: { color: "#E9F5E3", ink: "#2A4604", mediaBg: "#E9F5E3" },
   "study-buddy": { color: "#04184B", ink: "#FFFFFF", mediaBg: "#04184B", logo: studybuddy },
 };
