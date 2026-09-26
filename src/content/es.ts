@@ -330,6 +330,21 @@ export const es: SiteContent = {
   thinking: {
     opening: "Me interesa más lo que una interfaz le hace a las personas que cómo se ve.",
     openingSub: "Busco el problema detrás del problema, y después lo construyo.",
+    process: {
+      kicker: "Mi principio",
+      principle: "Todo empieza por entender al usuario.",
+      intro: "Así trabajo: un ciclo de diseño que recorro, y repito, tantas veces como haga falta.",
+      steps: [
+        { name: "Idea", body: "Una intuición o una oportunidad." },
+        { name: "Research", body: "Hablar con usuarios y entender su contexto." },
+        { name: "Validación del problema", body: "Confirmar que el problema existe y vale la pena." },
+        { name: "Prototipo", body: "Hacerlo concreto, rápido." },
+        { name: "Iteraciones", body: "Ajustar con lo que voy aprendiendo." },
+        { name: "UX testing", body: "Probarlo con personas reales." },
+        { name: "Producto", body: "Construirlo para que funcione de verdad." },
+      ],
+      loop: "Y vuelta a empezar: cada prueba abre preguntas nuevas.",
+    },
     title: "Arranco por preguntas, no por pantallas.",
     lede: "Para mí el diseño no es solo cómo se ve algo: es una forma de entender una experiencia y después cambiarla. Esto es [[pensamiento:pensamiento crítico]] aplicado: las preguntas a las que siempre vuelvo.",
     hint: "Elegí una pregunta y fijate dónde la apliqué.",
@@ -521,5 +536,4 @@ export const es: SiteContent = {
     cvLabel: "Descargar CV",
   },
 
-  footer: "v4 · 2026. Diseñado y construido en Buenos Aires, con Next.js y Claude.",
 };

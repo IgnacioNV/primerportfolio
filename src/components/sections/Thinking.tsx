@@ -8,6 +8,7 @@ import { Todo } from "@/components/ui/Todo";
 import { RichText } from "@/components/ui/RichText";
 import { isTodo } from "@/lib/todo";
 import { ThinkingQuestions } from "./ThinkingQuestions";
+import { ProcessCycle } from "./ProcessCycle";
 import styles from "./Thinking.module.css";
 
 export function Thinking({ locale, c, index }: { locale: Locale; c: SiteContent; index: number }) {
@@ -18,6 +19,8 @@ export function Thinking({ locale, c, index }: { locale: Locale; c: SiteContent;
     <section id="pienso" className="section">
       <div className="section-inner">
         <SectionHead index={index} creative={nav.creative} label={nav.label} title={c.thinking.opening} lede={c.thinking.openingSub} />
+
+        <ProcessCycle process={c.thinking.process} />
 
         <div className={styles.qHead}>
           <h3 className={styles.qTitle}>{c.thinking.title}</h3>

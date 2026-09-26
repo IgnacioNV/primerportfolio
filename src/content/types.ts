@@ -173,6 +173,14 @@ export type SiteContent = {
     /** Big opening statement of the section. */
     opening: string;
     openingSub: string;
+    /** "How I work": the principle + the design cycle I go through (and repeat). */
+    process: {
+      kicker: string;
+      principle: string;
+      intro: string;
+      steps: { name: string; body: string }[];
+      loop: string;
+    };
     title: string;
     lede: Rich;
     hint: string;
@@ -228,5 +236,4 @@ export type SiteContent = {
     cvLabel: string;
   };
 
-  footer: string;
 };

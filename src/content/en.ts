@@ -326,6 +326,21 @@ export const en: SiteContent = {
   thinking: {
     opening: "I care more about what an interface does to people than how it looks.",
     openingSub: "I look for the problem behind the problem — then I build it.",
+    process: {
+      kicker: "My principle",
+      principle: "Everything starts with understanding the user.",
+      intro: "This is how I work: a design cycle I go through, and repeat, as many times as it takes.",
+      steps: [
+        { name: "Idea", body: "A hunch or an opportunity." },
+        { name: "Research", body: "Talking to users and understanding their context." },
+        { name: "Problem validation", body: "Making sure the problem is real and worth solving." },
+        { name: "Prototype", body: "Making it concrete, fast." },
+        { name: "Iterations", body: "Adjusting with what I learn." },
+        { name: "UX testing", body: "Trying it with real people." },
+        { name: "Product", body: "Building it so it actually works." },
+      ],
+      loop: "And back to the start: every test opens new questions.",
+    },
     title: "I start with questions, not screens.",
     lede: "Design isn't only how something looks. It's a way to understand an experience and then change it. This is [[pensamiento:critical thinking]] in practice: the questions I keep coming back to.",
     hint: "Pick a question and see where I used it.",
@@ -517,5 +532,4 @@ export const en: SiteContent = {
     cvLabel: "Download CV",
   },
 
-  footer: "v4 · 2026. Designed and built in Buenos Aires, with Next.js and Claude.",
 };

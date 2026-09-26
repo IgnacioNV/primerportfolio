@@ -85,7 +85,6 @@ export function Closing({ c, index }: { c: SiteContent; index: number }) {
         </div>
 
         <footer className={styles.footer}>
-          <span className="meta">{c.footer}</span>
           <BackToTop label={c.ui.backToTop} className="meta" />
         </footer>
       </div>
