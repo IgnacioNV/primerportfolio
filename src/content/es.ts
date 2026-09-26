@@ -154,7 +154,7 @@ export const es: SiteContent = {
     },
     equipo: {
       label: "trabajo en equipo",
-      evidence: "Cerca de 10 años de vóley federado y tres campeonatos nacionales con mi club.",
+      evidence: "Cerca de 10 años de vóley federado y seis campeonatos nacionales con mi club.",
       section: "quien-soy",
     },
     emprendedora: {
@@ -201,7 +201,11 @@ export const es: SiteContent = {
           role: ["Me encargué del UX/UI y del branding.", "TODO(nacho): detalle de pantallas, flujos y decisiones de identidad"],
           question: 2,
           process: ["TODO(nacho): proceso de SIMA (investigación, flujos, iteraciones)"],
-          result: ["TODO(nacho): qué salió de la experiencia de MVP"],
+          result: [
+            "En agosto de 2025 presentamos SIMA en el 28° Seminario Internacional de Aprendizaje y Servicio Solidario, organizado por CLAYSS, en el Auditorio San Agustín de la Universidad Católica Argentina (UCA): un auditorio de 515 butacas, en un encuentro con participantes de distintos países.",
+            "Personas de Polonia, Italia y otras partes del mundo nos hicieron entrevistas: les interesaba cómo habíamos enfocado el proyecto, con el impacto social positivo y la empatía como objetivo.",
+            "TODO(nacho): qué salió de la experiencia de MVP",
+          ],
           learned: [
             "Es el proyecto donde más se cruza lo que me importa: diseño, tecnología, inteligencia artificial, salud e impacto social.",
             "TODO(nacho): aprendizajes concretos",
@@ -436,14 +440,14 @@ export const es: SiteContent = {
       caption: "Roma. Modo turista.",
     },
     story: [
-      "Soy de Buenos Aires. Hice la secundaria en ORT con orientación TIC (programación, diseño, tecnología) y ahora estudio Diseño en la UdeSA.",
-      "En el medio aprendí algo que no está en ningún programa: casi 10 años de vóley federado, primero en GEBA y después en Club Ciudad de Buenos Aires, con tres campeonatos nacionales. Ahí entendí de verdad cómo funciona el [[equipo:trabajo en equipo]], la presión y los datos.",
+      "Soy de Buenos Aires. Hice la secundaria en ORT con orientación TIC (programación, diseño, tecnología) y ahora estudio Diseño en la UdeSA. Cuando todavía estaba en tercer año, di clases de UX y buen uso de Figma a alumnos de tercero, cuarto y quinto.",
+      "En el medio aprendí algo que no está en ningún programa: casi 10 años de vóley federado, primero en GEBA y después en Club Ciudad de Buenos Aires, con seis campeonatos nacionales. Ahí entendí de verdad cómo funciona el [[equipo:trabajo en equipo]], la presión y los datos.",
       "Fui capitán en convocatorias a la Selección Metropolitana y a la Selección Argentina, y di el discurso de graduación de ORT en el Gran Rex, junto con otra estudiante, frente a más de 3.000 personas. Algo de [[liderazgo:liderazgo]] tuvo que haber.",
       "Toco la guitarra desde los 12 (aprendí solo). Saco fotos desde que mi abuelo me regaló una cámara profesional.",
     ],
     stats: [
       { value: 3000, prefix: "+", label: "personas en el Gran Rex" },
-      { value: 3, label: "campeonatos nacionales" },
+      { value: 6, label: "campeonatos nacionales" },
       { value: 10, prefix: "~", label: "años de vóley federado" },
     ],
     photos: [
@@ -456,19 +460,29 @@ export const es: SiteContent = {
       { when: "2026 —", title: "Inspira Recursos Humanos", body: "Diseñador de marca y producto digital.", current: true },
       { when: "2026 —", title: "Diseño en la UdeSA", body: "Pensamiento proyectual y, alrededor, negocios, tecnología, análisis y código.", current: true },
       { when: "2025", title: "Discurso de graduación en el Gran Rex", body: "En nombre de los egresados de ORT, ante más de 3.000 personas." },
+      {
+        when: "2025",
+        title: "SIMA en el Seminario Internacional de CLAYSS (UCA)",
+        body: "Presentamos SIMA en el Auditorio San Agustín de la Universidad Católica Argentina.",
+      },
       { when: "2025", title: "World ORT STEM Communication Award", body: "Por un video sobre diseño de interfaces, adicción y ansiedad." },
       {
         when: "2025",
         title: "World ORT Ecology Summer School, Panamá",
         body: "Curso de ecología tropical en el Parque Nacional Soberanía."
       },
-      { when: "TODO(nacho): año", title: "ORT London", body: "TODO(nacho): qué fue ORT London" },
+      { when: "2023", title: "ORT London — Goldsmiths, University of London", body: "Curso de inglés de 30 horas con Oxford International, del 1 al 11 de agosto." },
+      {
+        when: "3.er año",
+        title: "Clases de UX y Figma en ORT",
+        body: "Di clases de UX y buen uso de Figma a alumnos de tercero, cuarto y quinto año, cuando yo todavía estaba en tercero.",
+      },
       {
         when: "2020 — 2025",
         title: "ORT Argentina, orientación TIC",
         body: "Programación, diseño, tecnología y comunicación. Promedio cercano a 9,5; mis mejores notas fueron en Inglés, TIC y Programación."
       },
-      { when: "2019", title: "Club Ciudad de Buenos Aires", body: "Vóley. Tres campeonatos nacionales con el club." },
+      { when: "2019", title: "Club Ciudad de Buenos Aires", body: "Vóley. Seis campeonatos nacionales con el club." },
       { when: "2018", title: "GEBA", body: "Me federé en vóley." },
       { when: "2013 — 2019", title: "Scuola Italiana Cristoforo Colombo", body: "Primaria." },
     ],

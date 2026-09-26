@@ -150,7 +150,7 @@ export const en: SiteContent = {
     },
     equipo: {
       label: "teamwork",
-      evidence: "Around 10 years of federated volleyball and three national championships with my club.",
+      evidence: "Around 10 years of federated volleyball and six national championships with my club.",
       section: "quien-soy",
     },
     emprendedora: {
@@ -197,7 +197,11 @@ export const en: SiteContent = {
           role: ["I worked on the UX/UI and the branding.", "TODO(nacho): screens, flows and identity decisions"],
           question: 2,
           process: ["TODO(nacho): SIMA process (research, flows, iterations)"],
-          result: ["TODO(nacho): what came out of the MVP experience"],
+          result: [
+            "In August 2025 we presented SIMA at the 28th International Service-Learning Seminar, organized by CLAYSS, at the San Agustín Auditorium of the Pontifical Catholic University of Argentina (UCA): a 515-seat auditorium, at a gathering with participants from several countries.",
+            "People from Poland, Italy and other parts of the world interviewed us: they were interested in how we had approached the project, with positive social impact and empathy as the goal.",
+            "TODO(nacho): what came out of the MVP experience",
+          ],
           learned: [
             "It's the project where most of what I care about overlaps: design, technology, AI, health and social impact.",
             "TODO(nacho): concrete learnings",
@@ -432,14 +436,14 @@ export const en: SiteContent = {
       caption: "Rome. Tourist mode.",
     },
     story: [
-      "I'm from Buenos Aires. I went to high school at ORT on the TIC track (programming, design, technology) and now I study Design at UdeSA.",
-      "Along the way I learned something no curriculum covers: almost 10 years of federated volleyball, first at GEBA and then at Club Ciudad de Buenos Aires, with three national championships. That's where I really understood [[equipo:teamwork]], pressure and data.",
+      "I'm from Buenos Aires. I went to high school at ORT on the TIC track (programming, design, technology) and now I study Design at UdeSA. While I was still in third year, I taught UX and good Figma practice to third, fourth and fifth-year students.",
+      "Along the way I learned something no curriculum covers: almost 10 years of federated volleyball, first at GEBA and then at Club Ciudad de Buenos Aires, with six national championships. That's where I really understood [[equipo:teamwork]], pressure and data.",
       "I was captain in call-ups to the Metropolitan team and the Argentine national team, and I gave ORT's graduation speech at the Gran Rex, together with another student, to more than 3,000 people. Some [[liderazgo:leadership]] had to be involved.",
       "I've played guitar since I was 12 (self-taught). I've been taking photos since my grandfather gave me a professional camera.",
     ],
     stats: [
       { value: 3000, prefix: "+", label: "people at the Gran Rex" },
-      { value: 3, label: "national championships" },
+      { value: 6, label: "national championships" },
       { value: 10, prefix: "~", label: "years of federated volleyball" },
     ],
     photos: [
@@ -452,19 +456,29 @@ export const en: SiteContent = {
       { when: "2026 —", title: "Inspira Recursos Humanos", body: "Brand & digital product designer.", current: true },
       { when: "2026 —", title: "Design at UdeSA", body: "Project thinking — plus business, technology, analysis and code around it.", current: true },
       { when: "2025", title: "Graduation speech at the Gran Rex", body: "On behalf of ORT's graduates, to more than 3,000 people." },
+      {
+        when: "2025",
+        title: "SIMA at the CLAYSS International Seminar (UCA)",
+        body: "We presented SIMA at the San Agustín Auditorium of the Pontifical Catholic University of Argentina.",
+      },
       { when: "2025", title: "World ORT STEM Communication Award", body: "For a video on interface design, addiction and anxiety." },
       {
         when: "2025",
         title: "World ORT Ecology Summer School, Panama",
         body: "A course in tropical ecology at Soberanía National Park."
       },
-      { when: "TODO(nacho): year", title: "ORT London", body: "TODO(nacho): what ORT London was" },
+      { when: "2023", title: "ORT London — Goldsmiths, University of London", body: "A 30-hour English course with Oxford International, August 1–11." },
+      {
+        when: "3rd year",
+        title: "Teaching UX and Figma at ORT",
+        body: "I taught UX and good Figma practice to third, fourth and fifth-year students, while I was still in third year.",
+      },
       {
         when: "2020 — 2025",
         title: "ORT Argentina, TIC track",
         body: "Programming, design, technology and communication. Average around 9.5/10; best marks in English, TIC and Programming."
       },
-      { when: "2019", title: "Club Ciudad de Buenos Aires", body: "Volleyball. Three national championships with the club." },
+      { when: "2019", title: "Club Ciudad de Buenos Aires", body: "Volleyball. Six national championships with the club." },
       { when: "2018", title: "GEBA", body: "Started playing federated volleyball." },
       { when: "2013 — 2019", title: "Scuola Italiana Cristoforo Colombo", body: "Primary school." },
     ],

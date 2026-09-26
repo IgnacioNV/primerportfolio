@@ -98,7 +98,7 @@
   overflow-wrap: anywhere;
 }
 
-.channels a {
+.channels dd > a {
   display: inline-flex;
   align-items: center;
   gap: 6px;
