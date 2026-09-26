@@ -54,11 +54,20 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
         {/* Story + portrait */}
         <div className={styles.intro}>
           <div className={styles.story}>
-            {a.story.map((p, i) => (
-              <Reveal as="p" key={i} delay={i * 60}>
-                <RichText>{p}</RichText>
-              </Reveal>
-            ))}
+            {a.story.map((p, i) =>
+              p.label ? (
+                <Reveal key={i} delay={i * 60} className={styles.storyBlock}>
+                  <h3 className={`meta ${styles.storyLabel}`}>{p.label}</h3>
+                  <p>
+                    <RichText>{p.text}</RichText>
+                  </p>
+                </Reveal>
+              ) : (
+                <Reveal as="p" key={i} delay={i * 60} className={styles.storyLead}>
+                  <RichText>{p.text}</RichText>
+                </Reveal>
+              ),
+            )}
           </div>
           <Reveal delay={120}>
             <PhotoSlot photo={a.portrait} exists={publicExists(a.portrait.src)} className={styles.portrait} />

@@ -438,10 +438,25 @@ export const en: SiteContent = {
       caption: "Rome. Tourist mode.",
     },
     story: [
-      "I'm from Buenos Aires. I went to high school at ORT on the TIC track (programming, design, technology) and now I study Design at UdeSA. While I was still in third year, I taught UX and good Figma practice to third, fourth and fifth-year students.",
-      "Along the way I learned something no curriculum covers: almost 10 years of federated volleyball, first at GEBA and then at Club Ciudad de Buenos Aires, with six national championships. That's where I really understood [[equipo:teamwork]], pressure and data.",
-      "I was captain in call-ups to the Metropolitan team and the Argentine national team, and I gave ORT's graduation speech at the Gran Rex, together with another student, to more than 3,000 people. Some [[liderazgo:leadership]] had to be involved.",
-      "I've played guitar since I was 12 (self-taught). I've been taking photos since my grandfather gave me a professional camera.",
+      {
+        text: "I'm from Buenos Aires. I went to high school at ORT, on the ICT track (programming, design and technology), and today I study Design at UdeSA.",
+      },
+      {
+        label: "Teaching",
+        text: "In third year I was already teaching UX and good Figma practice to students in my own year, and even to fourth and fifth-years.",
+      },
+      {
+        label: "Teamwork",
+        text: "Almost 10 years of federated volleyball, first at GEBA and then at Club Ciudad de Buenos Aires, with six national championships. That's where I truly understood how [[equipo:teamwork]], pressure and data analysis work.",
+      },
+      {
+        label: "Leadership",
+        text: "I was captain in several call-ups to the Metropolitan team and to Argentina's national team, and I gave ORT's graduation speech at the Gran Rex, together with another student, to more than 3,000 people. Along the way I learned to [[liderazgo:lead]].",
+      },
+      {
+        label: "Hobbies",
+        text: "I've played guitar since I was 12 (self-taught), and I've been taking photos since my grandfather gave me a professional camera.",
+      },
     ],
     stats: [
       { value: 3000, prefix: "+", label: "people at the Gran Rex" },

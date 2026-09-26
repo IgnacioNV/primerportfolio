@@ -442,10 +442,25 @@ export const es: SiteContent = {
       caption: "Roma. Modo turista.",
     },
     story: [
-      "Soy de Buenos Aires. Hice la secundaria en ORT con orientación TIC (programación, diseño, tecnología) y ahora estudio Diseño en la UdeSA. Cuando todavía estaba en tercer año, di clases de UX y buen uso de Figma a alumnos de tercero, cuarto y quinto.",
-      "En el medio aprendí algo que no está en ningún programa: casi 10 años de vóley federado, primero en GEBA y después en Club Ciudad de Buenos Aires, con seis campeonatos nacionales. Ahí entendí de verdad cómo funciona el [[equipo:trabajo en equipo]], la presión y los datos.",
-      "Fui capitán en convocatorias a la Selección Metropolitana y a la Selección Argentina, y di el discurso de graduación de ORT en el Gran Rex, junto con otra estudiante, frente a más de 3.000 personas. Algo de [[liderazgo:liderazgo]] tuvo que haber.",
-      "Toco la guitarra desde los 12 (aprendí solo). Saco fotos desde que mi abuelo me regaló una cámara profesional.",
+      {
+        text: "Soy de Buenos Aires. Hice la secundaria en ORT, con orientación en TIC (programación, diseño y tecnología), y hoy estudio Diseño en la UdeSA.",
+      },
+      {
+        label: "Enseñar",
+        text: "En tercer año ya daba clases de UX y buen uso de Figma a alumnos de mi curso, e incluso a los de cuarto y quinto.",
+      },
+      {
+        label: "Trabajo en equipo",
+        text: "Casi 10 años de vóley federado, primero en GEBA y después en Club Ciudad de Buenos Aires, con seis campeonatos nacionales. Ahí entendí de verdad cómo funcionan el [[equipo:trabajo en equipo]], la presión y el análisis de datos.",
+      },
+      {
+        label: "Liderazgo",
+        text: "Fui capitán en varias convocatorias a la Selección Metropolitana y a la Argentina, y di el discurso de graduación de ORT en el Gran Rex, junto a otra estudiante, ante más de 3.000 personas. En ese camino fui aprendiendo a [[liderazgo:liderar]].",
+      },
+      {
+        label: "Hobbies",
+        text: "Toco la guitarra desde los 12 (aprendí solo) y saco fotos desde que mi abuelo me regaló una cámara profesional.",
+      },
     ],
     stats: [
       { value: 3000, prefix: "+", label: "personas en el Gran Rex" },

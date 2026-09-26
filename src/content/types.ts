@@ -205,7 +205,8 @@ export type SiteContent = {
     title: string;
     lede: Rich;
     portrait: Photo;
-    story: Rich[];
+    /** Intro paragraph, then short blocks with a small label (Enseñar, Liderazgo…). */
+    story: { label?: string; text: Rich }[];
     stats: { value: number; prefix?: string; suffix?: string; label: string }[];
     photos: Photo[];
     timelineTitle: string;

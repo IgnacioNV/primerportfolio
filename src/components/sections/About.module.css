@@ -12,18 +12,31 @@
 }
 
 .story p {
-  margin: 0 0 20px;
+  margin: 0;
   max-width: var(--measure);
   font-size: var(--fs-lead);
   line-height: 1.5;
   color: var(--c-text-2);
 }
 
-.story p:first-child {
+.story .storyLead {
+  margin-bottom: 28px;
   font-size: clamp(22px, 2vw, 28px);
   line-height: 1.4;
   color: var(--c-text);
   letter-spacing: -0.015em;
+}
+
+/* Each block: a small label over its paragraph, separated by a hairline. */
+.storyBlock {
+  padding: 18px 0 20px;
+  border-top: 1px solid var(--c-border);
+}
+
+.storyLabel {
+  margin: 0 0 8px;
+  font-weight: 400;
+  color: var(--c-accent);
 }
 
 /* Photos */

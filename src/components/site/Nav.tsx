@@ -49,7 +49,12 @@ export function Nav({ locale, homeHref, altHref, name, ui, items, tint }: Props)
         const r = s.getBoundingClientRect();
         return r.top <= 30 && r.bottom > 30;
       });
-      document.documentElement.dataset.surface = under && NIGHT.has(under.id) ? "night" : "paper";
+      // Also any block marked data-night (e.g. the pinned design cycle).
+      const nightBlock = [...document.querySelectorAll<HTMLElement>("[data-night]")].some((el) => {
+        const r = el.getBoundingClientRect();
+        return r.top <= 30 && r.bottom > 30;
+      });
+      document.documentElement.dataset.surface = nightBlock || (under && NIGHT.has(under.id)) ? "night" : "paper";
     };
 
     onScroll();
