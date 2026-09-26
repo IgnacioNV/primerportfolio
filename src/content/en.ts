@@ -110,7 +110,7 @@ export const en: SiteContent = {
     },
     curioso: {
       label: "curious",
-      evidence: "I build things to understand how they work: apps, objects, volleyball stats.",
+      evidence: "I make projects to explore and understand how things work: apps, a travel sticker album, this portfolio.",
       section: "laboratorio",
     },
     innovacion: {
@@ -125,7 +125,7 @@ export const en: SiteContent = {
     },
     creatividad: {
       label: "creativity",
-      evidence: "NIHOL's identity came out of interviews: name, logo, palette and tone.",
+      evidence: "NIHOL's identity came out of interviews and playful sessions with its founders.",
       section: "proyectos",
     },
     estrategia: {
@@ -140,7 +140,7 @@ export const en: SiteContent = {
     },
     proyectos: {
       label: "projects",
-      evidence: "Seven experiments I started on my own, without anyone asking.",
+      evidence: "Projects I started on my own, without anyone asking.",
       section: "laboratorio",
     },
     liderazgo: {
@@ -161,10 +161,10 @@ export const en: SiteContent = {
   },
 
   hero: {
-    title: "I design decisions, not just screens.",
+    title: "I design decisions and experiences, not just screens.",
     titleStart: "I design",
     titleStruck: "screens.",
-    titleReplacement: "decisions, not just screens.",
+    titleReplacement: "decisions and experiences, not just screens.",
     sub: "I study Design at UdeSA and work on brand and product at Inspira.",
     proofs: ["Design UdeSA", "Inspira RRHH"],
     visual: {
@@ -175,7 +175,7 @@ export const en: SiteContent = {
 
   projects: {
     title: "What I've made.",
-    lede: "Five [[producto:product]], brand and [[innovacion:innovation]] projects. They all started with the same question: what's going on with the person on the other side.",
+    lede: "Six [[producto:product]], brand and [[innovacion:innovation]] projects. They all started with the same question: what's going on with the person on the other side.",
     moreTitle: "Also",
     ctaLine: "Want to see more of any of these? Happy to walk you through it.",
     list: [
@@ -230,7 +230,6 @@ export const en: SiteContent = {
       {
         slug: "trevian",
         name: "Trevian",
-        facts: [{ label: "Typeface", value: "Onest" }],
         year: "2025",
         role: ["TODO(nacho): your role in Trevian"],
         problem: "A custom orthopedic insole without going anywhere: the insole comes to you.",
@@ -260,15 +259,22 @@ export const en: SiteContent = {
         aka: "Fundación Nietos del Holocausto",
         year: "TODO(nacho): NIHOL year",
         role: ["Naming", "Visual identity", "Tone of voice"],
-        problem: "An identity built with [[creatividad:creativity]] and care, out of the stories of the people behind the foundation.",
+        problem: "An identity built with [[creatividad:creativity]] out of interviews and playful sessions with the foundation's founders.",
         with: "Fundación Nietos del Holocausto",
         tier: "md",
         ...projectAssets.nihol,
         case: {
-          problem: ["The project started from interviews and conversations with people connected to the foundation."],
+          problem: [
+            "Before designing anything, we had to understand which values the foundation wanted to convey and which audience it wanted to reach.",
+          ],
           role: ["Name, visual identity, logo, palette, typography and tone of communication."],
           question: 0,
-          process: ["TODO(nacho): what came up in the interviews", "TODO(nacho): how you got to the name NIHOL"],
+          process: [
+            "We interviewed the foundation's founders to understand which values they wanted to convey and which audience they wanted to reach.",
+            "We ran playful activities and had fun conversations, gathering key information along the way.",
+            "Then we turned that information into design decisions, carried out in their visual identity and their brand principles.",
+            "TODO(nacho): how you got to the name NIHOL",
+          ],
           result: ["TODO(nacho): the final system (logo, palette, type) and why"],
           learned: [
             "My work isn't only interfaces: I care about researching, listening and building an identity out of people and their stories.",
@@ -294,6 +300,24 @@ export const en: SiteContent = {
           process: ["TODO(nacho): Study Buddy process"],
           result: ["TODO(nacho): Study Buddy outcome"],
           learned: ["One of my first approaches to designing a digital product. The starting point."],
+        },
+      },
+      {
+        slug: "freshal",
+        name: "Freshal",
+        year: "TODO(nacho): Freshal year",
+        role: ["Brand manual"],
+        problem: "The brand manual where I started experimenting with branding: my first understanding of how a brand comes together.",
+        tier: "sm",
+        ...projectAssets.freshal,
+        case: {
+          problem: ["A brand manual I designed a while ago."],
+          role: ["I designed the brand manual."],
+          process: ["TODO(nacho): Freshal process"],
+          result: ["TODO(nacho): Freshal outcome"],
+          learned: [
+            "This is where I started experimenting with branding. It was my first understanding of brands: how a brand comes together.",
+          ],
         },
       },
     ],
@@ -329,7 +353,7 @@ export const en: SiteContent = {
   },
 
   lab: {
-    title: "Things I build to find out.",
+    title: "Other projects I make to explore.",
     lede: "I'm [[curioso:curious]]: small [[proyectos:projects]], prototypes and ideas I start on my own to understand how things work. I pick something I want to exist and try to make it.",
     tags: {
       pwa: "PWA",
@@ -351,10 +375,10 @@ export const en: SiteContent = {
       },
       {
         id: "L-02",
-        title: "Sticker swap",
-        line: "An app to trade World Cup stickers.",
-        tags: ["pwa", "social"],
-        status: "TODO(nacho): status",
+        title: "Travel sticker album",
+        line: "With my family, I redesigned the after-trip experience: a sticker album with swaps, so we relive moments of the trip while we complete it.",
+        tags: ["physical", "social"],
+        status: "Done",
         note: "TODO(nacho): what you wanted to find out",
       },
       {
@@ -367,22 +391,6 @@ export const en: SiteContent = {
       },
       {
         id: "L-04",
-        title: "Volleyball stats, less manual",
-        line: "Automating part of the stats work that's done by hand today with tools like Data Volley.",
-        tags: ["sport-data"],
-        status: "Idea",
-        note: "Years of federated volleyball showed me from the inside how teams, performance and data work.",
-      },
-      {
-        id: "L-05",
-        title: "Objects for a room",
-        line: "Concepts for physical objects that mix rooms and technology.",
-        tags: ["physical"],
-        status: "TODO(nacho): status",
-        note: "TODO(nacho): details",
-      },
-      {
-        id: "L-06",
         title: "Photography",
         line: "Street, people, landscapes. It started when my grandfather gave me a professional camera.",
         tags: ["photo"],
@@ -390,11 +398,11 @@ export const en: SiteContent = {
         note: "TODO(nacho): photo selection (the About gallery appears with 6+ photos in src/data/fotos.ts)",
       },
       {
-        id: "L-07",
+        id: "L-05",
         title: "This portfolio",
         line: "Designed in the browser, built with Next.js, with Claude as a collaborator.",
         tags: ["meta"],
-        status: "v2",
+        status: "v4",
         note: "A portfolio shouldn't only show projects. It should be one.",
       },
     ],

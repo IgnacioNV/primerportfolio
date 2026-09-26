@@ -16,4 +16,5 @@ export const proyectos: Record<string, ProjectMedia> = {
   trevian: { gallery: [] },
   nihol: { gallery: [] },
   "study-buddy": { gallery: [] },
+  freshal: { gallery: [] },
 };

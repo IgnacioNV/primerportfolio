@@ -11,5 +11,7 @@ export const projectAssets: Record<string, Pick<Project, "color" | "ink" | "medi
   trevian: { color: "#030026", ink: "#8FF5DA", mediaBg: "#030026", logo: trevian },
   nihol: { color: "#2E1800", ink: "#F5B640", mediaBg: "#2E1800", logo: nihol },
   inspira: { color: "#1B1B1B", ink: "#F1EFE9", mediaBg: "#1B1B1B" },
+  // TODO(nacho): Freshal brand colors (from the manual) — neutral until then.
+  freshal: { color: "#E8E5DD", ink: "#121212", mediaBg: "#E8E5DD" },
   "study-buddy": { color: "#04184B", ink: "#FFFFFF", mediaBg: "#04184B", logo: studybuddy },
 };
