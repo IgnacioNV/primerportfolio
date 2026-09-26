@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import type { Locale, SiteContent } from "@/content";
 import { CtaButton } from "@/components/contact/CtaButton";
 import { useVisibleCtas } from "@/components/contact/ctaPresence";
+import { scrollToTop } from "@/lib/scrollTop";
 import styles from "./Nav.module.css";
 
 type Props = {
@@ -75,7 +76,17 @@ export function Nav({ locale, homeHref, altHref, name, ui, items, tint }: Props)
   return (
     <>
       <header className={`${styles.bar} ${tint ? styles.tinted : ""}`} style={style}>
-        <Link href={homeHref} className={styles.name}>
+        <Link
+          href={homeHref}
+          className={styles.name}
+          onClick={(e) => {
+            // Already on the home page: go to the very top instead of re-navigating.
+            if (window.location.pathname === homeHref) {
+              e.preventDefault();
+              scrollToTop();
+            }
+          }}
+        >
           {name}
         </Link>
 
