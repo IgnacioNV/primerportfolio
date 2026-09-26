@@ -210,8 +210,10 @@ export type SiteContent = {
     stats: { value: number; prefix?: string; suffix?: string; label: string }[];
     photos: Photo[];
     timelineTitle: string;
+    /** Shown in the gallery room until you start walking. */
+    timelineHint: string;
     /** Newest first. `current` items get a filled dot and the "now" label. */
-    timeline: { when: Text; title: string; body: Text; current?: boolean }[];
+    timeline: { id: string; when: Text; title: string; body: Text; current?: boolean }[];
     nowLabel: string;
     educationTitle: string;
     /** Logos only here (not in the timeline). No `logo` = name only. */

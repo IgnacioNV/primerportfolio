@@ -11,7 +11,8 @@ import { Maybe, Todo } from "@/components/ui/Todo";
 import { CountUp } from "@/components/ui/CountUp";
 import { BrandIcon } from "@/components/ui/BrandIcon";
 import { Gallery } from "./Gallery";
-import { Timeline } from "./Timeline";
+import { Museum } from "./Museum";
+import { trayectoria } from "@/data/trayectoria";
 import styles from "./About.module.css";
 
 /** Photos that exist are shown; missing ones become a TODO slot in dev and vanish in prod. */
@@ -36,6 +37,12 @@ function PhotoSlot({ photo, exists, className = "" }: { photo: Photo; exists: bo
     </figure>
   );
 }
+
+/** A gallery piece only if its file exists; otherwise the room shows a typographic piece. */
+const pieceFor = (id: string) => {
+  const p = trayectoria[id];
+  return p && publicExists(p.src) ? p : undefined;
+};
 
 export function About({ locale, c, index }: { locale: Locale; c: SiteContent; index: number }) {
   const nav = c.nav.find((n) => n.id === "quien-soy")!;
@@ -93,23 +100,19 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
           ))}
         </div>
 
-        {/* Path | Education, languages, right now */}
-        <div className={styles.columns}>
-          <div>
-            <h3 className={`meta ${styles.colTitle}`}>{a.timelineTitle}</h3>
-            <Timeline
-              nowLabel={a.nowLabel}
-              items={a.timeline
-                .filter((t) => showTodos || !isTodo(t.body) || !isTodo(t.when))
-                .map((t) => ({
-                  when: t.when,
-                  title: t.title,
-                  body: t.body,
-                  current: t.current,
-                }))}
-            />
-          </div>
+        {/* Path: a gallery room you walk through, oldest to newest */}
+        <Museum
+          title={a.timelineTitle}
+          nowLabel={a.nowLabel}
+          hint={a.timelineHint}
+          items={[...a.timeline]
+            .filter((t) => showTodos || !isTodo(t.body) || !isTodo(t.when))
+            .reverse()
+            .map((t) => ({ id: t.id, when: t.when, title: t.title, body: t.body, current: t.current, piece: pieceFor(t.id) }))}
+        />
 
+        {/* Education, languages, right now */}
+        <div className={styles.columns}>
           <div className={styles.side}>
             <div>
               <h3 className={`meta ${styles.colTitle}`}>{a.educationTitle}</h3>

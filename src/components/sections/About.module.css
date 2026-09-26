@@ -141,16 +141,7 @@
 
 /* Columns */
 .columns {
-  display: grid;
-  gap: 56px;
   margin-top: var(--space-section);
-}
-
-@media (min-width: 900px) {
-  .columns {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-    gap: 64px;
-  }
 }
 
 .colTitle {
@@ -167,6 +158,13 @@
   display: grid;
   gap: 48px;
   align-content: start;
+}
+
+@media (min-width: 900px) {
+  .side {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 56px;
+  }
 }
 
 /* Education logos: monochrome until you look at them. */
