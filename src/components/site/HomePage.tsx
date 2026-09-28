@@ -25,7 +25,7 @@ export function HomePage({ locale }: { locale: Locale }) {
       <main id="contenido">
         <Hero hero={c.hero} name={c.person.name} ui={c.ui} visual={null} />
         <Projects locale={locale} c={c} index={1} />
-        <Thinking locale={locale} c={c} index={2} />
+        <Thinking c={c} index={2} />
         <Lab c={c} index={3} />
         <About locale={locale} c={c} index={4} />
         <Closing c={c} index={5} />

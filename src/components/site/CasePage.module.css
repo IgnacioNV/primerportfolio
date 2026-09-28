@@ -65,7 +65,7 @@
 
 .logo {
   margin: var(--space-block) auto 0;
-  max-width: min(var(--max), calc(100% - 2 * var(--gutter)));
+  max-width: min(1040px - 2 * var(--gutter), calc(100% - 2 * var(--gutter)));
   display: grid;
   place-items: center;
   padding: clamp(24px, 5vw, 64px);
@@ -74,7 +74,7 @@
 
 .logo img {
   width: 100%;
-  max-width: 520px;
+  max-width: 440px;
   height: auto;
 }
 
@@ -213,8 +213,9 @@
 }
 
 /* Case media (from src/data/proyectos.ts) */
+/* Media sits a bit narrower than the text column's max, so images don't overpower the case. */
 .media {
-  max-width: var(--max);
+  max-width: min(var(--max), 1040px);
   margin: var(--space-block) auto 0;
   padding: 0 var(--gutter);
   display: grid;

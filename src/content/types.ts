@@ -69,8 +69,6 @@ export type Project = {
   case: {
     problem: Text[];
     role: Text[];
-    /** Index into thinking.questions — the question that guided the process. */
-    question?: number;
     process: Text[];
     result: Text[];
     learned: Text[];
@@ -97,7 +95,6 @@ export type SiteContent = {
       problem: string;
       role: string;
       process: string;
-      question: string;
       result: string;
       learned: string;
       year: string;
@@ -185,10 +182,6 @@ export type SiteContent = {
     };
     title: string;
     lede: Rich;
-    hint: string;
-    appliedIn: string;
-    reset: string;
-    questions: { q: string; projects: string[] }[];
     award: { kicker: string; title: string; body: Text[]; link: Text; linkLabel: string };
   };
 

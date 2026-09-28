@@ -16,7 +16,7 @@ import styles from "./CasePage.module.css";
 
 /*
  * Case template, always in this order:
- * problem → my role → process (with the question that guided it) → outcome → what I learned
+ * problem → my role → process → outcome → what I learned
  * → next project → Let's talk. Blocks with nothing real yet disappear in production.
  */
 function Block({ label, items, num }: { label: string; items: string[]; num: string }) {
@@ -45,7 +45,6 @@ export function CasePage({ locale, slug }: { locale: Locale; slug: string }) {
   const next = all[(i + 1) % all.length];
   const L = c.ui.caseLabels;
   const role = p.role.filter((r) => !isTodo(r)).join(", ");
-  const question = p.case.question !== undefined ? c.thinking.questions[p.case.question]?.q : undefined;
 
   return (
     <>
@@ -107,25 +106,18 @@ export function CasePage({ locale, slug }: { locale: Locale; slug: string }) {
           </figure>
         )}
 
-        <CaseMedia media={proyectos[slug]} locale={locale} />
+        {/* With a logo up top, every image goes after the text; without one, the first image leads. */}
+        {!p.logo && <CaseMedia media={proyectos[slug]} locale={locale} part="first" />}
 
         <div className={styles.blocks}>
           <Block num="01" label={L.problem} items={p.case.problem} />
           <Block num="02" label={L.role} items={p.case.role} />
-
-          {question && (
-            <Reveal as="aside" className={styles.question}>
-              <p className="meta">{L.question}</p>
-              <p className={styles.questionText}>
-                <Link href={`${routes.home(locale)}#pienso`}>{question}</Link>
-              </p>
-            </Reveal>
-          )}
-
           <Block num="03" label={L.process} items={p.case.process} />
           <Block num="04" label={L.result} items={p.case.result} />
           <Block num="05" label={L.learned} items={p.case.learned} />
         </div>
+
+        <CaseMedia media={proyectos[slug]} locale={locale} part={p.logo ? "all" : "rest"} />
 
         <Reveal className={styles.cta}>
           <p className={styles.ctaText}>{c.projects.ctaLine}</p>

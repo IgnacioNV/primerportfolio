@@ -121,15 +121,23 @@ export function Museum({ items, title, nowLabel, hint }: Props) {
             {hint}
           </p>
         </div>
+        {/* Ambient lights drifting slowly across the room, besides the spots on each piece. */}
+        <span className={styles.ambient} aria-hidden>
+          <span />
+          <span />
+          <span />
+        </span>
+
         <p className={styles.bigYear} aria-hidden key={current?.id}>
           {current ? yearOf(current.when) : ""}
         </p>
 
         <ol ref={rail} className={styles.rail}>
-          {items.map((it) => (
-            <li key={it.id} className={styles.exhibit} data-piece="">
+          {items.map((it, i) => (
+            <li key={it.id} className={`${styles.exhibit} ${i === active && !still ? styles.here : ""}`} data-piece="">
               <span className={styles.beam} aria-hidden />
               <figure className={styles.frame}>
+                <span className={styles.glass} aria-hidden />
                 {it.piece ? (
                   <div
                     className={`${styles.mat} ${it.piece.logo ? styles.logoMat : ""}`}

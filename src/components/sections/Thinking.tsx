@@ -1,17 +1,15 @@
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import stem from "@/assets/img/stem-award.png";
-import type { Locale, SiteContent } from "@/content";
+import type { SiteContent } from "@/content";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Reveal } from "@/components/ui/Reveal";
 import { Todo } from "@/components/ui/Todo";
 import { RichText } from "@/components/ui/RichText";
 import { isTodo } from "@/lib/todo";
-import { ThinkingQuestions } from "./ThinkingQuestions";
 import { ProcessCycle } from "./ProcessCycle";
 import styles from "./Thinking.module.css";
 
-export function Thinking({ locale, c, index }: { locale: Locale; c: SiteContent; index: number }) {
+export function Thinking({ c, index }: { c: SiteContent; index: number }) {
   const nav = c.nav.find((n) => n.id === "pienso")!;
   const { award } = c.thinking;
 
@@ -22,6 +20,7 @@ export function Thinking({ locale, c, index }: { locale: Locale; c: SiteContent;
 
         <ProcessCycle process={c.thinking.process} />
 
+        {/* Lead-in to the award: the video is this way of thinking, applied. */}
         <div className={styles.qHead}>
           <h3 className={styles.qTitle}>{c.thinking.title}</h3>
           <p className={styles.qLede}>
@@ -29,11 +28,9 @@ export function Thinking({ locale, c, index }: { locale: Locale; c: SiteContent;
           </p>
         </div>
 
-        <ThinkingQuestions locale={locale} thinking={c.thinking} projects={c.projects.list} />
-
         <Reveal as="article" className={styles.award} aria-labelledby="award-title">
           <div className={styles.awardMedia}>
-            <Image src={stem} alt={award.title} sizes="(min-width: 1100px) 1100px, 100vw" placeholder="blur" />
+            <Image src="/trayectoria/stem-award.jpg" alt={award.title} width={1600} height={900} sizes="(min-width: 900px) 60vw, 100vw" />
           </div>
           <div className={styles.awardText}>
             <p className={`meta ${styles.awardKicker}`}>{award.kicker}</p>

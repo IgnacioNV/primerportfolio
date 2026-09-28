@@ -35,7 +35,6 @@ export const es: SiteContent = {
       problem: "El problema",
       role: "Mi rol",
       process: "Proceso",
-      question: "La pregunta que me guió",
       result: "Resultado",
       learned: "Qué aprendí",
       year: "Año",
@@ -139,7 +138,7 @@ export const es: SiteContent = {
     },
     pensamiento: {
       label: "pensamiento crítico",
-      evidence: "Siete preguntas antes de abrir Figma, y un video premiado sobre interfaces y adicción.",
+      evidence: "Arranco por preguntas, no por pantallas. Y un video premiado sobre interfaces y adicción.",
       section: "pienso",
     },
     proyectos: {
@@ -199,7 +198,6 @@ export const es: SiteContent = {
             "La desarrollamos junto con la Fundación Noemí Frida Kraut y pasó por una experiencia de MVP.",
           ],
           role: ["Me encargué del UX/UI y del branding.", "TODO(nacho): detalle de pantallas, flujos y decisiones de identidad"],
-          question: 2,
           process: ["TODO(nacho): proceso de SIMA (investigación, flujos, iteraciones)"],
           result: [
             "En agosto de 2025 presentamos SIMA en el 28° Seminario Internacional de Aprendizaje y Servicio Solidario, organizado por CLAYSS, en el Auditorio San Agustín de la Universidad Católica Argentina (UCA): un auditorio de 515 butacas, en un encuentro con participantes de distintos países.",
@@ -229,7 +227,6 @@ export const es: SiteContent = {
           role: [
             "Marca y producto digital. Los valores que busco transmitir: personas, solvencia, seriedad, calidez, confianza y trato humano.",
           ],
-          question: 6,
           process: ["TODO(nacho): proceso de Inspira"],
           result: ["TODO(nacho): link a la web cuando esté publicada"],
           learned: ["Es un cliente real: acá aprendo cómo se relaciona el diseño con una organización y con objetivos comerciales."],
@@ -249,7 +246,6 @@ export const es: SiteContent = {
             "La experiencia incluye el escaneo, el procesamiento y la fabricación, con profesionales como kinesiólogos en el medio.",
           ],
           role: ["TODO(nacho): qué diseñaste en Trevian (app, flujo de escaneo, marca, servicio)"],
-          question: 2,
           process: [
             "Escanear el pie → procesar los datos → fabricar la plantilla → un profesional en el circuito.",
             "TODO(nacho): proceso de Trevian",
@@ -276,7 +272,6 @@ export const es: SiteContent = {
             "Antes de diseñar, teníamos que entender qué valores quería transmitir la fundación y a qué público quería llegar.",
           ],
           role: ["Nombre, identidad visual, logo, paleta, tipografía y tono de comunicación."],
-          question: 0,
           process: [
             "Les hicimos entrevistas a las fundadoras de la fundación para entender qué valores querían transmitir y a qué público querían apuntar.",
             "Armamos dinámicas lúdicas y tuvimos conversaciones entretenidas, en las que fuimos tomando información clave.",
@@ -304,7 +299,6 @@ export const es: SiteContent = {
             "Usaba ideas como el método Feynman y la técnica Pomodoro.",
           ],
           role: ["Mi rol fue principalmente UX/UI y diseño."],
-          question: 3,
           process: ["TODO(nacho): proceso de Study Buddy"],
           result: ["TODO(nacho): resultado de Study Buddy"],
           learned: ["Fue una de mis primeras aproximaciones al diseño de productos digitales. El punto de partida."],
@@ -352,19 +346,7 @@ export const es: SiteContent = {
       loop: "Y vuelta a empezar: cada prueba abre preguntas nuevas.",
     },
     title: "Arranco por preguntas, no por pantallas.",
-    lede: "Para mí el diseño no es solo cómo se ve algo: es una forma de entender una experiencia y después cambiarla. Esto es [[pensamiento:pensamiento crítico]] aplicado: las preguntas a las que siempre vuelvo.",
-    hint: "Elegí una pregunta y fijate dónde la apliqué.",
-    appliedIn: "La apliqué en",
-    reset: "Ver todas",
-    questions: [
-      { q: "¿Por qué una persona hace lo que hace?", projects: ["nihol", "study-buddy"] },
-      { q: "¿Qué está sintiendo, de verdad?", projects: ["nihol", "sima"] },
-      { q: "¿Cuál es el problema real detrás del aparente?", projects: ["sima", "trevian"] },
-      { q: "¿Cómo cambia una experiencia cuando cambiás la interfaz?", projects: ["study-buddy", "inspira"] },
-      { q: "¿Puede la tecnología cambiar un comportamiento? ¿Debería?", projects: ["study-buddy", "trevian"] },
-      { q: "¿Cómo hacés algo útil y, además, significativo?", projects: ["sima", "nihol"] },
-      { q: "¿Qué decisiones invisibles toma un diseñador?", projects: ["inspira", "nihol"] },
-    ],
+    lede: "Para mí el diseño no es solo cómo se ve algo: es una forma de entender una experiencia y después cambiarla. Esto es [[pensamiento:pensamiento crítico]] aplicado.",
     award: {
       kicker: "World ORT STEM Communication Award · 2025",
       title: "¿Consumimos experiencias o consumimos adicciones?",
@@ -470,18 +452,18 @@ export const es: SiteContent = {
     photos: [
       { src: "/fotos/voley-01.jpg", alt: "El equipo de vóley levantando la copa después de ganar un campeonato" },
       {
+        src: "/videos/gran-rex-discurso.jpg",
+        video: "/videos/gran-rex-discurso.mp4",
+        alt: "Video: dando el discurso de graduación en el atril de ORT, en el Gran Rex",
+        caption: "Discurso de egreso en el Gran Rex.",
+      },
+      {
         src: "/fotos/voley-seleccion.jpg",
         alt: "Desfile de las delegaciones con banderas en el Torneo Nacional Argentino de Vóley 2026, en Misiones",
         caption: "Con la Selección Metropolitana. Torneo Nacional 2026, Misiones.",
       },
       { src: "/fotos/voley-saque.jpg", alt: "Sacando en un partido de vóley" },
       { src: "/fotos/clase-ux.jpg", alt: "Dando una clase de UX en ORT, frente al pizarrón", caption: "Clases de UX y Figma en ORT." },
-      {
-        src: "/videos/gran-rex-discurso.jpg",
-        video: "/videos/gran-rex-discurso.mp4",
-        alt: "Video: dando el discurso de graduación en el atril de ORT, en el Gran Rex",
-        caption: "Discurso de egreso en el Gran Rex.",
-      },
       { src: "/fotos/panama.jpg", alt: "En Panamá, con un chico en brazos, frente a casas con techo de paja", caption: "Ecology Summer School, Panamá." },
       { src: "/fotos/guitarra.jpg", alt: "TODO(nacho): foto con la guitarra" },
     ],

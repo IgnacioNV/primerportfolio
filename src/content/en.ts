@@ -31,7 +31,6 @@ export const en: SiteContent = {
       problem: "The problem",
       role: "My role",
       process: "Process",
-      question: "The question that guided me",
       result: "Outcome",
       learned: "What I learned",
       year: "Year",
@@ -135,7 +134,7 @@ export const en: SiteContent = {
     },
     pensamiento: {
       label: "critical thinking",
-      evidence: "Seven questions before opening Figma, and an award-winning video on interfaces and addiction.",
+      evidence: "I start with questions, not screens. And an award-winning video on interfaces and addiction.",
       section: "pienso",
     },
     proyectos: {
@@ -195,7 +194,6 @@ export const en: SiteContent = {
             "It was developed together with Fundación Noemí Frida Kraut and went through an MVP experience.",
           ],
           role: ["I worked on the UX/UI and the branding.", "TODO(nacho): screens, flows and identity decisions"],
-          question: 2,
           process: ["TODO(nacho): SIMA process (research, flows, iterations)"],
           result: [
             "In August 2025 we presented SIMA at the 28th International Service-Learning Seminar, organized by CLAYSS, at the San Agustín Auditorium of the Pontifical Catholic University of Argentina (UCA): a 515-seat auditorium, at a gathering with participants from several countries.",
@@ -225,7 +223,6 @@ export const en: SiteContent = {
           role: [
             "Brand and digital product. The values I'm working toward: people, solvency, seriousness, warmth, trust and human treatment.",
           ],
-          question: 6,
           process: ["TODO(nacho): Inspira process"],
           result: ["TODO(nacho): link to the site once it's live"],
           learned: ["A real client: this is where I'm learning how design relates to an organization and to commercial goals."],
@@ -245,7 +242,6 @@ export const en: SiteContent = {
             "The experience covers scanning, processing and fabrication, with professionals like kinesiologists in the loop.",
           ],
           role: ["TODO(nacho): what you designed in Trevian (app, scan flow, brand, service)"],
-          question: 2,
           process: [
             "Scan the foot → process the data → fabricate the insole → a professional in the loop.",
             "TODO(nacho): Trevian process",
@@ -272,7 +268,6 @@ export const en: SiteContent = {
             "Before designing anything, we had to understand which values the foundation wanted to convey and which audience it wanted to reach.",
           ],
           role: ["Name, visual identity, logo, palette, typography and tone of communication."],
-          question: 0,
           process: [
             "We interviewed the foundation's founders to understand which values they wanted to convey and which audience they wanted to reach.",
             "We ran playful activities and had fun conversations, gathering key information along the way.",
@@ -300,7 +295,6 @@ export const en: SiteContent = {
             "It used ideas like the Feynman technique and Pomodoro.",
           ],
           role: ["My role was mainly UX/UI and design."],
-          question: 3,
           process: ["TODO(nacho): Study Buddy process"],
           result: ["TODO(nacho): Study Buddy outcome"],
           learned: ["One of my first approaches to designing a digital product. The starting point."],
@@ -348,19 +342,7 @@ export const en: SiteContent = {
       loop: "And back to the start: every test opens new questions.",
     },
     title: "I start with questions, not screens.",
-    lede: "Design isn't only how something looks. It's a way to understand an experience and then change it. This is [[pensamiento:critical thinking]] in practice: the questions I keep coming back to.",
-    hint: "Pick a question and see where I used it.",
-    appliedIn: "Used in",
-    reset: "Show all",
-    questions: [
-      { q: "Why does a person do what they do?", projects: ["nihol", "study-buddy"] },
-      { q: "What are they actually feeling?", projects: ["nihol", "sima"] },
-      { q: "What's the real problem behind the apparent one?", projects: ["sima", "trevian"] },
-      { q: "How does an experience change when you change the interface?", projects: ["study-buddy", "inspira"] },
-      { q: "Can technology change a behavior? Should it?", projects: ["study-buddy", "trevian"] },
-      { q: "How do you make something useful and also meaningful?", projects: ["sima", "nihol"] },
-      { q: "Which invisible decisions does a designer make?", projects: ["inspira", "nihol"] },
-    ],
+    lede: "Design isn't only how something looks. It's a way to understand an experience and then change it. This is [[pensamiento:critical thinking]] in practice.",
     award: {
       kicker: "World ORT STEM Communication Award · 2025",
       title: "¿Consumimos experiencias o consumimos adicciones?",
@@ -466,18 +448,18 @@ export const en: SiteContent = {
     photos: [
       { src: "/fotos/voley-01.jpg", alt: "The volleyball team lifting the cup after winning a championship" },
       {
+        src: "/videos/gran-rex-discurso.jpg",
+        video: "/videos/gran-rex-discurso.mp4",
+        alt: "Video: giving the graduation speech at the ORT lectern, at the Gran Rex",
+        caption: "Graduation speech at the Gran Rex.",
+      },
+      {
         src: "/fotos/voley-seleccion.jpg",
         alt: "Delegations parading with flags at the 2026 Argentine National Volleyball Tournament, in Misiones",
         caption: "With the Metropolitan team. National Tournament 2026, Misiones.",
       },
       { src: "/fotos/voley-saque.jpg", alt: "Serving in a volleyball match" },
       { src: "/fotos/clase-ux.jpg", alt: "Teaching a UX class at ORT, at the whiteboard", caption: "UX and Figma classes at ORT." },
-      {
-        src: "/videos/gran-rex-discurso.jpg",
-        video: "/videos/gran-rex-discurso.mp4",
-        alt: "Video: giving the graduation speech at the ORT lectern, at the Gran Rex",
-        caption: "Graduation speech at the Gran Rex.",
-      },
       { src: "/fotos/panama.jpg", alt: "In Panama, holding a child, in front of thatched-roof houses", caption: "Ecology Summer School, Panama." },
       { src: "/fotos/guitarra.jpg", alt: "TODO(nacho): photo with the guitar" },
     ],

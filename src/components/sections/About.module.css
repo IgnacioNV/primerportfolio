@@ -58,18 +58,6 @@
 }
 
 /* Vertical clip in a landscape cell: shown whole, on black. */
-.videoBox {
-  background: #000;
-}
-
-.videoBox video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .photo:hover .photoImg img {
   transform: scale(1.03);
 }
@@ -338,15 +326,10 @@
   max-width: var(--measure);
 }
 
-.chart {
-  overflow-x: auto;
-}
-
 .stages,
 .toolRows {
   display: grid;
-  grid-template-columns: repeat(3, minmax(150px, 1fr));
-  min-width: 480px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .stages span {
@@ -366,7 +349,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  height: 40px;
+  min-width: 0;
+  min-height: 40px;
   padding: 0 14px;
   margin-right: 8px;
   border: 1px solid var(--c-border-strong);
@@ -380,4 +364,102 @@
 .tool:hover {
   background: var(--c-text);
   color: var(--c-bg);
+}
+
+@media (max-width: 699px) {
+  .tool {
+    gap: 6px;
+    padding: 6px 10px;
+    margin-right: 4px;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+}
+
+/* Phones: the portrait comes before the story. */
+@media (max-width: 899px) {
+  .portraitFirst {
+    order: -1;
+  }
+}
+
+/* Video cell: poster + a big play button in the middle; plays in a dialog. */
+.playCell {
+  all: unset;
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.playCell img {
+  object-fit: cover;
+  transition: transform 1s var(--ease);
+}
+
+.playCell:hover img {
+  transform: scale(1.03);
+}
+
+.playBtn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: var(--c-accent-ink);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+
+.playCell:hover .playBtn,
+.playCell:focus-visible .playBtn {
+  background: var(--c-accent-hover);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.playCell:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-card);
+}
+
+.player {
+  width: min(92vw, 460px);
+  max-height: 92svh;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-card);
+  background: #000;
+  overflow: visible;
+}
+
+.player::backdrop {
+  background: rgba(10, 10, 10, 0.82);
+}
+
+.player video {
+  display: block;
+  width: 100%;
+  max-height: 92svh;
+  border-radius: var(--radius-card);
+}
+
+.playerClose {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--c-bg);
+  color: var(--c-text);
+  cursor: pointer;
 }

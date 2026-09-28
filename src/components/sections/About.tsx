@@ -11,12 +11,13 @@ import { Maybe, Todo } from "@/components/ui/Todo";
 import { CountUp } from "@/components/ui/CountUp";
 import { BrandIcon } from "@/components/ui/BrandIcon";
 import { Gallery } from "./Gallery";
+import { PhotoVideo } from "./PhotoVideo";
 import { Museum } from "./Museum";
 import { trayectoria } from "@/data/trayectoria";
 import styles from "./About.module.css";
 
 /** Photos that exist are shown; missing ones become a TODO slot in dev and vanish in prod. */
-function PhotoSlot({ photo, exists, className = "" }: { photo: Photo; exists: boolean; className?: string }) {
+function PhotoSlot({ photo, exists, className = "", closeLabel = "" }: { photo: Photo; exists: boolean; className?: string; closeLabel?: string }) {
   if (!exists) {
     return showTodos ? (
       <div className={`${styles.slot} ${className}`}>
@@ -26,9 +27,9 @@ function PhotoSlot({ photo, exists, className = "" }: { photo: Photo; exists: bo
   }
   return (
     <figure className={`${styles.photo} ${className}`}>
-      <div className={`${styles.photoImg} ${photo.video ? styles.videoBox : ""}`}>
+      <div className={styles.photoImg}>
         {photo.video && publicExists(photo.video) ? (
-          <video src={photo.video} poster={photo.src} aria-label={photo.alt} preload="none" controls playsInline />
+          <PhotoVideo src={photo.video} poster={photo.src} alt={photo.alt} closeLabel={closeLabel} />
         ) : (
           <Image src={photo.src} alt={isTodo(photo.alt) ? "" : photo.alt} fill sizes="(min-width: 900px) 33vw, 90vw" />
         )}
@@ -76,7 +77,7 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
               ),
             )}
           </div>
-          <Reveal delay={120}>
+          <Reveal delay={120} className={styles.portraitFirst}>
             <PhotoSlot photo={a.portrait} exists={publicExists(a.portrait.src)} className={styles.portrait} />
           </Reveal>
         </div>
@@ -96,7 +97,7 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
         {/* Photos of me */}
         <div className={styles.photos}>
           {a.photos.map((p) => (
-            <PhotoSlot key={p.src} photo={p} exists={publicExists(p.src)} />
+            <PhotoSlot key={p.src} photo={p} exists={publicExists(p.src)} closeLabel={c.ui.close} />
           ))}
         </div>
 
@@ -196,7 +197,7 @@ export function About({ locale, c, index }: { locale: Locale; c: SiteContent; in
               <RichText>{a.toolsLede}</RichText>
             </p>
           </div>
-          <div className={styles.chart}>
+          <div>
             <div className={styles.stages} aria-hidden>
               {a.stages.map((s, i) => (
                 <span key={s} className="meta">

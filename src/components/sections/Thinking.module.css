@@ -189,22 +189,28 @@
 }
 
 /* Award: its own moment — full width, with air above and below. */
+/* The whole award fits one screen: video still on the left, text on the right. */
 .award {
-  margin-block: clamp(96px, 12vw, 190px);
+  margin-block: 28px clamp(96px, 12vw, 190px);
   display: grid;
-  gap: clamp(28px, 3vw, 44px);
+  gap: 20px;
+  align-items: center;
 }
 
-.awardText {
-  max-width: 64ch;
+@media (min-width: 900px) {
+  .award {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(28px, 3.5vw, 56px);
+    max-height: calc(100svh - 96px);
+  }
 }
 
 .awardMedia img {
+  display: block;
   width: 100%;
   height: auto;
   border-radius: var(--radius-card);
 }
-
 
 .awardKicker {
   margin: 0;
@@ -214,14 +220,16 @@
 .awardTitle {
   font-family: var(--f-serif);
   font-weight: 400;
-  font-size: var(--fs-h2);
-  line-height: var(--lh-tight);
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.12;
   letter-spacing: -0.02em;
-  margin: 14px 0 20px;
+  margin: 10px 0 16px;
 }
 
 .awardText p:not(.awardKicker) {
   max-width: var(--measure);
   color: var(--c-text-2);
-  margin: 0 0 14px;
+  margin: 0 0 12px;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.5;
 }
